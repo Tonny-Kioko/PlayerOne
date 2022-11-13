@@ -29,7 +29,7 @@ class PopularGameDetail extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("assets/image/farcry6.jpeg"))),
+                        image: AssetImage("assets/image/farcry6,.jpeg"))),
               )),
           //Icons
           Positioned(
