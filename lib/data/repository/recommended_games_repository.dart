@@ -8,5 +8,7 @@ class RecommendedGamesRepo extends GetxService {
 
   Future<Response> getRecommendedGamesList() async {
     return await apiClient.getData(AppConstants.RECOMMENDED_GAME_URI);
+
+
   }
 }

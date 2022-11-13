@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
+import 'package:playerone/data/controllers/recommended_games_controller.dart';
 import 'package:playerone/models/games_model.dart';
 import 'package:playerone/utils/app_constants.dart';
 import 'package:playerone/utils/dimensions.dart';
@@ -107,55 +108,60 @@ class _GamePageBodyState extends State<GamePageBody> {
         ),
         //List of popular games to scroll through
 
-        ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(
-                    left: Dimensions.sizeBoxWidth20,
-                    right: Dimensions.sizeBoxWidth20,
-                    bottom: Dimensions.sizeBoxHeight10),
-                child: Row(
-                  children: [
-                    //Images on the Row container
-                    Container(
-                      width: Dimensions.listViewImage,
-                      height: Dimensions.listViewImage,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimensions.radius20),
-                          color: Colors.white38,
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage("assets/image/fifa2022.jpeg"))),
-                    ),
-                    //Texts Section with Image/Game details
-                    Expanded(
-                      child: Container(
-                        height: Dimensions.listViewText,
+        GetBuilder<RecommendedGamesController>(builder: (recommendedGame){
+          return recommendedGame.isLoaded?ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: recommendedGame.recommendedGamesList.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: EdgeInsets.only(
+                      left: Dimensions.sizeBoxWidth20,
+                      right: Dimensions.sizeBoxWidth20,
+                      bottom: Dimensions.sizeBoxHeight10),
+                  child: Row(
+                    children: [
+                      //Images on the Row container
+                      Container(
+                        width: Dimensions.listViewImage,
+                        height: Dimensions.listViewImage,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(Dimensions.radius20),
-                                bottomRight:
-                                    Radius.circular(Dimensions.radius20)),
-                            color: Colors.white),
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              left: Dimensions.sizeBoxWidth10,
-                              right: Dimensions.sizeBoxWidth10),
-                          child: AppColumn(
-                            text: 'FIFA 2022',
-                            genre: 'Sports',
+                            borderRadius:
+                            BorderRadius.circular(Dimensions.radius20),
+                            color: Colors.white38,
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                    AppConstants.BASE_URL+"/uploads/"+recommendedGame.recommendedGamesList[index].image!))),
+                      ),
+                      //Texts Section with Image/Game details
+                      Expanded(
+                        child: Container(
+                          height: Dimensions.listViewText,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(Dimensions.radius20),
+                                  bottomRight:
+                                  Radius.circular(Dimensions.radius20)),
+                              color: Colors.white),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: Dimensions.sizeBoxWidth10,
+                                right: Dimensions.sizeBoxWidth10),
+                            child: AppColumn(
+                              text: 'FIFA 2022',
+                              genre: 'Sports',
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                  ],
-                ),
-              );
-            }),
+                      )
+                    ],
+                  ),
+                );
+              }):CircularProgressIndicator(
+            color: AppColors.mainColor,
+          );
+        }),
       ],
     );
   }

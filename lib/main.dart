@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
+import 'package:playerone/data/controllers/recommended_games_controller.dart';
 import 'package:playerone/pages/game/popular_game_details.dart';
 import 'package:playerone/pages/game/recommended_games_details.dart';
 import 'package:playerone/pages/home/game_page_body.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.find<PopularGamesController>().getPopularGamesList();
+    Get.find<RecommendedGamesController>().getRecommendedGamesList();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
