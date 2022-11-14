@@ -145,21 +145,26 @@ class _GamePageBodyState extends State<GamePageBody> {
                       ),
                       //Texts Section with Image/Game details
                       Expanded(
-                        child: Container(
-                          height: Dimensions.listViewText,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(Dimensions.radius20),
-                                  bottomRight:
-                                  Radius.circular(Dimensions.radius20)),
-                              color: Colors.white),
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                left: Dimensions.sizeBoxWidth10,
-                                right: Dimensions.sizeBoxWidth10),
-                            child: AppColumn(
-                              text: recommendedGame.recommendedGamesList[index].name!,
-                              genre: recommendedGame.recommendedGamesList[index].genre!,
+                        child: GestureDetector(
+                          onTap: (){
+                            Get.toNamed(RouteHelper.getrecommendedGame());
+                          },
+                          child: Container(
+                            height: Dimensions.listViewText,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(Dimensions.radius20),
+                                    bottomRight:
+                                    Radius.circular(Dimensions.radius20)),
+                                color: Colors.white),
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  left: Dimensions.sizeBoxWidth10,
+                                  right: Dimensions.sizeBoxWidth10),
+                              child: AppColumn(
+                                text: recommendedGame.recommendedGamesList[index].name!,
+                                genre: recommendedGame.recommendedGamesList[index].genre!,
+                              ),
                             ),
                           ),
                         ),
