@@ -1,10 +1,13 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/data/controllers/recommended_games_controller.dart';
+import 'package:playerone/data/repository/popular_games_repository.dart';
 import 'package:playerone/models/games_model.dart';
+import 'package:playerone/pages/game/popular_game_details.dart';
 import 'package:playerone/utils/app_constants.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/big_text.dart';
@@ -49,13 +52,18 @@ class _GamePageBodyState extends State<GamePageBody> {
           return popularGames.isLoaded?Container(
             // color: Color(0xff3f4156),
             height: Dimensions.pageView,
-            child: PageView.builder(
-                controller: pageController,
-                itemCount: popularGames.popularGamesList.length,
-                itemBuilder: (context, position) {
-                  return _buildPageItem(
-                      position, popularGames.popularGamesList[position]);
-                }),
+            child: GestureDetector(
+              onTap: (){
+                Get.to(() => PopularGameDetail());
+              },
+              child: PageView.builder(
+                  controller: pageController,
+                  itemCount: popularGames.popularGamesList.length,
+                  itemBuilder: (context, position) {
+                    return _buildPageItem(
+                        position, popularGames.popularGamesList[position]);
+                  }),
+            ),
           ):CircularProgressIndicator(
             color: AppColors.mainColor,
           );
@@ -132,7 +140,7 @@ class _GamePageBodyState extends State<GamePageBody> {
                             image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: NetworkImage(
-                                    AppConstants.BASE_URL+"/uploads/"+recommendedGame.recommendedGamesList[index].image!))),
+                                    AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommendedGame.recommendedGamesList[index].image!))),
                       ),
                       //Texts Section with Image/Game details
                       Expanded(
@@ -149,8 +157,8 @@ class _GamePageBodyState extends State<GamePageBody> {
                                 left: Dimensions.sizeBoxWidth10,
                                 right: Dimensions.sizeBoxWidth10),
                             child: AppColumn(
-                              text: 'FIFA 2022',
-                              genre: 'Sports',
+                              text: recommendedGame.recommendedGamesList[index].name!,
+                              genre: recommendedGame.recommendedGamesList[index].genre!,
                             ),
                           ),
                         ),
@@ -206,7 +214,7 @@ class _GamePageBodyState extends State<GamePageBody> {
                 image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                        AppConstants.BASE_URL+"/uploads/"+popularGame.image!))),
+                        AppConstants.BASE_URL+AppConstants.UPLOAD_URL+popularGame.image!))),
           ),
           Align(
             alignment: Alignment.bottomCenter,

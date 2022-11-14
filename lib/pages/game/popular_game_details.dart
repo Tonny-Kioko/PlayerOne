@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:playerone/pages/home/main_game_page.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_icon.dart';
 import 'package:playerone/widgets/expandable_text.dart';
@@ -39,7 +42,12 @@ class PopularGameDetail extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AppIcon(icon: Icons.arrow_back_ios_new_outlined),
+                  GestureDetector(
+                      onTap: (){
+                        Get.to(() => MainGamePage());
+                  },
+                      child:
+                  AppIcon(icon: Icons.arrow_back_ios_new_outlined)),
                   AppIcon(icon: Icons.shopping_basket_outlined)
                 ],
               )),
