@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_icon.dart';
 import 'package:playerone/widgets/big_text.dart';
-
+import 'package:playerone/routes/route_helper.dart';
 import '../../widgets/small_text.dart';
 
 class RecommendedGameDetails extends StatelessWidget {
@@ -16,10 +17,15 @@ class RecommendedGameDetails extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.clear),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getinitial());
+                  },
+                    child: AppIcon(icon: Icons.clear)),
                 AppIcon(icon: Icons.shopping_basket)
               ],
             ),
