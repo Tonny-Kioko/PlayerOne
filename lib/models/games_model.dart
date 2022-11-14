@@ -20,7 +20,7 @@ class Game {
     if (json['games'] != null) {
       _games = <GameModel>[];
       json['games'].forEach((v) {
-        _games!.add(GameModel.fromJson(v));
+        _games.add(GameModel.fromJson(v));
       });
     }
   }

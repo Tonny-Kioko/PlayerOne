@@ -132,7 +132,7 @@ class _GamePageBodyState extends State<GamePageBody> {
                             image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: NetworkImage(
-                                    AppConstants.BASE_URL+"/uploads/"+recommendedGame.recommendedGamesList[index].image!))),
+                                    AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommendedGame.recommendedGamesList[index].image!))),
                       ),
                       //Texts Section with Image/Game details
                       Expanded(
@@ -149,8 +149,8 @@ class _GamePageBodyState extends State<GamePageBody> {
                                 left: Dimensions.sizeBoxWidth10,
                                 right: Dimensions.sizeBoxWidth10),
                             child: AppColumn(
-                              text: 'FIFA 2022',
-                              genre: 'Sports',
+                              text: recommendedGame.recommendedGamesList[index].name!,
+                              genre: recommendedGame.recommendedGamesList[index].genre!,
                             ),
                           ),
                         ),
@@ -206,7 +206,7 @@ class _GamePageBodyState extends State<GamePageBody> {
                 image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                        AppConstants.BASE_URL+"/uploads/"+popularGame.image!))),
+                        AppConstants.BASE_URL+AppConstants.UPLOAD_URL+popularGame.image!))),
           ),
           Align(
             alignment: Alignment.bottomCenter,

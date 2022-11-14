@@ -6,6 +6,8 @@ class AppConstants{
 
   static const String POPULAR_GAME_URI = "/api/v1/games/popular";
   static const String RECOMMENDED_GAME_URI = "/api/v1/games/recommended";
+  static const String UPLOAD_URL = "/uploads/";
+
 
   static const String TOKEN = "PlayerOne";
 
