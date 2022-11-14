@@ -8,6 +8,7 @@ import 'package:playerone/data/controllers/recommended_games_controller.dart';
 import 'package:playerone/data/repository/popular_games_repository.dart';
 import 'package:playerone/models/games_model.dart';
 import 'package:playerone/pages/game/popular_game_details.dart';
+import 'package:playerone/routes/route_helper.dart';
 import 'package:playerone/utils/app_constants.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/big_text.dart';
@@ -54,7 +55,7 @@ class _GamePageBodyState extends State<GamePageBody> {
             height: Dimensions.pageView,
             child: GestureDetector(
               onTap: (){
-                Get.to(() => PopularGameDetail());
+                Get.toNamed(RouteHelper.popularGame);
               },
               child: PageView.builder(
                   controller: pageController,

@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
 
       home: MainGamePage(),
       initialRoute: RouteHelper.initial,
+      getPages: RouteHelper.routes,
 
     );
   }
