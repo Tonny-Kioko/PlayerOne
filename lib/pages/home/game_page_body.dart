@@ -1,10 +1,14 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/data/controllers/recommended_games_controller.dart';
+import 'package:playerone/data/repository/popular_games_repository.dart';
 import 'package:playerone/models/games_model.dart';
+import 'package:playerone/pages/game/popular_game_details.dart';
+import 'package:playerone/routes/route_helper.dart';
 import 'package:playerone/utils/app_constants.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/big_text.dart';
@@ -49,13 +53,18 @@ class _GamePageBodyState extends State<GamePageBody> {
           return popularGames.isLoaded?Container(
             // color: Color(0xff3f4156),
             height: Dimensions.pageView,
-            child: PageView.builder(
-                controller: pageController,
-                itemCount: popularGames.popularGamesList.length,
-                itemBuilder: (context, position) {
-                  return _buildPageItem(
-                      position, popularGames.popularGamesList[position]);
-                }),
+            child: GestureDetector(
+              onTap: (){
+                Get.toNamed(RouteHelper.popularGame);
+              },
+              child: PageView.builder(
+                  controller: pageController,
+                  itemCount: popularGames.popularGamesList.length,
+                  itemBuilder: (context, position) {
+                    return _buildPageItem(
+                        position, popularGames.popularGamesList[position]);
+                  }),
+            ),
           ):CircularProgressIndicator(
             color: AppColors.mainColor,
           );
