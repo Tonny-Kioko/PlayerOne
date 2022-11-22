@@ -12,8 +12,8 @@ static const String popularGame = "/popular-game";
 static const String recommendedGame = "/recommended-game";
 
 
-  static String getinitial() => '$initial';
-  static String getPopularGame() => '$popularGame';
+static String getinitial() => '$initial';
+static String getPopularGame() => '$popularGame';
 static String getrecommendedGame() => '$recommendedGame';
 
 
