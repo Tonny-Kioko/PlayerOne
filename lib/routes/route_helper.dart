@@ -14,7 +14,7 @@ static const String recommendedGame = "/recommended-game";
 
 static String getinitial() => '$initial';
 static String getPopularGame() => '$popularGame';
-static String getrecommendedGame() => '$recommendedGame';
+ static String getrecommendedGame() => '$recommendedGame';
 
 
 static List<GetPage> routes = [
