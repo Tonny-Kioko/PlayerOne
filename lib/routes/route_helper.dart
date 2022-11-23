@@ -13,20 +13,23 @@ static const String recommendedGame = "/recommended-game";
 
 
 static String getinitial() => '$initial';
-static String getPopularGame() => '$popularGame';
- static String getrecommendedGame() => '$recommendedGame';
+static String getPopularGame(int pageId) => '$popularGame? pageId = $pageId';
+ static String getrecommendedGame(int pageId) => '$recommendedGame? pageId = $pageId';
 
 
 static List<GetPage> routes = [
   GetPage(name: initial, page: () => MainGamePage()),
 
   GetPage(name: popularGame, page:() {
-  return PopularGameDetail();
+    var pageId = Get.parameters['pageId'];
+  return PopularGameDetail(pageId: int.parse(pageId!));
 },
 transition: Transition.fadeIn
 ),
 GetPage(name: recommendedGame, page:() {
-return RecommendedGameDetails();
+  var pageId = Get.parameters['pageId'];
+return RecommendedGameDetails(pageId: int.parse(pageId!))
+;
 },
     transition: Transition.fadeIn
 

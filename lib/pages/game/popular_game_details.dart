@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:playerone/data/controllers/popular_games-controller.dart';
+import 'package:playerone/data/controllers/recommended_games_controller.dart';
 import 'package:playerone/pages/home/main_game_page.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_icon.dart';
@@ -14,10 +16,12 @@ import '../../widgets/icon_and_text.dart';
 import '../../widgets/small_text.dart';
 
 class PopularGameDetail extends StatelessWidget {
-  const PopularGameDetail({Key? key}) : super(key: key);
+  final int pageId;
+  const PopularGameDetail({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<PopularGamesController>().popularGamesList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(

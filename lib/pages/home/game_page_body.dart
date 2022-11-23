@@ -30,6 +30,10 @@ class _GamePageBodyState extends State<GamePageBody> {
   double _scaleFactor = 0.8;
   double _height = Dimensions.pageViewContainer;
 
+  int get index => Get.find<PopularGamesController>().popularGamesList[pageId];
+
+  get pageId => null;
+
   @override
   void initState() {
     super.initState();
@@ -50,24 +54,26 @@ class _GamePageBodyState extends State<GamePageBody> {
     return Column(
       children: [
         GetBuilder<PopularGamesController>(builder: (popularGames) {
-          return popularGames.isLoaded?Container(
-            // color: Color(0xff3f4156),
-            height: Dimensions.pageView,
-            child: GestureDetector(
-              onTap: (){
-                Get.toNamed(RouteHelper.popularGame);
-              },
-              child: PageView.builder(
-                  controller: pageController,
-                  itemCount: popularGames.popularGamesList.length,
-                  itemBuilder: (context, position) {
-                    return _buildPageItem(
-                        position, popularGames.popularGamesList[position]);
-                  }),
-            ),
-          ):CircularProgressIndicator(
-            color: AppColors.mainColor,
-          );
+          return popularGames.isLoaded
+              ? Container(
+                  // color: Color(0xff3f4156),
+                  height: Dimensions.pageView,
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.toNamed(RouteHelper.getPopularGame(index));
+                    },
+                    child: PageView.builder(
+                        controller: pageController,
+                        itemCount: popularGames.popularGamesList.length,
+                        itemBuilder: (context, position) {
+                          return _buildPageItem(position,
+                              popularGames.popularGamesList[position]);
+                        }),
+                  ),
+                )
+              : CircularProgressIndicator(
+                  color: AppColors.mainColor,
+                );
         }),
         GetBuilder<PopularGamesController>(builder: (popularGames) {
           return DotsIndicator(
@@ -117,64 +123,72 @@ class _GamePageBodyState extends State<GamePageBody> {
         ),
         //List of popular games to scroll through
 
-        GetBuilder<RecommendedGamesController>(builder: (recommendedGame){
-          return recommendedGame.isLoaded?ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: recommendedGame.recommendedGamesList.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(
-                      left: Dimensions.sizeBoxWidth20,
-                      right: Dimensions.sizeBoxWidth20,
-                      bottom: Dimensions.sizeBoxHeight10),
-                  child: Row(
-                    children: [
-                      //Images on the Row container
-                      Container(
-                        width: Dimensions.listViewImage,
-                        height: Dimensions.listViewImage,
-                        decoration: BoxDecoration(
-                            borderRadius:
-                            BorderRadius.circular(Dimensions.radius20),
-                            color: Colors.white38,
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: NetworkImage(
-                                    AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommendedGame.recommendedGamesList[index].image!))),
-                      ),
-                      //Texts Section with Image/Game details
-                      Expanded(
-                        child: GestureDetector(
-                          onTap: (){
-                            Get.toNamed(RouteHelper.getrecommendedGame());
-                          },
-                          child: Container(
-                            height: Dimensions.listViewText,
+        GetBuilder<RecommendedGamesController>(builder: (recommendedGame) {
+          return recommendedGame.isLoaded
+              ? ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: recommendedGame.recommendedGamesList.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(
+                          left: Dimensions.sizeBoxWidth20,
+                          right: Dimensions.sizeBoxWidth20,
+                          bottom: Dimensions.sizeBoxHeight10),
+                      child: Row(
+                        children: [
+                          //Images on the Row container
+                          Container(
+                            width: Dimensions.listViewImage,
+                            height: Dimensions.listViewImage,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(Dimensions.radius20),
-                                    bottomRight:
-                                    Radius.circular(Dimensions.radius20)),
-                                color: Colors.white),
-                            child: Padding(
-                              padding: EdgeInsets.only(
-                                  left: Dimensions.sizeBoxWidth10,
-                                  right: Dimensions.sizeBoxWidth10),
-                              child: AppColumn(
-                                text: recommendedGame.recommendedGamesList[index].name!,
-                                genre: recommendedGame.recommendedGamesList[index].genre!,
+                                borderRadius:
+                                    BorderRadius.circular(Dimensions.radius20),
+                                color: Colors.white38,
+                                image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(AppConstants.BASE_URL +
+                                        AppConstants.UPLOAD_URL +
+                                        recommendedGame
+                                            .recommendedGamesList[index]
+                                            .image!))),
+                          ),
+                          //Texts Section with Image/Game details
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.toNamed(RouteHelper.getrecommendedGame(index));
+                              },
+                              child: Container(
+                                height: Dimensions.listViewText,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(
+                                            Dimensions.radius20),
+                                        bottomRight: Radius.circular(
+                                            Dimensions.radius20)),
+                                    color: Colors.white),
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      left: Dimensions.sizeBoxWidth10,
+                                      right: Dimensions.sizeBoxWidth10),
+                                  child: AppColumn(
+                                    text: recommendedGame
+                                        .recommendedGamesList[index].name!,
+                                    genre: recommendedGame
+                                        .recommendedGamesList[index].genre!,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                          )
+                        ],
+                      ),
+                    );
+                  })
+              : CircularProgressIndicator(
+                  color: AppColors.mainColor,
                 );
-              }):CircularProgressIndicator(
-            color: AppColors.mainColor,
-          );
         }),
       ],
     );
@@ -219,8 +233,9 @@ class _GamePageBodyState extends State<GamePageBody> {
                 color: index.isEven ? Color(0xff6f42c1) : Color(0xff6610f2),
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(
-                        AppConstants.BASE_URL+AppConstants.UPLOAD_URL+popularGame.image!))),
+                    image: NetworkImage(AppConstants.BASE_URL +
+                        AppConstants.UPLOAD_URL +
+                        popularGame.image!))),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -238,7 +253,8 @@ class _GamePageBodyState extends State<GamePageBody> {
                   ]),
               child: Container(
                 padding: EdgeInsets.only(top: 10, left: 15, right: 15),
-                child: AppColumn(text: popularGame.name!, genre: popularGame.genre!,
+                child: AppColumn(
+                  text: popularGame.name!, genre: popularGame.genre!,
                   // text: "ASSASIN'S CREED VALHALLA",
                   // genre: ' Action, Role-Playing',
                 ),
