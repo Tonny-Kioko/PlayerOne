@@ -45,7 +45,7 @@ class PopularGamesController extends GetxController {
   }
   int checkQuantity(int quantity){
     if(quantity < 0){
-      Get.snackbar("Item count", "Feed me more!",
+      Get.snackbar("Item count", "Feed me more...",
       backgroundColor: AppColors.mainColor,
       colorText: Colors.white,);
       return 0;
