@@ -19,10 +19,13 @@ class PopularGamesController extends GetxController {
   int _quantity = 0;
   int get quantity => _quantity;
 
+  int _inCartItems = 0;
+  int get inCartItems => _inCartItems + _quantity;
+
   Future<void> getPopularGamesList() async {
     Response response = await popularGamesRepo.getPopularGamesList();
     if (response.statusCode == 200) {
-      _isLoaded=true;
+      _isLoaded = true;
       print("We're working just fine");
       print(_popularGamesList);
       _popularGamesList = [];
@@ -32,34 +35,43 @@ class PopularGamesController extends GetxController {
     } else {}
   }
 
-  void setQuantity(bool isIncrement){
-    if(isIncrement){
+  void setQuantity(bool isIncrement) {
+    if (isIncrement) {
       //Games increment in basket
       _quantity = checkQuantity(_quantity + 1);
-    }else{
+    } else {
       //Games deleted from basket
       _quantity = checkQuantity(_quantity - 1);
     }
     //Recognise an increase or decrease in the cart
     update();
   }
-  int checkQuantity(int quantity){
-    if(quantity < 0){
-      Get.snackbar("Item count", "Feed me more...",
-      backgroundColor: AppColors.mainColor,
-      colorText: Colors.white,);
-      return 0;
-    }else if(quantity > 100){
-      Get.snackbar("Item count", "I'm already full!",
+
+  int checkQuantity(int quantity) {
+    if (quantity < 0) {
+      Get.snackbar(
+        "Basket Items",
+        "Feed me more...",
         backgroundColor: AppColors.mainColor,
-        colorText: Colors.white,);
+        colorText: Colors.white,
+      );
+      return 0;
+    } else if (quantity > 100) {
+      Get.snackbar(
+        "Basket Items",
+        "I'm already full!",
+        backgroundColor: AppColors.mainColor,
+        colorText: Colors.white,
+      );
       return 100;
-    }else{
+    } else {
       return quantity;
     }
   }
 
-  void initData(){
+  void initData() {
     _quantity = 0;
+    _inCartItems = 0;
+    //Recovering stored item count and adding to new count
   }
 }
