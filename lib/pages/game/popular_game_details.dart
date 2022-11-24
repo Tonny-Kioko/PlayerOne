@@ -133,7 +133,7 @@ class PopularGameDetail extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: (){
-
+                              j
                       },
                       child: Icon(
                         Icons.add,
