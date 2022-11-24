@@ -72,6 +72,9 @@ class PopularGamesController extends GetxController {
   void initData() {
     _quantity = 0;
     _inCartItems = 0;
+
     //Recovering stored item count and adding to new count
+
+
   }
 }
