@@ -14,6 +14,8 @@ class PopularGamesController extends GetxController {
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
+  int _quantity = 0;
+
   Future<void> getPopularGamesList() async {
     Response response = await popularGamesRepo.getPopularGamesList();
     if (response.statusCode == 200) {
@@ -25,5 +27,13 @@ class PopularGamesController extends GetxController {
 
       update();
     } else {}
+  }
+
+  void setQuantity(bool isIncrement){
+    if(isIncrement){
+      _quantity = _quantity + 1;
+    }else{
+      _quantity = _quantity - 1;
+    }
   }
 }
