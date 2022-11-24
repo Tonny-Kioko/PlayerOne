@@ -58,4 +58,8 @@ class PopularGamesController extends GetxController {
       return quantity;
     }
   }
+
+  void initData(){
+    _quantity = 0;
+  }
 }

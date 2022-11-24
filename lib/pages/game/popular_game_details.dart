@@ -22,6 +22,7 @@ class PopularGameDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var product = Get.find<PopularGamesController>().popularGamesList[pageId];
+    Get.find<PopularGamesController>().initData();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
