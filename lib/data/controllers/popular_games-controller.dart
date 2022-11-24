@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:playerone/colors.dart';
 import 'package:playerone/data/repository/popular_games_repository.dart';
 
 import '../../models/games_model.dart';
@@ -15,6 +17,7 @@ class PopularGamesController extends GetxController {
   bool get isLoaded => _isLoaded;
 
   int _quantity = 0;
+  int get quantity => _quantity;
 
   Future<void> getPopularGamesList() async {
     Response response = await popularGamesRepo.getPopularGamesList();
@@ -31,9 +34,28 @@ class PopularGamesController extends GetxController {
 
   void setQuantity(bool isIncrement){
     if(isIncrement){
-      _quantity = _quantity + 1;
+      //Games increment in basket
+      _quantity = checkQuantity(_quantity + 1);
     }else{
-      _quantity = _quantity - 1;
+      //Games deleted from basket
+      _quantity = checkQuantity(_quantity - 1);
+    }
+    //Recognise an increase or decrease in the cart
+    update();
+  }
+  int checkQuantity(int quantity){
+    if(quantity < 0){
+      Get.snackbar("Item count", "Feed me more!",
+      backgroundColor: AppColors.mainColor,
+      colorText: Colors.white,);
+      return 0;
+    }else if(quantity > 100){
+      Get.snackbar("Item count", "I'm already full!",
+        backgroundColor: AppColors.mainColor,
+        colorText: Colors.white,);
+      return 100;
+    }else{
+      return quantity;
     }
   }
 }

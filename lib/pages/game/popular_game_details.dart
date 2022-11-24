@@ -120,20 +120,25 @@ class PopularGameDetail extends StatelessWidget {
                     color: Colors.white),
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.remove,
-                      color: AppColors.signColor,
+                    GestureDetector(
+                      onTap: (){
+                        popularGames.setQuantity(false);
+                      },
+                      child: Icon(
+                        Icons.remove,
+                        color: AppColors.signColor,
+                      ),
                     ),
                     SizedBox(
                       width: Dimensions.sizeBoxHeight10 / 2,
                     ),
-                    SmallText(text: "0"),
+                    SmallText(text: popularGames.quantity.toString()),
                     SizedBox(
                       width: Dimensions.sizeBoxHeight10 / 2,
                     ),
                     GestureDetector(
                       onTap: (){
-                              j
+                        popularGames.setQuantity(true);
                       },
                       child: Icon(
                         Icons.add,
