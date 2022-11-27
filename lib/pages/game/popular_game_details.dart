@@ -156,9 +156,14 @@ class PopularGameDetail extends StatelessWidget {
                     bottom: Dimensions.sizeBoxHeight20,
                     left: Dimensions.sizeBoxWidth20,
                     right: Dimensions.sizeBoxWidth20),
-                child: SmallText(
-                  text: "\$69.00 | Add to Cart",
-                  color: Colors.white,
+                child: GestureDetector(
+                  onTap: (){
+                    popularGames.addItem(product);
+                  },
+                  child: SmallText(
+                    text: "\$69.00 | Add to Cart",
+                    color: Colors.white,
+                  ),
                 ),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(Dimensions.radius20),
