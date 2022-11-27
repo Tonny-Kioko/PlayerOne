@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:playerone/data/controllers/cart_controller.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/data/controllers/recommended_games_controller.dart';
 import 'package:playerone/pages/home/main_game_page.dart';
@@ -22,7 +23,7 @@ class PopularGameDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var product = Get.find<PopularGamesController>().popularGamesList[pageId];
-    Get.find<PopularGamesController>().initData();
+    Get.find<PopularGamesController>().initData(Get.find<CartController>());
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(

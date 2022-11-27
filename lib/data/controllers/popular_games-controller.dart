@@ -5,6 +5,7 @@ import 'package:playerone/colors.dart';
 import 'package:playerone/data/repository/popular_games_repository.dart';
 
 import '../../models/games_model.dart';
+import 'cart_controller.dart';
 
 class PopularGamesController extends GetxController {
   final PopularGamesRepo popularGamesRepo;
@@ -69,12 +70,16 @@ class PopularGamesController extends GetxController {
     }
   }
 
-  void initData() {
+  void initData(CartController cart) {
     _quantity = 0;
     _inCartItems = 0;
 
     //Recovering stored item count and adding to new count
 
+
+  }
+
+  void addItem(GameModel game){
 
   }
 }

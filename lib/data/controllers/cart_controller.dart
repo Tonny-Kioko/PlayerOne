@@ -15,7 +15,7 @@ class CartController extends GetxController {
     _items.putIfAbsent(game.id!, () => CartModel(
       quantity: quantity,
       isExist: true,
-      time: DateTime.now().,
+      time: DateTime.now().toString(),
       name: game.name,
       id: game.id,
       image: game.image,
