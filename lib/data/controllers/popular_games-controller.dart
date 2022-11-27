@@ -11,8 +11,9 @@ class PopularGamesController extends GetxController {
   final PopularGamesRepo popularGamesRepo;
   PopularGamesController({required this.popularGamesRepo, required apiClient});
 
-  List<dynamic> get popularGamesList => _popularGamesList;
-  List<dynamic> _popularGamesList = [];
+  List<GameModel> get popularGamesList => _popularGamesList;
+  List<GameModel> _popularGamesList = [];
+  late CartController _cart;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
@@ -73,13 +74,12 @@ class PopularGamesController extends GetxController {
   void initData(CartController cart) {
     _quantity = 0;
     _inCartItems = 0;
+    _cart = cart;
 
     //Recovering stored item count and adding to new count
-
-
   }
 
-  void addItem(GameModel game){
-
+  void addItem(GameModel game) {
+    _cart.addItem(game, _quantity);
   }
 }
