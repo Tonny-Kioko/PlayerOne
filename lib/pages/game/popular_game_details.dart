@@ -161,7 +161,7 @@ class PopularGameDetail extends StatelessWidget {
                     popularGames.addItem(product);
                   },
                   child: SmallText(
-                    text: "\$69.00 | Add to Cart",
+                    text: "\$69.00 | Add to Basket",
                     color: Colors.white,
                   ),
                 ),
