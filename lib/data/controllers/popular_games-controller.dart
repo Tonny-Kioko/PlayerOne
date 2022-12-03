@@ -50,7 +50,7 @@ class PopularGamesController extends GetxController {
   }
 
   int checkQuantity(int quantity) {
-    if (quantity < 0) {
+    if ((_inCartItems+quantity) < 0) {
       Get.snackbar(
         "Basket Items",
         "Feed me more...",
@@ -58,7 +58,7 @@ class PopularGamesController extends GetxController {
         colorText: Colors.white,
       );
       return 0;
-    } else if (quantity > 100) {
+    } else if (_inCartItems+quantity > 100) {
       Get.snackbar(
         "Basket Items",
         "I'm already full!",

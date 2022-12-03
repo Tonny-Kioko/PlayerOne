@@ -24,33 +24,33 @@ class CartController extends GetxController {
           price: value.price,
         );
       });
-
     } else {
-      _items.putIfAbsent(game.id!, () =>
-          CartModel(
-            quantity: quantity,
-            isExist: true,
-            time: DateTime.now().toString(),
-            name: game.name,
-            id: game.id,
-            image: game.image,
-            price: game.price,
-          ));
+      _items.putIfAbsent(
+          game.id!,
+          () => CartModel(
+                quantity: quantity,
+                isExist: true,
+                time: DateTime.now().toString(),
+                name: game.name,
+                id: game.id,
+                image: game.image,
+                price: game.price,
+              ));
     }
   }
 
-  bool existInCart(GameModel game){
-    if(_items.containsKey(game.id)){
+  bool existInCart(GameModel game) {
+    if (_items.containsKey(game.id)) {
       return true;
     }
     return false;
   }
 
-  getQuantity(GameModel game){
+  getQuantity(GameModel game) {
     var quantity = 0;
-    if(_items.containsKey(game.id)){
+    if (_items.containsKey(game.id)) {
       _items.forEach((key, value) {
-        if(key== game.id){
+        if (key == game.id) {
           quantity = value.quantity!;
         }
       });
