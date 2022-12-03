@@ -135,7 +135,7 @@ class PopularGameDetail extends StatelessWidget {
                     SizedBox(
                       width: Dimensions.sizeBoxHeight10 / 2,
                     ),
-                    SmallText(text: popularGames.quantity.toString()),
+                    SmallText(text: popularGames.inCartItems.toString()),
                     SizedBox(
                       width: Dimensions.sizeBoxHeight10 / 2,
                     ),
