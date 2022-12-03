@@ -15,13 +15,13 @@ class CartController extends GetxController {
     if (_items.containsKey(game.id!)) {
       _items.update(game.id!, (value) {
         return CartModel(
-          quantity: quantity,
+          quantity: value.quantity! + quantity,
           isExist: true,
           time: DateTime.now().toString(),
-          name: game.name,
-          id: game.id,
-          image: game.image,
-          price: game.price,
+          name: value.name,
+          id: value.id,
+          image: value.image,
+          price: value.price,
         );
       });
 
