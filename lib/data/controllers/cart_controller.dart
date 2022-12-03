@@ -12,14 +12,30 @@ class CartController extends GetxController {
   Map<int, CartModel> _items = {};
 
   void addItem(GameModel game, int quantity) {
-    _items.putIfAbsent(game.id!, () => CartModel(
-      quantity: quantity,
-      isExist: true,
-      time: DateTime.now().toString(),
-      name: game.name,
-      id: game.id,
-      image: game.image,
-      price: game.price,
-    ));
+    if (_items.containsKey(game.id!)) {
+      _items.update(game.id!, (value) {
+        return CartModel(
+          quantity: quantity,
+          isExist: true,
+          time: DateTime.now().toString(),
+          name: game.name,
+          id: game.id,
+          image: game.image,
+          price: game.price,
+        );
+      });
+
+    } else {
+      _items.putIfAbsent(game.id!, () =>
+          CartModel(
+            quantity: quantity,
+            isExist: true,
+            time: DateTime.now().toString(),
+            name: game.name,
+            id: game.id,
+            image: game.image,
+            price: game.price,
+          ));
+    }
   }
 }
