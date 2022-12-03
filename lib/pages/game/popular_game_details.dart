@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:playerone/data/controllers/cart_controller.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/data/controllers/recommended_games_controller.dart';
+import 'package:playerone/models/games_model.dart';
 import 'package:playerone/pages/home/main_game_page.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_icon.dart';
@@ -22,8 +23,8 @@ class PopularGameDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var product = Get.find<PopularGamesController>().popularGamesList[pageId];
-    Get.find<PopularGamesController>().initData(Get.find<CartController>());
+    var game = Get.find<PopularGamesController>().popularGamesList[pageId];
+    Get.find<PopularGamesController>().initData( game, Get.find<CartController>());
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(

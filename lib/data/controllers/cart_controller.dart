@@ -38,4 +38,11 @@ class CartController extends GetxController {
           ));
     }
   }
+
+  existInCart(GameModel game){
+    if(_items.containsKey(game.id)){
+      return true;
+    }
+    return false;
+  }
 }

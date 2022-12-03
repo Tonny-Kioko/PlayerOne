@@ -71,10 +71,12 @@ class PopularGamesController extends GetxController {
     }
   }
 
-  void initData(CartController cart) {
+  void initData(GameModel game,CartController cart) {
     _quantity = 0;
     _inCartItems = 0;
     _cart = cart;
+    var exist = false;
+    exist = _cart.existInCart(game);
 
     //Recovering stored item count and adding to new count
   }
