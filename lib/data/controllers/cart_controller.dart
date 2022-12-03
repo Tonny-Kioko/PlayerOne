@@ -39,10 +39,22 @@ class CartController extends GetxController {
     }
   }
 
-  existInCart(GameModel game){
+  bool existInCart(GameModel game){
     if(_items.containsKey(game.id)){
       return true;
     }
     return false;
+  }
+
+  getQuantity(GameModel game){
+    var quantity = 0;
+    if(_items.containsKey(game.id)){
+      _items.forEach((key, value) {
+        if(key== game.id){
+          quantity = value.quantity!;
+        }
+      });
+    }
+    return quantity;
   }
 }

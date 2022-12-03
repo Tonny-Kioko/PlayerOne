@@ -159,7 +159,7 @@ class PopularGameDetail extends StatelessWidget {
                     right: Dimensions.sizeBoxWidth20),
                 child: GestureDetector(
                   onTap: (){
-                    popularGames.addItem(product);
+                    popularGames.addItem(game);
                   },
                   child: SmallText(
                     text: "\$69.00 | Add to Basket",

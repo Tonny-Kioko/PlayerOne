@@ -77,6 +77,10 @@ class PopularGamesController extends GetxController {
     _cart = cart;
     var exist = false;
     exist = _cart.existInCart(game);
+    if (exist){
+      _inCartItems= cart.getQuantity(game);
+    }
+
 
     //Recovering stored item count and adding to new count
   }
