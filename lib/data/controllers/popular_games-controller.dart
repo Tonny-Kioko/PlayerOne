@@ -80,6 +80,15 @@ class PopularGamesController extends GetxController {
   }
 
   void addItem(GameModel game) {
-    _cart.addItem(game, _quantity);
+    if (_quantity > 0) {
+      _cart.addItem(game, _quantity);
+    } else {
+      Get.snackbar(
+        "Basket Items",
+        "Add at least one item to your basket...",
+        backgroundColor: AppColors.mainColor,
+        colorText: Colors.white,
+      );
+    }
   }
 }
