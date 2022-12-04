@@ -90,6 +90,9 @@ class PopularGamesController extends GetxController {
     _quantity = 0;
     _inCartItems = _cart.getQuantity(game);
 
+    //Testing
+    print("The item ID is"+game.id.toString()+" Its price is "+game.price.toString());
+
     // } else {
     // Get.snackbar(
     //   "Basket Items",
@@ -97,6 +100,7 @@ class PopularGamesController extends GetxController {
     //   backgroundColor: AppColors.mainColor,
     //   colorText: Colors.white,
     // );
+    update();
   }
 
   int get totalItems {
