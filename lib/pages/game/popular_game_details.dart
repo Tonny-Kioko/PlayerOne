@@ -193,7 +193,7 @@ class PopularGameDetail extends StatelessWidget {
                       popularGames.addItem(game);
                     },
                     child: SmallText(
-                      text: "\$69.00 | Add to Basket",
+                      text: "\$ ${game.price!} | Add Title}",
                       color: Colors.white,
                     ),
                   ),
