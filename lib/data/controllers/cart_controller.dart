@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playerone/data/repository/cart_controller.dart';
 
+import '../../colors.dart';
 import '../../models/cart_model.dart';
 import '../../models/games_model.dart';
 
@@ -25,17 +27,26 @@ class CartController extends GetxController {
         );
       });
     } else {
-      _items.putIfAbsent(
-          game.id!,
-          () => CartModel(
-                quantity: quantity,
-                isExist: true,
-                time: DateTime.now().toString(),
-                name: game.name,
-                id: game.id,
-                image: game.image,
-                price: game.price,
-              ));
+      if(quantity > 0){
+        _items.putIfAbsent(
+            game.id!,
+                () => CartModel(
+              quantity: quantity,
+              isExist: true,
+              time: DateTime.now().toString(),
+              name: game.name,
+              id: game.id,
+              image: game.image,
+              price: game.price,
+            ));
+      }else {
+        Get.snackbar(
+          "Basket Items",
+          "Add at least one item to your basket...",
+          backgroundColor: AppColors.mainColor,
+          colorText: Colors.white,
+        );
+      }
     }
   }
 
