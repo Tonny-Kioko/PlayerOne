@@ -93,10 +93,15 @@ class RecommendedGameDetails extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AppIcon(
-                    backgroundColor: AppColors.mainColor,
-                    icon: Icons.remove,
-                    iconColor: Colors.white,
+                  GestureDetector(
+                    onTap: (){
+                      controller.setQuantity(false);
+                    },
+                    child: AppIcon(
+                      backgroundColor: AppColors.mainColor,
+                      icon: Icons.remove,
+                      iconColor: Colors.white,
+                    ),
                   ),
 
                   BigText(text: "\$${product.price!} * 0 "),
