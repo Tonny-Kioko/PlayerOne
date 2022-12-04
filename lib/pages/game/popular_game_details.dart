@@ -55,7 +55,17 @@ class PopularGameDetail extends StatelessWidget {
                   },
                       child:
                   AppIcon(icon: Icons.arrow_back_ios_new_outlined)),
-                  AppIcon(icon: Icons.shopping_basket_outlined)
+
+                  GetBuilder<PopularGamesController>(builder: (controller){
+                    return Stack(
+                      children: [
+                        AppIcon(icon: Icons.shopping_basket_outlined),
+                        Get.find<PopularGamesController>().totalItems >= 1?AppIcon(icon: Icons.circle, size: 20, iconColor: Colors.transparent, backgroundColor: AppColors.mainColor,):
+                        Container()
+                      ],
+                    );
+                  })
+
                 ],
               )),
           //Intro about the game displayed

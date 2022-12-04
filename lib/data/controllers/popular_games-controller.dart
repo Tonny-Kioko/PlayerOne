@@ -50,7 +50,7 @@ class PopularGamesController extends GetxController {
   }
 
   int checkQuantity(int quantity) {
-    if ((_inCartItems+quantity) < 0) {
+    if ((_inCartItems + quantity) < 0) {
       Get.snackbar(
         "Basket Items",
         "Feed me more...",
@@ -58,7 +58,7 @@ class PopularGamesController extends GetxController {
         colorText: Colors.white,
       );
       return 0;
-    } else if (_inCartItems+quantity > 100) {
+    } else if (_inCartItems + quantity > 100) {
       Get.snackbar(
         "Basket Items",
         "I'm already full!",
@@ -71,33 +71,35 @@ class PopularGamesController extends GetxController {
     }
   }
 
-  void initData(GameModel game,CartController cart) {
+  void initData(GameModel game, CartController cart) {
     _quantity = 0;
     _inCartItems = 0;
     _cart = cart;
     var exist = false;
     exist = _cart.existInCart(game);
-    if (exist){
-      _inCartItems= cart.getQuantity(game);
+    if (exist) {
+      _inCartItems = cart.getQuantity(game);
     }
-
 
     //Recovering stored item count and adding to new count
   }
 
   void addItem(GameModel game) {
     // if (_quantity > 0) {
-      _cart.addItem(game, _quantity);
-      _quantity = 0;
-      _inCartItems = _cart.getQuantity(game);
+    _cart.addItem(game, _quantity);
+    _quantity = 0;
+    _inCartItems = _cart.getQuantity(game);
 
     // } else {
-      // Get.snackbar(
-      //   "Basket Items",
-      //   "Add at least one item to your basket...",
-      //   backgroundColor: AppColors.mainColor,
-      //   colorText: Colors.white,
-      // );
-    }
+    // Get.snackbar(
+    //   "Basket Items",
+    //   "Add at least one item to your basket...",
+    //   backgroundColor: AppColors.mainColor,
+    //   colorText: Colors.white,
+    // );
+  }
+
+  int get totalItems {
+    return _cart.totalItems;
   }
 }
