@@ -60,11 +60,26 @@ class PopularGameDetail extends StatelessWidget {
                       children: [
                         AppIcon(icon: Icons.shopping_basket_outlined),
                         Get.find<PopularGamesController>().totalItems >= 1
-                            ? AppIcon(
-                                icon: Icons.circle,
-                                size: 20,
-                                iconColor: Colors.transparent,
-                                backgroundColor: AppColors.mainColor,
+                            ? Positioned(
+                                right: 0,
+                                top: 0,
+                                child: AppIcon(
+                                  icon: Icons.circle,
+                                  size: 20,
+                                  iconColor: Colors.transparent,
+                                  backgroundColor: AppColors.mainColor,
+                                ),
+                              )
+                            : Container(),
+                        Get.find<PopularGamesController>().totalItems >= 1
+                            ? Positioned(
+                                right: 0,
+                                top: 0,
+                                child: SmallText(
+                                  text: Get.find<PopularGamesController>()
+                                      .totalItems
+                                      .toString(),
+                                ),
                               )
                             : Container()
                       ],

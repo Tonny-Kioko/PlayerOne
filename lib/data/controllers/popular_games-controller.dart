@@ -91,7 +91,10 @@ class PopularGamesController extends GetxController {
     _inCartItems = _cart.getQuantity(game);
 
     //Testing
-    print("The item ID is"+game.id.toString()+" Its price is "+game.price.toString());
+    print("The item ID is" +
+        game.id.toString() +
+        " Its price is " +
+        game.price.toString());
 
     // } else {
     // Get.snackbar(
