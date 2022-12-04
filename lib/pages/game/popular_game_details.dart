@@ -73,8 +73,8 @@ class PopularGameDetail extends StatelessWidget {
                             : Container(),
                         Get.find<PopularGamesController>().totalItems >= 1
                             ? Positioned(
-                                right: 0,
-                                top: 0,
+                                right: 3,
+                                top: 3,
                                 child: SmallText(
                                   text: Get.find<PopularGamesController>()
                                       .totalItems

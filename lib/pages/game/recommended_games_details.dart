@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playerone/colors.dart';
+import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/data/controllers/recommended_games_controller.dart';
 import 'package:playerone/utils/app_constants.dart';
 import 'package:playerone/utils/dimensions.dart';
@@ -79,80 +80,87 @@ class RecommendedGameDetails extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            padding: EdgeInsets.only(
-                left: Dimensions.sizeBoxWidth20 * 2,
-                right: Dimensions.sizeBoxWidth20 * 2,
-                top: Dimensions.sizeBoxHeight10,
-                bottom: Dimensions.sizeBoxHeight10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                AppIcon(
-                  backgroundColor: AppColors.mainColor,
-                  icon: Icons.remove,
-                  iconColor: Colors.white,
-                ),
-                
-                BigText(text: "\$${product.price!} * 0 "),
-                AppIcon(
-                  backgroundColor: AppColors.mainColor,
-                  icon: Icons.add,
-                  iconColor: Colors.white,
-                )
-              ],
-            ),
-          ),
-          Container(
-            height: Dimensions.bottomHeightBar,
-            padding: EdgeInsets.only(
-                top: Dimensions.sizeBoxHeight10,
-                bottom: Dimensions.sizeBoxHeight10,
-                right: Dimensions.sizeBoxWidth10),
-            decoration: BoxDecoration(
-                color: AppColors.buttonBackgroundColor,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(Dimensions.radius20 * 2),
-                    topRight: Radius.circular(Dimensions.radius20 * 2))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(
-                      top: Dimensions.sizeBoxHeight20,
-                      bottom: Dimensions.sizeBoxHeight20,
-                      left: Dimensions.sizeBoxWidth20,
-                      right: Dimensions.sizeBoxWidth20),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radius20),
-                      color: Colors.white),
-                  child: Icon(
-                    Icons.thumb_up,
-                    color: AppColors.mainColor,
+      bottomNavigationBar: GetBuilder<PopularGamesController>(builder: (controller){
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: EdgeInsets.only(
+                  left: Dimensions.sizeBoxWidth20 * 2,
+                  right: Dimensions.sizeBoxWidth20 * 2,
+                  top: Dimensions.sizeBoxHeight10,
+                  bottom: Dimensions.sizeBoxHeight10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AppIcon(
+                    backgroundColor: AppColors.mainColor,
+                    icon: Icons.remove,
+                    iconColor: Colors.white,
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(
-                      top: Dimensions.sizeBoxHeight20,
-                      bottom: Dimensions.sizeBoxHeight20,
-                      left: Dimensions.sizeBoxWidth20,
-                      right: Dimensions.sizeBoxWidth20),
-                  child: SmallText(
-                    text: "\$69.89 | Total",
-                    color: Colors.white,
-                  ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radius20),
-                      color: AppColors.mainColor),
-                )
-              ],
+
+                  BigText(text: "\$${product.price!} * 0 "),
+                  GestureDetector(
+                    onTap: (){
+                      controller.setQuantity(true);
+                    },
+                    child: AppIcon(
+                      backgroundColor: AppColors.mainColor,
+                      icon: Icons.add,
+                      iconColor: Colors.white,
+                    ),
+                  )
+                ],
+              ),
             ),
-          )
-        ],
-      ),
+            Container(
+              height: Dimensions.bottomHeightBar,
+              padding: EdgeInsets.only(
+                  top: Dimensions.sizeBoxHeight10,
+                  bottom: Dimensions.sizeBoxHeight10,
+                  right: Dimensions.sizeBoxWidth10),
+              decoration: BoxDecoration(
+                  color: AppColors.buttonBackgroundColor,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(Dimensions.radius20 * 2),
+                      topRight: Radius.circular(Dimensions.radius20 * 2))),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                        top: Dimensions.sizeBoxHeight20,
+                        bottom: Dimensions.sizeBoxHeight20,
+                        left: Dimensions.sizeBoxWidth20,
+                        right: Dimensions.sizeBoxWidth20),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(Dimensions.radius20),
+                        color: Colors.white),
+                    child: Icon(
+                      Icons.thumb_up,
+                      color: AppColors.mainColor,
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(
+                        top: Dimensions.sizeBoxHeight20,
+                        bottom: Dimensions.sizeBoxHeight20,
+                        left: Dimensions.sizeBoxWidth20,
+                        right: Dimensions.sizeBoxWidth20),
+                    child: SmallText(
+                      text: "\$69.89 | Total",
+                      color: Colors.white,
+                    ),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(Dimensions.radius20),
+                        color: AppColors.mainColor),
+                  )
+                ],
+              ),
+            )
+          ],
+        );
+      },),
     );
   }
 }
