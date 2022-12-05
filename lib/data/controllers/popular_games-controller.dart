@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/repository/popular_games_repository.dart';
 
+import '../../models/cart_model.dart';
 import '../../models/games_model.dart';
 import 'cart_controller.dart';
 
@@ -112,5 +113,8 @@ class PopularGamesController extends GetxController {
 
   int get totalItems {
     return _cart.totalItems;
+  }
+  List<CartModel> get getItems{
+    return _cart.getItems;
   }
 }

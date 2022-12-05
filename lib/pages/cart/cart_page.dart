@@ -12,7 +12,7 @@ class CartPage extends StatelessWidget {
       body: Stack(
         children: [
           Positioned(
-              left: Dimensions.sizeBoxWidth30,
+              left: Dimensions.sizeBoxWidth5*3,
               right: Dimensions.sizeBoxWidth20,
               top: Dimensions.sizeBoxHeight50,
               child: Row(
@@ -33,6 +33,46 @@ class CartPage extends StatelessWidget {
                       size: Dimensions.iconSize15*3)
                 ],
 
+          )),
+          Positioned(
+              top: Dimensions.sizeBoxHeight20*5,
+              left: Dimensions.sizeBoxWidth20,
+              right: Dimensions.sizeBoxWidth20,
+              bottom: 0,
+              child: Container(
+                margin: EdgeInsets.only(top: Dimensions.sizeBoxHeight10),
+                color: Colors.red,
+                child: MediaQuery.removePadding(
+                  context: context,
+                  removeTop: true,
+                  child: ListView.builder(
+                      itemCount: 15,
+                      itemBuilder: (_, index){
+                    return Container(
+                      height: 100,
+                      width: double.maxFinite,
+                      child: Row(
+                        children: [
+                          Container(
+                            width: Dimensions.sizeBoxHeight20*5,
+                            height: Dimensions.sizeBoxHeight20*5,
+                            margin: EdgeInsets.only(bottom: Dimensions.sizeBoxHeight10),
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                  "assets/image/forza5.jpg"
+                                )
+                              ),
+                              borderRadius: BorderRadius.circular(Dimensions.radius15),
+                              color: Colors.white,
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }),
+                ),
           ))
         ],
       ),
