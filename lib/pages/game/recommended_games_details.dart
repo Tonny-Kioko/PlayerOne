@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/data/controllers/recommended_games_controller.dart';
+import 'package:playerone/pages/cart/cart_page.dart';
 import 'package:playerone/utils/app_constants.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_icon.dart';
@@ -44,11 +45,16 @@ class RecommendedGameDetails extends StatelessWidget {
                           ? Positioned(
                               right: 0,
                               top: 0,
-                              child: AppIcon(
-                                icon: Icons.circle,
-                                size: 20,
-                                iconColor: Colors.transparent,
-                                backgroundColor: AppColors.mainColor,
+                              child: GestureDetector(
+                                onTap: (){
+                                  Get.to(() => CartPage());
+                                },
+                                child: AppIcon(
+                                  icon: Icons.circle,
+                                  size: 20,
+                                  iconColor: Colors.transparent,
+                                  backgroundColor: AppColors.mainColor,
+                                ),
                               ),
                             )
                           : Container(),

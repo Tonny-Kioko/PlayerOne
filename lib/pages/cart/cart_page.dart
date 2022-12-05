@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/cart_controller.dart';
+import 'package:playerone/pages/home/main_game_page.dart';
 import 'package:playerone/utils/app_constants.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_icon.dart';
@@ -28,10 +29,15 @@ class CartPage extends StatelessWidget {
                   backgroundColor: AppColors.mainColor,
                   size: Dimensions.iconSize15*3),
                   SizedBox(width: Dimensions.sizeBoxWidth20*5,),
-                  AppIcon(icon: Icons.home_outlined,
-                      iconColor: Colors.white,
-                      backgroundColor: AppColors.mainColor,
-                      size: Dimensions.iconSize15*3),
+                  GestureDetector(
+                    onTap: (){
+                      Get.to(() => MainGamePage());
+                    },
+                    child: AppIcon(icon: Icons.home_outlined,
+                        iconColor: Colors.white,
+                        backgroundColor: AppColors.mainColor,
+                        size: Dimensions.iconSize15*3),
+                  ),
                   AppIcon(icon: Icons.shopping_basket_outlined,
                       iconColor: Colors.white,
                       backgroundColor: AppColors.mainColor,
