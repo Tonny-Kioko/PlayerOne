@@ -6,8 +6,10 @@ class CartModel {
   bool? isExist;
   String? image;
   String? time;
+  String? genre;
 
   CartModel({
+    this.genre,
     this.quantity,
     this.isExist,
     this.time,
@@ -25,5 +27,6 @@ class CartModel {
     price = json['price'];
     isExist = json['isExist'];
     image = json['image'];
+    genre = json['genre'];
   }
 }
