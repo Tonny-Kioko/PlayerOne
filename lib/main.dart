@@ -3,6 +3,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/data/controllers/recommended_games_controller.dart';
+import 'package:playerone/pages/cart/cart_page.dart';
 import 'package:playerone/pages/game/popular_game_details.dart';
 import 'package:playerone/pages/game/recommended_games_details.dart';
 import 'package:playerone/pages/home/game_page_body.dart';
@@ -29,9 +30,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
 
-      home: MainGamePage(),
-      initialRoute: RouteHelper.initial,
-      getPages: RouteHelper.routes,
+      home: CartPage(),
+      //initialRoute: RouteHelper.initial,
+      //getPages: RouteHelper.routes,
 
     );
   }

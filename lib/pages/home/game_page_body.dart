@@ -30,7 +30,7 @@ class _GamePageBodyState extends State<GamePageBody> {
   double _scaleFactor = 0.8;
   double _height = Dimensions.pageViewContainer;
 
-  int get index => Get.find<PopularGamesController>().popularGamesList[pageId];
+    get index => Get.find<PopularGamesController>().popularGamesList[pageId];
 
   get pageId => null;
 
