@@ -12,6 +12,7 @@ import 'package:playerone/widgets/app_icon.dart';
 import 'package:playerone/widgets/expandable_text.dart';
 
 import '../../colors.dart';
+import '../../utils/app_constants.dart';
 import '../../widgets/app_column.dart';
 import '../../widgets/big_text.dart';
 import '../../widgets/icon_and_text.dart';
@@ -41,7 +42,8 @@ class PopularGameDetail extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("assets/image/farcry6.jpeg"))),
+                        image: NetworkImage(
+                            AppConstants.BASE_URL+AppConstants.UPLOAD_URL+game.image!))),
               )),
           //Icons
           Positioned(
