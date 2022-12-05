@@ -113,8 +113,8 @@ class PopularGameDetail extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AppColumn(
-                        text: "FARCRY 6",
-                        genre: 'Action, Adventure, First Person Shooter',
+                        text: game.name!,
+                        genre: game.genre!,
                       ),
                       SizedBox(
                         height: Dimensions.sizeBoxHeight20,
@@ -123,8 +123,7 @@ class PopularGameDetail extends StatelessWidget {
                       Expanded(
                         child: SingleChildScrollView(
                           child: ExpandableText(
-                            text:
-                                "Welcome to Yara, a tropical paradise frozen in time. As the dictator of Yara, Antón Castillo is intent on restoring his nation back to its former glory by any means, with his son, Diego, following in his bloody footsteps. Their ruthless oppression has ignited a revolution. The player-character, Dani Rojas is both fully voiced and has a fleshed-out personality unlike the Deputy or Captain, and is also unable to be customized like either of them save for the choice of their gender wherein their name remains the same. Weapons each have their own category and two sub-categories, Regular and Unique, the latter of which boast some increased stats compared to the regular variant, but cannot be customized unlike the regular variant, though unlocking them provides their unique appearance to use on the regular variant. Two new categories of weapons introduced in 6 are the Resolver Weapons, which each have a unique appearance and capability to suit a different style of guerilla warfare, and the Supremos, personnel-based war machines designed to cause mayhem in a wide area or boost their wearer in a unique way.In this installment of the franchise, the companion system from Far Cry 5 returns and is now called 'Amigos', but eschews the use of any human companions. Every Amigo is what was previously called a Fang for Hire, including but not limited to: Guapo, a Hawaiian-shirt-wearing crocodile that can bring himself back to life, Chorizo, a wheelchair-bound Dachshund that can distract enemies with sheer adorableness, Chicharrón, an ex-cockfighting rooster with a thirst for the blood of military soldiers, Boomer, a man's best friend from Hope County, Montana, K-9000, a robotic pitbull from an 80's Sci-Fi future, Champagne, a wealthy rich white cougar, and Oluso, a legendary jaguar blessed by Oluwas.In addition to the main quest to take down the standing dictatorial ruler of Yara, Antón Castillo, Dani will encounter numerous characters each with their own side quest to help them get back some semblance of normal living while screwing over the occupation as much as possible in side quests called Yaran Stories. There are also a multitude of Treasure Hunts, in similar style to the Prepper Stashes of 5, that provide Dani with resources in the fight against tyranny.",
+                            text: game.description!
                           ),
                         ),
                       )
