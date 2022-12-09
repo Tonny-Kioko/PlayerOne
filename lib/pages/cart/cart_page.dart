@@ -9,6 +9,8 @@ import 'package:playerone/widgets/app_icon.dart';
 import 'package:playerone/widgets/big_text.dart';
 import 'package:playerone/widgets/small_text.dart';
 
+import '../../routes/route_helper.dart';
+
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
 
@@ -31,7 +33,7 @@ class CartPage extends StatelessWidget {
                   SizedBox(width: Dimensions.sizeBoxWidth20*5,),
                   GestureDetector(
                     onTap: (){
-                      Get.to(() => MainGamePage());
+                      Get.toNamed(RouteHelper.getinitial());
                     },
                     child: AppIcon(icon: Icons.home_outlined,
                         iconColor: Colors.white,
