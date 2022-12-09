@@ -59,8 +59,9 @@ class CartPage extends StatelessWidget {
                   context: context,
                   removeTop: true,
                   child: GetBuilder<CartController>(builder: (cartController){
+                    var _cartList = cartController.getItems;
                     return ListView.builder(
-                        itemCount: cartController.getItems.length,
+                        itemCount: _cartList.length,
                         itemBuilder: (_, index){
                           return Container(
                             height: 100,
@@ -118,7 +119,7 @@ class CartPage extends StatelessWidget {
                                                 SizedBox(
                                                   width: Dimensions.sizeBoxHeight10 / 2,
                                                 ),
-                                                SmallText(text: " 0"),//popularGames.inCartItems.toString()),
+                                                SmallText(text: _cartList[index].quantity.toString()),//popularGames.inCartItems.toString()),
                                                 SizedBox(
                                                   width: Dimensions.sizeBoxHeight10 / 2,
                                                 ),
