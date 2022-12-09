@@ -61,38 +61,40 @@ class PopularGameDetail extends StatelessWidget {
                       },
                       child: AppIcon(icon: Icons.arrow_back_ios_new_outlined)),
                   GetBuilder<PopularGamesController>(builder: (controller) {
-                    return Stack(
-                      children: [
-                        AppIcon(icon: Icons.shopping_basket_outlined),
-                        Get.find<PopularGamesController>().totalItems >= 1
-                            ? Positioned(
-                                right: 0,
-                                top: 0,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Get.toNamed(RouteHelper.getCartPage());
-                                  },
-                                  child: AppIcon(
-                                    icon: Icons.circle,
-                                    size: 2,
-                                    iconColor: Colors.transparent,
-                                    backgroundColor: AppColors.mainColor,
+                    return GestureDetector(
+                      onTap: (){
+                        Get.toNamed(RouteHelper.getCartPage());
+                      },
+                      child: Stack(
+                        children: [
+                          AppIcon(icon: Icons.shopping_basket_outlined),
+                          Get.find<PopularGamesController>().totalItems >= 1
+                              ? Positioned(
+                                  right: 0,
+                                  top: 0,
+
+                                    child: AppIcon(
+                                      icon: Icons.circle,
+                                      size: 2,
+                                      iconColor: Colors.transparent,
+                                      backgroundColor: AppColors.mainColor,
+                                    ),
+                                  )
+
+                              : Container(),
+                          Get.find<PopularGamesController>().totalItems >= 1
+                              ? Positioned(
+                                  right: 3,
+                                  top: 3,
+                                  child: SmallText(
+                                    text: Get.find<PopularGamesController>()
+                                        .totalItems
+                                        .toString(),
                                   ),
-                                ),
-                              )
-                            : Container(),
-                        Get.find<PopularGamesController>().totalItems >= 1
-                            ? Positioned(
-                                right: 3,
-                                top: 3,
-                                child: SmallText(
-                                  text: Get.find<PopularGamesController>()
-                                      .totalItems
-                                      .toString(),
-                                ),
-                              )
-                            : Container()
-                      ],
+                                )
+                              : Container()
+                        ],
+                      ),
                     );
                   })
                 ],
