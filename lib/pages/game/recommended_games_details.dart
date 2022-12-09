@@ -47,7 +47,7 @@ class RecommendedGameDetails extends StatelessWidget {
                               top: 0,
                               child: GestureDetector(
                                 onTap: (){
-                                  Get.to(() => CartPage());
+                                  Get.toNamed(RouteHelper.getCartPage());
                                 },
                                 child: AppIcon(
                                   icon: Icons.circle,
