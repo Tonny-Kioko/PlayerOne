@@ -12,6 +12,7 @@ import 'package:playerone/widgets/app_icon.dart';
 import 'package:playerone/widgets/expandable_text.dart';
 
 import '../../colors.dart';
+import '../../routes/route_helper.dart';
 import '../../utils/app_constants.dart';
 import '../../widgets/app_column.dart';
 import '../../widgets/big_text.dart';
@@ -69,7 +70,7 @@ class PopularGameDetail extends StatelessWidget {
                                 top: 0,
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(() => CartPage());
+                                    Get.toNamed(RouteHelper.getCartPage());
                                   },
                                   child: AppIcon(
                                     icon: Icons.circle,
