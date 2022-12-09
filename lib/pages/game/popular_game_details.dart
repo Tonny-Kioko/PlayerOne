@@ -42,8 +42,9 @@ class PopularGameDetail extends StatelessWidget {
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: NetworkImage(
-                            AppConstants.BASE_URL+AppConstants.UPLOAD_URL+game.image!))),
+                        image: NetworkImage(AppConstants.BASE_URL +
+                            AppConstants.UPLOAD_URL +
+                            game.image!))),
               )),
           //Icons
           Positioned(
@@ -67,9 +68,9 @@ class PopularGameDetail extends StatelessWidget {
                                 right: 0,
                                 top: 0,
                                 child: GestureDetector(
-                                  onTap:(){
-                                  Get.to(() => CartPage());
-                                },
+                                  onTap: () {
+                                    Get.to(() => CartPage());
+                                  },
                                   child: AppIcon(
                                     icon: Icons.circle,
                                     size: 2,
@@ -124,9 +125,7 @@ class PopularGameDetail extends StatelessWidget {
                       BigText(text: "About"),
                       Expanded(
                         child: SingleChildScrollView(
-                          child: ExpandableText(
-                            text: game.description!
-                          ),
+                          child: ExpandableText(text: game.description!),
                         ),
                       )
                     ],
