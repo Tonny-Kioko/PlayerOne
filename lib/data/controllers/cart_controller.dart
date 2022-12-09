@@ -14,6 +14,7 @@ class CartController extends GetxController {
   Map<int, CartModel> _items = {};
 
   void addItem(GameModel game, int quantity) {
+    var totalQuantity = 0;
     if (_items.containsKey(game.id!)) {
       _items.update(game.id!, (value) {
         return CartModel(
@@ -23,6 +24,7 @@ class CartController extends GetxController {
           name: value.name,
           id: value.id,
           image: value.image,
+          game: game,
           price: value.price,
         );
       });
@@ -37,6 +39,7 @@ class CartController extends GetxController {
               name: game.name,
               id: game.id,
               image: game.image,
+              game: game,
               price: game.price,
             ));
       }else {

@@ -119,7 +119,7 @@ class CartPage extends StatelessWidget {
                                                 SizedBox(
                                                   width: Dimensions.sizeBoxHeight10 / 2,
                                                 ),
-                                                SmallText(text: _cartList[index].quantity.toString()),//popularGames.inCartItems.toString()),
+                                                SmallText(text: _cartList[index].quantity!.toString()),//popularGames.inCartItems.toString()),
                                                 SizedBox(
                                                   width: Dimensions.sizeBoxHeight10 / 2,
                                                 ),

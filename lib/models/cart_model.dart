@@ -1,3 +1,5 @@
+import 'package:playerone/models/games_model.dart';
+
 class CartModel {
   int? id;
   String? name;
@@ -7,6 +9,7 @@ class CartModel {
   String? image;
   String? time;
   String? genre;
+  GameModel? game;
 
   CartModel({
     this.genre,
@@ -17,6 +20,7 @@ class CartModel {
     this.id,
     this.image,
     this.price,
+    this.game
   });
 
   CartModel.fromJson(Map<String, dynamic> json) {
@@ -28,5 +32,6 @@ class CartModel {
     isExist = json['isExist'];
     image = json['image'];
     genre = json['genre'];
+    game = GameModel.fromJson(json['product']);
   }
 }
