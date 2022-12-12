@@ -51,6 +51,7 @@ class CartController extends GetxController {
         );
       }
     }
+    update();
   }
 
   bool existInCart(GameModel game) {
@@ -86,4 +87,6 @@ class CartController extends GetxController {
       return e.value;
     }).toList();
   }
+
+
 }
