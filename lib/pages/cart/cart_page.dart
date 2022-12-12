@@ -93,7 +93,7 @@ class CartPage extends StatelessWidget {
                                             .indexOf(_cartList[index].game!);
                                         Get.toNamed(
                                             RouteHelper.getrecommendedGame(
-                                                recommendedIndex));
+                                                recommendedIndex, "cartpage"));
                                       }
                                     },
                                     child: Container(

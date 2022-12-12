@@ -15,7 +15,8 @@ import '../../widgets/small_text.dart';
 
 class RecommendedGameDetails extends StatelessWidget {
   final int pageId;
-  RecommendedGameDetails({Key? key, required this.pageId}) : super(key: key);
+  final String page;
+  RecommendedGameDetails({Key? key, required this.pageId, required this.page}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,11 @@ class RecommendedGameDetails extends StatelessWidget {
               children: [
                 GestureDetector(
                     onTap: () {
-                      Get.toNamed(RouteHelper.getinitial());
+                      if(page =="cartpage"){
+                        Get.toNamed(RouteHelper.getCartPage());
+                      }else{
+                        Get.toNamed(RouteHelper.getinitial());
+                      }
                     },
                     child: AppIcon(icon: Icons.clear)),
                 //AppIcon(icon: Icons.shopping_basket)

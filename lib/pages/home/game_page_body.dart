@@ -60,7 +60,7 @@ class _GamePageBodyState extends State<GamePageBody> {
                   height: Dimensions.pageView,
                   child: GestureDetector(
                     onTap: () {
-                      Get.toNamed(RouteHelper.getPopularGame(index));
+                      Get.toNamed(RouteHelper.getPopularGame(index, "home"));
                     },
                     child: PageView.builder(
                         controller: pageController,
@@ -157,7 +157,7 @@ class _GamePageBodyState extends State<GamePageBody> {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                Get.toNamed(RouteHelper.getrecommendedGame(index));
+                                Get.toNamed(RouteHelper.getrecommendedGame(index, "home"));
                               },
                               child: Container(
                                 height: Dimensions.listViewText,
