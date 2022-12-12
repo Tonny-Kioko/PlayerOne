@@ -110,6 +110,7 @@ class CartPage extends StatelessWidget {
                                                 GestureDetector(
                                                   onTap: () {
                                                     //popularGames.setQuantity(false);
+                                                    cartController.addItem(_cartList[index].game!, -1);
                                                   },
                                                   child: Icon(
                                                     Icons.remove,
@@ -126,6 +127,8 @@ class CartPage extends StatelessWidget {
                                                 GestureDetector(
                                                   onTap: () {
                                                     //popularGames.setQuantity(true);
+                                                    cartController.addItem(_cartList[index].game!, 1);
+
                                                   },
                                                   child: Icon(
                                                     Icons.add,
