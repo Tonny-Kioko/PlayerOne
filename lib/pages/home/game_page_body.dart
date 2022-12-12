@@ -47,6 +47,7 @@ class _GamePageBodyState extends State<GamePageBody> {
   @override
   void dispose() {
     pageController.dispose();
+    super.dispose();
   }
 
   @override

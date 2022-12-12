@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
         selectedItemColor : Colors.deepPurpleAccent,
         unselectedItemColor: Colors.grey,
         showSelectedLabels: false,
+        currentIndex: _selectedIndex,
         onTap: onTapNavigation,
         // backgroundColor : Colors.red,
         items: const [
