@@ -18,32 +18,40 @@ class _HomePageState extends State<HomePage> {
     Container(child: Center(child: Text("Next page3"),),),
     Container(child: Center(child: Text("Next page4"),),),
   ];
+  void onTapNavigation(int index){
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AppColors.mainColor,
-        unselectedIconTheme: ,
-        items: [
+        selectedItemColor : Colors.deepPurpleAccent,
+        unselectedItemColor: Colors.grey,
+        showSelectedLabels: false,
+        onTap: onTapNavigation,
+        // backgroundColor : Colors.red,
+        items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined,),
+            icon: Icon(Icons.home,),
             label: "Home",
 
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined,),
-              label: "Home"
+              icon: Icon(Icons.favorite,),
+              label: "Favorite"
 
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined,),
-              label: "Home"
+              icon: Icon(Icons.shopping_basket_outlined,),
+              label: "Basket"
 
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined,),
-              label: "Home"
+              icon: Icon(Icons.account_circle_sharp,),
+              label: "User"
 
           ),
         ],
