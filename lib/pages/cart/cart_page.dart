@@ -229,6 +229,69 @@ class CartPage extends StatelessWidget {
               ))
         ],
       ),
+      bottomNavigationBar: GetBuilder<PopularGamesController>(
+        builder: (popularGames) {
+          return Container(
+            height: Dimensions.bottomHeightBar,
+            padding: EdgeInsets.only(
+                top: Dimensions.sizeBoxHeight20,
+                bottom: Dimensions.sizeBoxHeight20,
+                right: Dimensions.sizeBoxWidth10),
+            decoration: BoxDecoration(
+                color: AppColors.buttonBackgroundColor,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Dimensions.radius20 * 2),
+                    topRight: Radius.circular(Dimensions.radius20 * 2))),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(
+                      top: Dimensions.sizeBoxHeight20,
+                      bottom: Dimensions.sizeBoxHeight20,
+                      left: Dimensions.sizeBoxWidth20,
+                      right: Dimensions.sizeBoxWidth20),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.radius20),
+                      color: Colors.white),
+                  child: Row(
+                    children: [
+
+                      SizedBox(
+                        width: Dimensions.sizeBoxHeight10 / 2,
+                      ),
+                      SmallText(text: popularGames.inCartItems.toString()),
+                      SizedBox(
+                        width: Dimensions.sizeBoxHeight10 / 2,
+                      ),
+
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(
+                      top: Dimensions.sizeBoxHeight20,
+                      bottom: Dimensions.sizeBoxHeight20,
+                      left: Dimensions.sizeBoxWidth20,
+                      right: Dimensions.sizeBoxWidth20),
+                  child: GestureDetector(
+                    onTap: () {
+                      //popularGames.addItem(game);
+                    },
+                    child: SmallText(
+                      text: " | Add to Basket}",
+                      color: Colors.white,
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(Dimensions.radius20),
+                      color: AppColors.mainColor),
+                )
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

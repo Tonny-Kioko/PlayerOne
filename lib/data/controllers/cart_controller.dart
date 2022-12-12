@@ -88,5 +88,10 @@ class CartController extends GetxController {
     }).toList();
   }
 
+  int get totalAmount{
+    var total = 0;
+    return 0;
+  }
+
 
 }
