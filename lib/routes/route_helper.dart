@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:playerone/pages/game/popular_game_details.dart';
+import 'package:playerone/pages/home/homepage.dart';
 import 'package:playerone/pages/home/main_game_page.dart';
 
 import '../pages/cart/cart_page.dart';
@@ -21,7 +22,7 @@ static String getCartPage() => '$cartPage';
 
 
 static List<GetPage> routes = [
-  GetPage(name: initial, page: () => MainGamePage()),
+  GetPage(name: initial, page: () => HomePage()),
 
   GetPage(name: popularGame, page:() {
     var pageId = Get.parameters['pageId'];
