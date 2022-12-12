@@ -229,8 +229,8 @@ class CartPage extends StatelessWidget {
               ))
         ],
       ),
-      bottomNavigationBar: GetBuilder<PopularGamesController>(
-        builder: (popularGames) {
+      bottomNavigationBar: GetBuilder<CartController>(
+        builder: (cartController) {
           return Container(
             height: Dimensions.bottomHeightBar,
             padding: EdgeInsets.only(
@@ -260,7 +260,7 @@ class CartPage extends StatelessWidget {
                       SizedBox(
                         width: Dimensions.sizeBoxHeight10 / 2,
                       ),
-                      SmallText(text: popularGames.inCartItems.toString()),
+                      SmallText(text: "\$ "+cartController.totalAmount.toString()),
                       SizedBox(
                         width: Dimensions.sizeBoxHeight10 / 2,
                       ),
@@ -279,7 +279,7 @@ class CartPage extends StatelessWidget {
                       //popularGames.addItem(game);
                     },
                     child: SmallText(
-                      text: " | Add to Basket}",
+                      text: "Checkout",
                       color: Colors.white,
                     ),
                   ),
