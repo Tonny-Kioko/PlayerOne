@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/pages/home/main_game_page.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:playerone/utils/dimensions.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,7 +14,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  List pages = [
+  late PersistentTabController _controller;
+
+    List pages = [
     MainGamePage(),
     Container(child: Center(child: Text("Next page"),),),
     Container(child: Center(child: Text("Next page2"),),),
@@ -24,13 +29,55 @@ class _HomePageState extends State<HomePage> {
     });
   }
   @override
+  void initState(){
+    super.initState();
+    _controller = PersistentTabController(initialIndex: 0);
+  }
+  List<Widget> _buildScreens() {
+    return [
+      MainGamePage(),
+      Container(child: Center(child: Text("Next page"),),),
+      Container(child: Center(child: Text("Next page2"),),),
+      Container(child: Center(child: Text("Next page3"),),),
+
+    ];
+  }
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: Icon(CupertinoIcons.home),
+        title: ("Home"),
+        activeColorPrimary: Colors.deepPurpleAccent,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.favorite),
+        title: ("Favorites"),
+        activeColorPrimary: Colors.deepPurpleAccent,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.shopping_basket),
+        title: ("Basket"),
+        activeColorPrimary: Colors.deepPurpleAccent,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.account_circle_sharp),
+        title: ("Gamer"),
+        activeColorPrimary: Colors.deepPurpleAccent,
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+    ];
+  }
+/*  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor : Colors.deepPurpleAccent,
         unselectedItemColor: Colors.grey,
-        showSelectedLabels: false,
+        // showSelectedLabels: false,
         currentIndex: _selectedIndex,
         onTap: onTapNavigation,
         // backgroundColor : Colors.red,
@@ -42,7 +89,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite,),
-              label: "Favorite"
+              label: "Favorites"
 
           ),
           BottomNavigationBarItem(
@@ -57,6 +104,38 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+    );
+  }*/
+
+  @override
+  Widget build(BuildContext context) {
+    return PersistentTabView(
+      context,
+      controller: _controller,
+      screens: _buildScreens(),
+      items: _navBarsItems(),
+      confineInSafeArea: true,
+      backgroundColor: Colors.white12, // Default is Colors.white.
+      handleAndroidBackButtonPress: true, // Default is true.
+      resizeToAvoidBottomInset: true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+      stateManagement: true, // Default is true.
+      hideNavigationBarWhenKeyboardShows: true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+      decoration: NavBarDecoration(
+        borderRadius: BorderRadius.circular(Dimensions.radius20),
+        colorBehindNavBar: Colors.white,
+      ),
+      popAllScreensOnTapOfSelectedTab: true,
+      popActionScreens: PopActionScreensType.all,
+      itemAnimationProperties: ItemAnimationProperties( // Navigation Bar's items animation properties.
+        duration: Duration(milliseconds: 200),
+        curve: Curves.ease,
+      ),
+      screenTransitionAnimation: ScreenTransitionAnimation( // Screen transition animation on change of selected tab.
+        animateTabTransition: true,
+        curve: Curves.ease,
+        duration: Duration(milliseconds: 200),
+      ),
+      navBarStyle: NavBarStyle.neumorphic, // *style12 or 13 for consideration* Choose the nav bar style with this property.
     );
   }
 }
