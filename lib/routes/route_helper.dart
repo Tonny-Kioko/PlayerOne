@@ -15,7 +15,7 @@ static const String cartPage = "/cart-page";
 
 
 static String getinitial() => '$initial';
-static String getPopularGame(int pageId) => '$popularGame? pageId = $pageId';
+static String getPopularGame(int pageId, String page) => '$popularGame? pageId = $pageId &page = $page';
 static String getrecommendedGame(int pageId) => '$recommendedGame? pageId = $pageId';
 static String getCartPage() => '$cartPage';
 
@@ -25,7 +25,8 @@ static List<GetPage> routes = [
 
   GetPage(name: popularGame, page:() {
     var pageId = Get.parameters['pageId'];
-  return PopularGameDetail(pageId: int.parse(pageId!));
+    var page = Get.parameters['page'];
+  return PopularGameDetail(pageId: int.parse(pageId!),page: page!);
 },
 transition: Transition.fadeIn
 ),

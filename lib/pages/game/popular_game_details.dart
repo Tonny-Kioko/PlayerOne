@@ -22,7 +22,8 @@ import '../cart/cart_page.dart';
 
 class PopularGameDetail extends StatelessWidget {
   final int pageId;
-  const PopularGameDetail({Key? key, required this.pageId}) : super(key: key);
+  final String page;
+  const PopularGameDetail({Key? key, required this.pageId, required this.page}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,11 @@ class PopularGameDetail extends StatelessWidget {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        Get.to(() => MainGamePage());
+                        if(page =="cartpage"){
+                          Get.toNamed(RouteHelper.getCartPage());
+                        }else{
+                          Get.toNamed(RouteHelper.getinitial());
+                        }
                       },
                       child: AppIcon(icon: Icons.arrow_back_ios_new_outlined)),
                   GetBuilder<PopularGamesController>(builder: (controller) {
