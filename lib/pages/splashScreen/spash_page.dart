@@ -7,19 +7,36 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
-
+class _SplashScreenState extends State<SplashScreen>
+    with TickerProviderStateMixin {
   late Animation<double> animation;
   late AnimationController controller;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    controller = new AnimationController(vsync: this, duration: Duration(seconds: 2));
+    controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Stack(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/image/splashscreen.jpg"),
+                fit: BoxFit.cover,
+              )
+            ),
+          ),
+
+        ],
+      ),
+    );
   }
 }

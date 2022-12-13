@@ -9,6 +9,7 @@ import 'package:playerone/pages/game/recommended_games_details.dart';
 import 'package:playerone/pages/home/game_page_body.dart';
 import 'package:playerone/pages/home/main_game_page.dart';
 import 'package:playerone/helper/dependencies.dart' as dep;
+import 'package:playerone/pages/splashScreen/spash_page.dart';
 import 'package:playerone/routes/route_helper.dart';
 
 Future<void> main() async {
@@ -31,9 +32,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
 
 
-      initialRoute: RouteHelper.getinitial(),
+      // initialRoute: RouteHelper.getinitial(),
       getPages: RouteHelper.routes,
-
+      home: SplashScreen(),
     );
   }
 }
