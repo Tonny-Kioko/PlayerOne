@@ -39,7 +39,7 @@ class _MainGamePage extends State<MainGamePage> {
                             text: "Featured Games",
                             color: Colors.black54,
                           ),
-                          Icon(Icons.games),
+                          Icon(Icons.gamepad_outlined),
 
                         ],
                       )

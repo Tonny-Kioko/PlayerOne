@@ -104,21 +104,21 @@ class _GamePageBodyState extends State<GamePageBody> {
               SizedBox(
                 width: Dimensions.sizeBoxWidth5,
               ),
-              Container(
-                margin: const EdgeInsets.only(bottom: 5),
-                child: BigText(
-                  text: " . * . ",
-                  color: Colors.black,
-                ),
-              ),
+              // Container(
+              //   margin: const EdgeInsets.only(bottom: 5),
+              //   child: BigText(
+              //     text: " . * . ",
+              //     color: Colors.black,
+              //   ),
+              // ),
               SizedBox(
                 width: Dimensions.sizeBoxWidth5,
               ),
-              Container(
-                child: SmallText(
-                  text: "Across All Genres",
-                ),
-              )
+              // Container(
+              //   child: SmallText(
+              //     text: "Across All Genres",
+              //   ),
+              // )
             ],
           ),
         ),

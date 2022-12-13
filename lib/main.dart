@@ -26,15 +26,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+    return GetBuilder<PopularGamesController>(builder: (_){
+      return GetBuilder<RecommendedGamesController>(builder: (_){
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
 
 
-      initialRoute: RouteHelper.getSplashPage(),
-      getPages: RouteHelper.routes,
-      // home: SplashScreen(),
-    );
+          initialRoute: RouteHelper.getSplashPage(),
+          getPages: RouteHelper.routes,
+          // home: SplashScreen(),
+        );
+      });
+    },);
   }
 }
 

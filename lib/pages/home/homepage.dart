@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle: NavBarStyle
-          .neumorphic, // *style12 or 13 for consideration* Choose the nav bar style with this property.
+          .style1, // *neumorphic or style12 or 13 for consideration* Choose the nav bar style with this property.
     );
   }
 }
