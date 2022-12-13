@@ -25,16 +25,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.find<PopularGamesController>().getPopularGamesList();
-    Get.find<RecommendedGamesController>().getRecommendedGamesList();
+
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
 
 
-      // initialRoute: RouteHelper.getinitial(),
+      initialRoute: RouteHelper.getSplashPage(),
       getPages: RouteHelper.routes,
-      home: SplashScreen(),
+      // home: SplashScreen(),
     );
   }
 }
