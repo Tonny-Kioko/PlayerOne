@@ -8,15 +8,22 @@ import 'package:playerone/data/repository/cart_controller.dart';
 import 'package:playerone/data/repository/popular_games_repository.dart';
 import 'package:playerone/data/repository/recommended_games_repository.dart';
 import 'package:playerone/utils/app_constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 //Dependencies for the API clients
 Future<void> init() async {
+  //For storing and retrieving data locally
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  Get.lazyPut(() => SharedPreferences);
+
+  //API Client
   Get.lazyPut(() => ApiClient(appBaseUrl: AppConstants.BASE_URL));
 
 //Dependency for the repositories
   Get.lazyPut(() => PopularGamesRepo(apiClient: Get.find()));
   Get.lazyPut(() => RecommendedGamesRepo(apiClient: Get.find()));
-  Get.lazyPut(() => CartRepo());
+  Get.lazyPut(() => CartRepo(sharedPreferences:Get.find()));
 
 //Dependencies for controllers
   Get.lazyPut(() =>
