@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
 
 
-          initialRoute: RouteHelper.getSplashPage(),
+          initialRoute: RouteHelper.getCartPage(),
           getPages: RouteHelper.routes,
           // home: SplashScreen(),
         );

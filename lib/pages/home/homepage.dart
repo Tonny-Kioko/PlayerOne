@@ -140,12 +140,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
+      // backgroundColor: Color(0xff3f4156),
       context,
       controller: _controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: Colors.white12, // Default is Colors.white.
+      backgroundColor: Colors.grey, // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset:
           true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
@@ -153,7 +154,7 @@ class _HomePageState extends State<HomePage> {
       hideNavigationBarWhenKeyboardShows:
           true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(Dimensions.radius20),
+        borderRadius: BorderRadius.circular(Dimensions.radius30),
         colorBehindNavBar: Colors.white,
       ),
       popAllScreensOnTapOfSelectedTab: true,

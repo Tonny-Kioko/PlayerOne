@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playerone/colors.dart';
@@ -30,10 +31,10 @@ class CartPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   AppIcon(
-                      icon: Icons.arrow_back_ios_new_outlined,
+                      icon: CupertinoIcons.back,
                       iconColor: Colors.white,
                       backgroundColor: AppColors.mainColor,
-                      size: Dimensions.iconSize15 * 3),
+                      size: Dimensions.iconSize24*2),
                   SizedBox(
                     width: Dimensions.sizeBoxWidth20 * 5,
                   ),
@@ -42,16 +43,16 @@ class CartPage extends StatelessWidget {
                       Get.toNamed(RouteHelper.getinitial());
                     },
                     child: AppIcon(
-                        icon: Icons.home_outlined,
+                        icon: CupertinoIcons.home,
                         iconColor: Colors.white,
                         backgroundColor: AppColors.mainColor,
-                        size: Dimensions.iconSize15 * 3),
+                        size: Dimensions.iconSize24*2),
                   ),
                   AppIcon(
-                      icon: Icons.shopping_basket_outlined,
+                      icon: Icons.shopping_basket,
                       iconColor: Colors.white,
                       backgroundColor: AppColors.mainColor,
-                      size: Dimensions.iconSize15 * 3)
+                      size: Dimensions.iconSize24*2)
                 ],
               )),
           Positioned(
@@ -278,8 +279,8 @@ class CartPage extends StatelessWidget {
                     onTap: () {
                       //popularGames.addItem(game);
                     },
-                    child: SmallText(
-                      text: "Checkout",
+                    child: BigText(
+                      text: "Proceed to Checkout",
                       color: Colors.white,
                     ),
                   ),
