@@ -17,6 +17,7 @@ static const String cartPage = "/cart-page";
 static const String splashPage = "/splash-page";
 
 
+
 static String getinitial() => '$initial';
 static String getPopularGame(int pageId, String page) => '$popularGame? pageId = $pageId &page = $page';
 static String getrecommendedGame(int pageId, String page) => '$recommendedGame? pageId = $pageId &page = $page';
