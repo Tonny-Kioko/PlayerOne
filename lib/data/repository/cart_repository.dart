@@ -13,11 +13,11 @@ class CartRepo{
     cart = [];
 
     //Converting the items in the object to string for shared preference.
-    cartList.forEach((element) {
+    cartList.forEach((element){
       return cart.add(jsonEncode(element));
     });
 
-    sharedPreferences.setStringList("Cart_list", cart);
+    sharedPreferences.setStringList("Cart-list", cart);
 
   }
 }

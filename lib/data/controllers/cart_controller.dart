@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:playerone/data/repository/cart_controller.dart';
+
 
 import '../../colors.dart';
 import '../../models/cart_model.dart';
 import '../../models/games_model.dart';
+import '../repository/cart_repository.dart';
 
 class CartController extends GetxController {
   final CartRepo cartRepo;
