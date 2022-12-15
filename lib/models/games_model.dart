@@ -1,3 +1,5 @@
+import 'dart:html';
+
 class Game {
   int? _totalSize;
   int? _typeID;
@@ -5,7 +7,7 @@ class Game {
   late List<GameModel> _games;
   List<GameModel> get games => _games;
 
-  Game({required offset, required totalSize, required typeID, required games}){
+  Game({required offset, required totalSize, required typeID, required games}) {
     this._totalSize = totalSize;
     this._typeID = typeID;
     this._offset = offset;
@@ -48,7 +50,7 @@ class GameModel {
       this.id,
       this.image,
       this.price,
-        this.genre,
+      this.genre,
       this.stars,
       this.updated});
 
@@ -64,5 +66,21 @@ class GameModel {
     created = json['created'];
     updated = json['updated'];
     typeID = json['type_id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": this.id,
+      "name": this.name,
+      "genre": this.genre,
+      "description": this.description,
+      "price": this.price,
+      "stars": this.stars,
+      "image": this.image,
+      "location": this.location,
+      "created": this.created,
+      "updated": this.updated,
+      "typeID": this.typeID,
+    };
   }
 }

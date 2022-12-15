@@ -32,7 +32,7 @@ class CartModel {
     isExist = json['isExist'];
     image = json['image'];
     genre = json['genre'];
-    game = GameModel.fromJson(json['product']);
+    game = GameModel.fromJson(json['game']);
   }
 
   Map<String, dynamic> toJson() {
@@ -44,6 +44,7 @@ class CartModel {
       "quantity": this.quantity,
       "isExist": this.isExist,
       "time": this.time,
+      "game": this.game!.toJson()
     };
   }
 }
