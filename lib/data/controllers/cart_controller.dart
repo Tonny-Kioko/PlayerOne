@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 import '../../colors.dart';
 import '../../models/cart_model.dart';
 import '../../models/games_model.dart';
@@ -13,6 +12,7 @@ class CartController extends GetxController {
   CartController({required this.cartRepo});
 
   Map<int, CartModel> _items = {};
+  List<CartModel> storageItems = [];
 
   void addItem(GameModel game, int quantity) {
     var totalQuantity = 0;
@@ -30,20 +30,20 @@ class CartController extends GetxController {
         );
       });
     } else {
-      if(quantity > 0){
+      if (quantity > 0) {
         _items.putIfAbsent(
             game.id!,
-                () => CartModel(
-              quantity: quantity,
-              isExist: true,
-              time: DateTime.now().toString(),
-              name: game.name,
-              id: game.id,
-              image: game.image,
-              game: game,
-              price: game.price,
-            ));
-      }else {
+            () => CartModel(
+                  quantity: quantity,
+                  isExist: true,
+                  time: DateTime.now().toString(),
+                  name: game.name,
+                  id: game.id,
+                  image: game.image,
+                  game: game,
+                  price: game.price,
+                ));
+      } else {
         Get.snackbar(
           "Basket Items",
           "Add at least one item to your basket...",
@@ -75,7 +75,8 @@ class CartController extends GetxController {
     return quantity;
   }
 
-  int get totalItems{
+  //Functions
+  int get totalItems {
     var totalQuantity = 0;
 
     _items.forEach((key, value) {
@@ -84,13 +85,13 @@ class CartController extends GetxController {
     return totalQuantity;
   }
 
-  List<CartModel> get getItems{
+  List<CartModel> get getItems {
     return _items.entries.map((e) {
       return e.value;
     }).toList();
   }
 
-  int get totalAmount{
+  int get totalAmount {
     var total = 0;
 
     _items.forEach((key, value) {
@@ -99,5 +100,15 @@ class CartController extends GetxController {
     return total;
   }
 
+  List<CartModel> getCartData() {
+    setCart = cartRepo.getCartList();
+    return storageItems;
+  }
 
+  set setCart(List<CartModel> items) {
+    storageItems = items;
+    for (int i = 0; i < storageItems.length; i++) {
+      _items.putIfAbsent(storageItems[i].game!.id!, () => storageItems[i]);
+    }
+  }
 }
