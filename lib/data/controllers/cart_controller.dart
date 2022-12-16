@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../colors.dart';
 import '../../models/cart_model.dart';
 import '../../models/games_model.dart';
+import '../../utils/app_constants.dart';
 import '../repository/cart_repository.dart';
 
 class CartController extends GetxController {
@@ -110,5 +111,14 @@ class CartController extends GetxController {
     for (int i = 0; i < storageItems.length; i++) {
       _items.putIfAbsent(storageItems[i].game!.id!, () => storageItems[i]);
     }
+  }
+
+  void addToHistory(){
+    cartRepo.addToCartHistoryList();
+    clear();
+  }
+  void clear(){
+    _items={};
+    update();
   }
 }
