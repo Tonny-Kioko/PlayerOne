@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get.dart';
+import 'package:playerone/data/controllers/cart_controller.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/data/controllers/recommended_games_controller.dart';
 import 'package:playerone/pages/cart/cart_page.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
+  Get.find<CartController>().getCartData();
     return GetBuilder<PopularGamesController>(builder: (_){
       return GetBuilder<RecommendedGamesController>(builder: (_){
         return GetMaterialApp(
