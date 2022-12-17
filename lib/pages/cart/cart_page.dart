@@ -197,6 +197,7 @@ class CartPage extends StatelessWidget {
                                                         2,
                                                   ),
                                                   GestureDetector(
+
                                                     onTap: () {
                                                       //popularGames.setQuantity(true);
                                                       cartController.addItem(
