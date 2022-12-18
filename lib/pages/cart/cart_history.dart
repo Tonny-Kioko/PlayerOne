@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:playerone/colors.dart';
+import 'package:playerone/data/controllers/cart_controller.dart';
 import 'package:playerone/widgets/big_text.dart';
 
 import '../../utils/dimensions.dart';
@@ -9,6 +12,25 @@ class CartHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    var getCartHistoryList = Get.find<CartController>().getCartHistoryList();
+
+    Map<String, int> cartItemsPerOrder = Map();
+    for (int i = 0; i < getCartHistoryList.length; i++){
+      if(cartItemsPerOrder.containsKey(getCartHistoryList[i].time)){
+        cartItemsPerOrder.update(getCartHistoryList[i].time!, (value)=>++value);
+      }else{
+        cartItemsPerOrder.putIfAbsent(getCartHistoryList[i].time!, ()=>1);
+      }
+    }
+
+    List<int> cartOrderTimeToList(){
+      return cartItemsPerOrder.entries.map((e)=> e.value).toList();
+    }
+
+    List<int> orderTimes = cartOrderTimeToList();
+    var saveCounter = 0;
+
     return Scaffold(
       body: Column(
         children: [
