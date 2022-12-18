@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/cart_controller.dart';
+import 'package:playerone/utils/app_constants.dart';
 import 'package:playerone/widgets/big_text.dart';
 
 import '../../utils/dimensions.dart';
@@ -60,7 +61,7 @@ class CartHistory extends StatelessWidget {
             ),
             child: ListView(
               children: [
-                for(int i = 0; i <itemsPerOrder.length; i++)
+                for (int i = 0; i < itemsPerOrder.length; i++)
                   Container(
                     margin: EdgeInsets.only(bottom: Dimensions.sizeBoxHeight20),
                     child: Column(
@@ -71,7 +72,23 @@ class CartHistory extends StatelessWidget {
                           children: [
                             Wrap(
                               direction: Axis.horizontal,
-                              children: List.generate(itemsPerOrder[i], (index) => null),
+                              children:
+                              List.generate(itemsPerOrder[i], (index) {
+                                if(listCounter < getCartHistoryList.length){
+                                  listCounter++;
+                                }
+                                return Container(
+                                  height: 100,
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(AppConstants
+                                                  .BASE_URL +
+                                              AppConstants.UPLOAD_URL +
+                                              getCartHistoryList[listCounter-1]
+                                                  .image!))),
+                                );
+                              }),
                             )
                           ],
                         )
