@@ -5,6 +5,8 @@ import 'package:playerone/pages/home/main_game_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:playerone/utils/dimensions.dart';
 
+import '../cart/cart_history.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -59,11 +61,7 @@ class _HomePageState extends State<HomePage> {
           child: Text("Next page"),
         ),
       ),
-      Container(
-        child: Center(
-          child: Text("Next page2"),
-        ),
-      ),
+      CartHistory(),
       Container(
         child: Center(
           child: Text("Next page3"),
