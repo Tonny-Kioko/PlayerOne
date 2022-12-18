@@ -12,24 +12,24 @@ class CartHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     var getCartHistoryList = Get.find<CartController>().getCartHistoryList();
 
     Map<String, int> cartItemsPerOrder = Map();
-    for (int i = 0; i < getCartHistoryList.length; i++){
-      if(cartItemsPerOrder.containsKey(getCartHistoryList[i].time)){
-        cartItemsPerOrder.update(getCartHistoryList[i].time!, (value)=>++value);
-      }else{
-        cartItemsPerOrder.putIfAbsent(getCartHistoryList[i].time!, ()=>1);
+    for (int i = 0; i < getCartHistoryList.length; i++) {
+      if (cartItemsPerOrder.containsKey(getCartHistoryList[i].time)) {
+        cartItemsPerOrder.update(
+            getCartHistoryList[i].time!, (value) => ++value);
+      } else {
+        cartItemsPerOrder.putIfAbsent(getCartHistoryList[i].time!, () => 1);
       }
     }
 
-    List<int> cartOrderTimeToList(){
-      return cartItemsPerOrder.entries.map((e)=> e.value).toList();
+    List<int> cartOrderTimeToList() {
+      return cartItemsPerOrder.entries.map((e) => e.value).toList();
     }
 
-    List<int> orderTimes = cartOrderTimeToList();
-    var saveCounter = 0;
+    List<int> itemsPerOrder = cartOrderTimeToList();
+    var listCounter = 0;
 
     return Scaffold(
       body: Column(
@@ -50,7 +50,37 @@ class CartHistory extends StatelessWidget {
                     size: Dimensions.iconSize24 * 2, color: Colors.white)
               ],
             ),
-          )
+          ),
+          Expanded(
+              child: Container(
+            margin: EdgeInsets.only(
+              top: Dimensions.sizeBoxHeight20,
+              left: Dimensions.sizeBoxWidth20,
+              right: Dimensions.sizeBoxWidth20,
+            ),
+            child: ListView(
+              children: [
+                for(int i = 0; i <itemsPerOrder.length; i++)
+                  Container(
+                    margin: EdgeInsets.only(bottom: Dimensions.sizeBoxHeight20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BigText(text: ""),
+                        Row(
+                          children: [
+                            Wrap(
+                              direction: Axis.horizontal,
+                              children: List.generate(itemsPerOrder[i], (index) => null),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+              ],
+            ),
+          ))
         ],
       ),
     );
