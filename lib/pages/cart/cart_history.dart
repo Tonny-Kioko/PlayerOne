@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -54,50 +56,66 @@ class CartHistory extends StatelessWidget {
           ),
           Expanded(
               child: Container(
-            margin: EdgeInsets.only(
-              top: Dimensions.sizeBoxHeight20,
-              left: Dimensions.sizeBoxWidth20,
-              right: Dimensions.sizeBoxWidth20,
-            ),
-            child: ListView(
-              children: [
-                for (int i = 0; i < itemsPerOrder.length; i++)
-                  Container(
-                    margin: EdgeInsets.only(bottom: Dimensions.sizeBoxHeight20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  margin: EdgeInsets.only(
+                    top: Dimensions.sizeBoxHeight20,
+                    left: Dimensions.sizeBoxWidth20,
+                    right: Dimensions.sizeBoxWidth20,
+                  ),
+                  child: MediaQuery.removePadding(
+                    removeTop: true,
+                    context: context,
+                    child: ListView(
                       children: [
-                        BigText(text: ""),
-                        Row(
-                          children: [
-                            Wrap(
-                              direction: Axis.horizontal,
-                              children:
-                              List.generate(itemsPerOrder[i], (index) {
-                                if(listCounter < getCartHistoryList.length){
-                                  listCounter++;
-                                }
-                                return Container(
-                                  height: 100,
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: NetworkImage(AppConstants
-                                                  .BASE_URL +
-                                              AppConstants.UPLOAD_URL +
-                                              getCartHistoryList[listCounter-1]
-                                                  .image!))),
-                                );
-                              }),
-                            )
-                          ],
-                        )
+                        for (int i = 0; i < itemsPerOrder.length; i++)
+                          Container(
+                            margin: EdgeInsets.only(
+                                bottom: Dimensions.sizeBoxHeight20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                BigText(text: ""),
+                                SizedBox(
+                                  height: Dimensions.sizeBoxHeight10,
+                                ),
+                                Row(
+                                  children: [
+                                    Wrap(
+                                      direction: Axis.horizontal,
+                                      children: List.generate(itemsPerOrder[i],
+                                          (index) {
+                                        if (listCounter <
+                                            getCartHistoryList.length) {
+                                          listCounter++;
+                                        }
+                                        return Container(
+                                          height: 100,
+                                          width: 100,
+                                          margin: EdgeInsets.only(right: Dimensions.sizeBoxWidth5),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      Dimensions.radius15 / 2),
+                                              image: DecorationImage(
+                                                  fit: BoxFit.cover,
+                                                  image: NetworkImage(
+                                                      AppConstants.BASE_URL +
+                                                          AppConstants
+                                                              .UPLOAD_URL +
+                                                          getCartHistoryList[
+                                                                  listCounter -
+                                                                      1]
+                                                              .image!))),
+                                        );
+                                      }),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          )
                       ],
                     ),
-                  )
-              ],
-            ),
-          ))
+                  )))
         ],
       ),
     );
