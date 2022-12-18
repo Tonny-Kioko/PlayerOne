@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:intl/intl.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/cart_controller.dart';
 import 'package:playerone/utils/app_constants.dart';
@@ -75,12 +76,25 @@ class CartHistory extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                BigText(text: ""),
+                                (() {
+                                  DateTime parseDate =
+                                      DateFormat("yyyy-MM-dd HH:mm:ss").parse(
+                                          getCartHistoryList[listCounter]
+                                              .time!);
+                                  var inputDate =
+                                      DateTime.parse(parseDate.toString());
+                                  var outputFormat =
+                                      DateFormat("dd/MM/yyyy hh:mm");
+                                  var outputDate =
+                                      outputFormat.format(inputDate);
+                                  return BigText(text: outputDate,);
+                                }()),
                                 SizedBox(
                                   height: Dimensions.sizeBoxHeight10,
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Wrap(
                                       direction: Axis.horizontal,
@@ -90,34 +104,70 @@ class CartHistory extends StatelessWidget {
                                             getCartHistoryList.length) {
                                           listCounter++;
                                         }
-                                        return index<=2?Container(
-                                          height: 100,
-                                          width: 100,
-                                          margin: EdgeInsets.only(right: Dimensions.sizeBoxWidth5),
-                                          decoration: BoxDecoration(
-                                              borderRadius:
-                                              BorderRadius.circular(
-                                                  Dimensions.radius15 / 2),
-                                              image: DecorationImage(
-                                                  fit: BoxFit.cover,
-                                                  image: NetworkImage(
-                                                      AppConstants.BASE_URL +
-                                                          AppConstants
-                                                              .UPLOAD_URL +
-                                                          getCartHistoryList[
-                                                          listCounter -
-                                                              1]
-                                                              .image!))),
-                                        ): Container();
+                                        return index <= 2
+                                            ? Container(
+                                                height: 100,
+                                                width: 100,
+                                                margin: EdgeInsets.only(
+                                                    right: Dimensions
+                                                        .sizeBoxWidth5),
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            Dimensions
+                                                                    .radius15 /
+                                                                2),
+                                                    image: DecorationImage(
+                                                        fit: BoxFit.cover,
+                                                        image: NetworkImage(
+                                                            AppConstants
+                                                                    .BASE_URL +
+                                                                AppConstants
+                                                                    .UPLOAD_URL +
+                                                                getCartHistoryList[
+                                                                        listCounter -
+                                                                            1]
+                                                                    .image!))),
+                                              )
+                                            : Container();
                                       }),
                                     ),
                                     Container(
                                       height: 75,
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
                                         children: [
-                                          SmallText(text: "Total",),
-                                          BigText(text: itemsPerOrder[i].toString()+"Items", color: Colors.black54,)
+                                          SmallText(
+                                            text: "Total",
+                                            color: Colors.black54,
+                                          ),
+                                          BigText(
+                                            text: itemsPerOrder[i].toString() +
+                                                "Items",
+                                            color: Colors.black54,
+                                          ),
+                                          Container(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal:
+                                                    Dimensions.sizeBoxWidth10,
+                                                vertical:
+                                                    Dimensions.sizeBoxHeight10 /
+                                                        2),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      Dimensions.radius15 / 3),
+                                              border: Border.all(
+                                                  width: 1,
+                                                  color: AppColors.mainColor),
+                                            ),
+                                            child: SmallText(
+                                                text: 'Show More',
+                                                color: AppColors.mainColor),
+                                          )
                                         ],
                                       ),
                                     )
