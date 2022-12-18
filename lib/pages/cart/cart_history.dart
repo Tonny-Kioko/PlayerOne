@@ -7,6 +7,7 @@ import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/cart_controller.dart';
 import 'package:playerone/utils/app_constants.dart';
 import 'package:playerone/widgets/big_text.dart';
+import 'package:playerone/widgets/small_text.dart';
 
 import '../../utils/dimensions.dart';
 
@@ -68,6 +69,7 @@ class CartHistory extends StatelessWidget {
                       children: [
                         for (int i = 0; i < itemsPerOrder.length; i++)
                           Container(
+                            height: 115,
                             margin: EdgeInsets.only(
                                 bottom: Dimensions.sizeBoxHeight20),
                             child: Column(
@@ -78,6 +80,7 @@ class CartHistory extends StatelessWidget {
                                   height: Dimensions.sizeBoxHeight10,
                                 ),
                                 Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Wrap(
                                       direction: Axis.horizontal,
@@ -87,14 +90,14 @@ class CartHistory extends StatelessWidget {
                                             getCartHistoryList.length) {
                                           listCounter++;
                                         }
-                                        return Container(
+                                        return index<=2?Container(
                                           height: 100,
                                           width: 100,
                                           margin: EdgeInsets.only(right: Dimensions.sizeBoxWidth5),
                                           decoration: BoxDecoration(
                                               borderRadius:
-                                                  BorderRadius.circular(
-                                                      Dimensions.radius15 / 2),
+                                              BorderRadius.circular(
+                                                  Dimensions.radius15 / 2),
                                               image: DecorationImage(
                                                   fit: BoxFit.cover,
                                                   image: NetworkImage(
@@ -102,11 +105,21 @@ class CartHistory extends StatelessWidget {
                                                           AppConstants
                                                               .UPLOAD_URL +
                                                           getCartHistoryList[
-                                                                  listCounter -
-                                                                      1]
+                                                          listCounter -
+                                                              1]
                                                               .image!))),
-                                        );
+                                        ): Container();
                                       }),
+                                    ),
+                                    Container(
+                                      height: 75,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          SmallText(text: "Total",),
+                                          BigText(text: itemsPerOrder[i].toString()+"Items", color: Colors.black54,)
+                                        ],
+                                      ),
                                     )
                                   ],
                                 )
