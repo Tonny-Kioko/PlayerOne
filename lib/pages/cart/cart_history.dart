@@ -41,7 +41,7 @@ class CartHistory extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: Dimensions.sizeBoxHeight20*5,
+            height: Dimensions.sizeBoxHeight20 * 5,
             color: AppColors.mainColor,
             width: double.maxFinite,
             padding: EdgeInsets.only(top: Dimensions.sizeBoxHeight20),
@@ -71,7 +71,7 @@ class CartHistory extends StatelessWidget {
                       children: [
                         for (int i = 0; i < itemsPerOrder.length; i++)
                           Container(
-                            height: Dimensions.sizeBoxHeight20*5,
+                            height: Dimensions.sizeBoxHeight20 * 5,
                             margin: EdgeInsets.only(
                                 bottom: Dimensions.sizeBoxHeight20),
                             child: Column(
@@ -109,8 +109,12 @@ class CartHistory extends StatelessWidget {
                                         }
                                         return index <= 2
                                             ? Container(
-                                                height: Dimensions.sizeBoxHeight20*5,
-                                                width: Dimensions.sizeBoxWidth10*10,
+                                                height:
+                                                    Dimensions.sizeBoxHeight20 *
+                                                        5,
+                                                width:
+                                                    Dimensions.sizeBoxWidth10 *
+                                                        10,
                                                 margin: EdgeInsets.only(
                                                     right: Dimensions
                                                         .sizeBoxWidth5),
@@ -136,7 +140,8 @@ class CartHistory extends StatelessWidget {
                                       }),
                                     ),
                                     Container(
-                                      height: Dimensions.sizeBoxHeight45+Dimensions.sizeBoxHeight30,
+                                      height: Dimensions.sizeBoxHeight45 +
+                                          Dimensions.sizeBoxHeight30,
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
@@ -152,24 +157,28 @@ class CartHistory extends StatelessWidget {
                                                 "Items",
                                             color: Colors.black54,
                                           ),
-                                          Container(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal:
-                                                    Dimensions.sizeBoxWidth10,
-                                                vertical:
-                                                    Dimensions.sizeBoxHeight10 /
-                                                        2),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      Dimensions.radius15 / 3),
-                                              border: Border.all(
-                                                  width: 1,
+                                          GestureDetector(
+                                            onTap: () {},
+                                            child: Container(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal:
+                                                      Dimensions.sizeBoxWidth10,
+                                                  vertical: Dimensions
+                                                          .sizeBoxHeight10 /
+                                                      2),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        Dimensions.radius15 /
+                                                            3),
+                                                border: Border.all(
+                                                    width: 1,
+                                                    color: AppColors.mainColor),
+                                              ),
+                                              child: SmallText(
+                                                  text: 'Re-Order',
                                                   color: AppColors.mainColor),
                                             ),
-                                            child: SmallText(
-                                                text: 'Show More',
-                                                color: AppColors.mainColor),
                                           )
                                         ],
                                       ),
