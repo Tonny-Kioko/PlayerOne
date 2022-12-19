@@ -17,7 +17,8 @@ class CartHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var getCartHistoryList = Get.find<CartController>().getCartHistoryList();
+    var getCartHistoryList =
+        Get.find<CartController>().getCartHistoryList().reversed.toList();
 
     Map<String, int> cartItemsPerOrder = Map();
     for (int i = 0; i < getCartHistoryList.length; i++) {
@@ -40,10 +41,10 @@ class CartHistory extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 150,
+            height: Dimensions.sizeBoxHeight20*5,
             color: AppColors.mainColor,
             width: double.maxFinite,
-            padding: EdgeInsets.only(top: 45),
+            padding: EdgeInsets.only(top: Dimensions.sizeBoxHeight20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -70,7 +71,7 @@ class CartHistory extends StatelessWidget {
                       children: [
                         for (int i = 0; i < itemsPerOrder.length; i++)
                           Container(
-                            height: 115,
+                            height: Dimensions.sizeBoxHeight20*5,
                             margin: EdgeInsets.only(
                                 bottom: Dimensions.sizeBoxHeight20),
                             child: Column(
@@ -87,7 +88,9 @@ class CartHistory extends StatelessWidget {
                                       DateFormat("dd/MM/yyyy hh:mm");
                                   var outputDate =
                                       outputFormat.format(inputDate);
-                                  return BigText(text: outputDate,);
+                                  return BigText(
+                                    text: outputDate,
+                                  );
                                 }()),
                                 SizedBox(
                                   height: Dimensions.sizeBoxHeight10,
@@ -106,8 +109,8 @@ class CartHistory extends StatelessWidget {
                                         }
                                         return index <= 2
                                             ? Container(
-                                                height: 100,
-                                                width: 100,
+                                                height: Dimensions.sizeBoxHeight20*5,
+                                                width: Dimensions.sizeBoxWidth10*10,
                                                 margin: EdgeInsets.only(
                                                     right: Dimensions
                                                         .sizeBoxWidth5),
@@ -133,7 +136,7 @@ class CartHistory extends StatelessWidget {
                                       }),
                                     ),
                                     Container(
-                                      height: 75,
+                                      height: Dimensions.sizeBoxHeight45+Dimensions.sizeBoxHeight30,
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
