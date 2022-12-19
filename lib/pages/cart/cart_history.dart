@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:html';
 
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/cart_controller.dart';
+import 'package:playerone/models/cart_model.dart';
 import 'package:playerone/utils/app_constants.dart';
 import 'package:playerone/widgets/big_text.dart';
 import 'package:playerone/widgets/small_text.dart';
@@ -30,11 +32,16 @@ class CartHistory extends StatelessWidget {
       }
     }
 
-    List<int> cartOrderTimeToList() {
+    // Determines the number of items in the cart at every distinct order time
+    List<int> cartItemsPerOrderToList() {
       return cartItemsPerOrder.entries.map((e) => e.value).toList();
     }
 
-    List<int> itemsPerOrder = cartOrderTimeToList();
+    List<String> cartOrderTimeToList() {
+      return cartItemsPerOrder.entries.map((e) => e.key).toList();
+    }
+
+    List<int> itemsPerOrder = cartItemsPerOrderToList();
     var listCounter = 0;
 
     return Scaffold(
@@ -158,7 +165,31 @@ class CartHistory extends StatelessWidget {
                                             color: Colors.black54,
                                           ),
                                           GestureDetector(
-                                            onTap: () {},
+                                            onTap: () {
+                                              var orderTime =
+                                                  cartOrderTimeToList();
+                                              Map<int, CartModel> moreOrder =
+                                                  {};
+                                              for (int j = 0;
+                                                  j < getCartHistoryList.length;
+                                                  j++) {
+                                                if (getCartHistoryList[j]
+                                                        .time ==
+                                                    orderTime[i]) {
+                                                  //print("The proper ID is"+getCartHistoryList[j].id.toString());
+                                                  moreOrder.putIfAbsent(
+                                                      getCartHistoryList[j].id!,
+                                                      () => CartModel.fromJson(
+                                                          jsonDecode(jsonEncode(
+                                                              getCartHistoryList[
+                                                                  j]))));
+                                                }
+                                              }
+                                              Get.find<CartController>()
+                                                  .setItems = moreOrder;
+                                              Get.find<CartController>()
+                                                  .addToCartList();
+                                            },
                                             child: Container(
                                               padding: EdgeInsets.symmetric(
                                                   horizontal:
