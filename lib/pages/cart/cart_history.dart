@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/cart_controller.dart';
 import 'package:playerone/models/cart_model.dart';
+import 'package:playerone/routes/route_helper.dart';
 import 'package:playerone/utils/app_constants.dart';
 import 'package:playerone/widgets/big_text.dart';
 import 'package:playerone/widgets/small_text.dart';
@@ -189,6 +190,7 @@ class CartHistory extends StatelessWidget {
                                                   .setItems = moreOrder;
                                               Get.find<CartController>()
                                                   .addToCartList();
+                                              Get.toNamed(RouteHelper.getCartPage());
                                             },
                                             child: Container(
                                               padding: EdgeInsets.symmetric(
