@@ -47,7 +47,7 @@ class CartController extends GetxController {
       } else {
         Get.snackbar(
           "Basket Items",
-          "Add at least one item to your basket...",
+          "Add at least one item to your basket...🤤",
           backgroundColor: AppColors.mainColor,
           colorText: Colors.white,
         );

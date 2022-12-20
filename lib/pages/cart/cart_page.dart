@@ -92,9 +92,19 @@ class CartPage extends StatelessWidget {
                                                 RecommendedGamesController>()
                                             .recommendedGamesList
                                             .indexOf(_cartList[index].game!);
-                                        Get.toNamed(
-                                            RouteHelper.getrecommendedGame(
-                                                recommendedIndex, "cartpage"));
+                                        if(recommendedIndex < 0){
+                                          Get.snackbar(
+                                            "Basket History",
+                                            "Oops, this order history has been removed🥲...",
+                                            backgroundColor: AppColors.mainColor,
+                                            colorText: Colors.white,
+                                          );
+                                        }else {
+                                          Get.toNamed(
+                                              RouteHelper.getrecommendedGame(
+                                                  recommendedIndex,
+                                                  "cartpage"));
+                                        }
                                       }
                                     },
                                     child: Container(
