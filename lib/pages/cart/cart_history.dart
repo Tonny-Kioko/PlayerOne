@@ -45,20 +45,14 @@ class CartHistory extends StatelessWidget {
 
     List<int> itemsPerOrder = cartItemsPerOrderToList();
     var listCounter = 0;
-    Widget timeWidget (int index){
+    Widget timeWidget(int index) {
       var outputDate = DateTime.now().toString();
-      if(index< getCartHistoryList.length) {
-        DateTime parseDate = DateFormat(
-            "yyyy-MM-dd HH:mm:ss")
-            .parse(
-            getCartHistoryList[listCounter]
-                .time!);
-        var inputDate = DateTime.parse(
-            parseDate.toString());
-        var outputFormat =
-        DateFormat("dd/MM/yyyy hh:mm");
-        var outputDate =
-        outputFormat.format(inputDate);
+      if (index < getCartHistoryList.length) {
+        DateTime parseDate = DateFormat("yyyy-MM-dd HH:mm:ss")
+            .parse(getCartHistoryList[listCounter].time!);
+        var inputDate = DateTime.parse(parseDate.toString());
+        var outputFormat = DateFormat("dd/MM/yyyy hh:mm");
+        var outputDate = outputFormat.format(inputDate);
         return BigText(
           text: outputDate,
         );
@@ -241,14 +235,14 @@ class CartHistory extends StatelessWidget {
                           ),
                         )))
                 : Container(
-                  height: MediaQuery.of(context).size.height/1.3,
-                  child: Center(
-                    child: CleanDataPage(
+                    height: MediaQuery.of(context).size.height / 1.3,
+                    child: Center(
+                      child: CleanDataPage(
                         text: "Your history i'snt Available",
                         imagePath: 'assets/image/empty_box.jpg',
                       ),
-                  ),
-                );
+                    ),
+                  );
           })
         ],
       ),
