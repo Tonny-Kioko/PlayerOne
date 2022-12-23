@@ -1,6 +1,6 @@
-##🎮 Ready, Player One 🎮.
+##Ready, Player One .
 
-**Documentation for the Player One App**
+**🎮Documentation for the Player One App🎮**
 
 I am an avid gamer and I always marvel at an opportunity to create solutions around games.🧑🏽‍💻 This is
 an online platform that lets gamers find the games they like and purchase them🥳🥳. It will include
@@ -40,5 +40,4 @@ games that the user visits over time.(It will depend on the popular games as inc
 13. Adding an orders history page  for users to see the items they previously ordered, dates, payment amount and option used.
 14. An update on the order status . If the user includes more items✔️ or cancels❌ an order, it will appear in the order history under the cancelled category and reflect on the backend.
  
-## More updates on this file will come. They include images of sections of the platform, more features that i think of
-and anything that would be recommended by any observers. 
+## More updates on this file will come. They include images of sections of the platform, more features that i think of and anything that would be recommended by any observers. 
