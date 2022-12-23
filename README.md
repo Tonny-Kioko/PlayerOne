@@ -29,7 +29,7 @@ games that the user visits over time.(It will depend on the popular games as inc
 9. A user authentication option
 -On logging in or registration, the user will receive a user authentication option.
 -##A possibility of multi-factor authentication. 
-10. Firebase integration notificatio🔥
+10. Firebase integration notification🔥
 11. Integrating a payment option💵
 - A PayPal option💱
 - An M-Pesa payment option.💸 (Building an M-Pesa API)
