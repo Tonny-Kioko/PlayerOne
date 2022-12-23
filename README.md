@@ -1,4 +1,4 @@
-##Ready, Player One .
+# Ready, Player One.
 
 **🎮Documentation for the Player One App🎮**
 
@@ -7,7 +7,7 @@ an online platform that lets gamers find the games they like and purchase them�
 the most popular games as saved by most users, latest releases and recommendations.
 This is my first Dart/Flutter 🤩😎project, and some of the features will not be as perfect as a commercial platform😅😅. I am however open to guidance on ways to improve its features💯💯. 
 
-##MAIN FEATURES
+## MAIN FEATURES
 1. Showing games under the recommended ♾️, popular❤️ and according to their genres
 -Here, I will add a section for the popular games. This will depend on the
 games that the user visits over time.(It will depend on the popular games as included on registration until the user has enough visits).
