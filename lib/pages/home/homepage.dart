@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:playerone/colors.dart';
+import 'package:playerone/pages/account/account_page.dart';
 import 'package:playerone/pages/home/main_game_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:playerone/utils/dimensions.dart';
@@ -62,11 +63,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       CartHistory(),
-      Container(
-        child: Center(
-          child: Text("Next page3"),
-        ),
-      ),
+      AccountPage(),
     ];
   }
 
