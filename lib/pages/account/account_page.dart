@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:playerone/widgets/app_icon.dart';
 import 'package:playerone/widgets/big_text.dart';
 
 class AccountPage extends StatelessWidget {
@@ -14,6 +15,11 @@ class AccountPage extends StatelessWidget {
           size: 24,
           color: Colors.white,
         ),
+      ),
+      body: Column(
+        children: [
+          AppIcon(icon: Icons.person,)
+        ],
       ),
     );
   }
