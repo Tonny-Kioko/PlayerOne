@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:playerone/colors.dart';
+import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_icon.dart';
 import 'package:playerone/widgets/big_text.dart';
 
@@ -16,10 +18,17 @@ class AccountPage extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-      body: Column(
-        children: [
-          AppIcon(icon: Icons.person,)
-        ],
+      body: Container(
+        width: double.maxFinite,
+        margin: EdgeInsets.only(top: Dimensions.sizeBoxHeight10),
+        child: Column(
+          children: [
+            AppIcon(icon: Icons.person,
+            backgroundColor: AppColors.mainColor,
+            iconColor: Colors.white,
+            size: Dimensions.sizeBoxHeight30*5,)
+          ],
+        ),
       ),
     );
   }

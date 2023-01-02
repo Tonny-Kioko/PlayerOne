@@ -29,6 +29,7 @@ Future<void> init() async {
   Get.lazyPut(() => CartRepo(sharedPreferences:Get.find()));
 
 
+
 //Dependencies for controllers
   Get.lazyPut(() =>
       PopularGamesController(popularGamesRepo: Get.find(), apiClient: null));

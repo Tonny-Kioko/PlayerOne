@@ -34,9 +34,9 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
 
 
-          initialRoute: RouteHelper.getCartPage(),
+          initialRoute: RouteHelper.getinitial(),
           getPages: RouteHelper.routes,
-          // home: SplashScreen(),
+          home: SplashScreen(),
         );
       });
     },);
