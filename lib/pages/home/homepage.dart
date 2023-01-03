@@ -26,21 +26,9 @@ class _HomePageState extends State<HomePage> {
         child: Text("Next page"),
       ),
     ),
-    Container(
-      child: Center(
-        child: Text("Next page2"),
-      ),
-    ),
-    Container(
-      child: Center(
-        child: Text("Next page3"),
-      ),
-    ),
-    Container(
-      child: Center(
-        child: Text("Next page4"),
-      ),
-    ),
+    CartHistory(),
+    AccountPage(),
+
   ];
   void onTapNavigation(int index) {
     setState(() {
