@@ -26,6 +26,7 @@ class AccountPage extends StatelessWidget {
         margin: EdgeInsets.only(top: Dimensions.sizeBoxHeight10),
         child: Column(
           children: [
+            //Gamers' Account Icon
             AppIcon(
               icon: Icons.person,
               backgroundColor: AppColors.mainColor,
@@ -34,6 +35,7 @@ class AccountPage extends StatelessWidget {
               size: Dimensions.sizeBoxHeight50*3,
             ),
             SizedBox(height: Dimensions.sizeBoxHeight30,),
+            //Gaming name
             AccountWidget(bigText: BigText(text: "pal",),
                 appIcon: AppIcon(
               icon: Icons.person,
@@ -43,6 +45,7 @@ class AccountPage extends StatelessWidget {
                   size: Dimensions.sizeBoxHeight50,
             )),
             SizedBox(height: Dimensions.sizeBoxHeight30,),
+            //Mobile Number
             AccountWidget(bigText: BigText(text: "pal",),
                 appIcon: AppIcon(
                   icon: Icons.person,
@@ -52,6 +55,7 @@ class AccountPage extends StatelessWidget {
                   size: Dimensions.sizeBoxHeight50,
                 )),
             SizedBox(height: Dimensions.sizeBoxHeight30,),
+            //Email
             AccountWidget(bigText: BigText(text: "pal",),
                 appIcon: AppIcon(
                   icon: Icons.person,
@@ -60,7 +64,17 @@ class AccountPage extends StatelessWidget {
                   iconSize: Dimensions.sizeBoxHeight30,
                   size: Dimensions.sizeBoxHeight50,
                 )),
+            //Delivery Address
             SizedBox(height: Dimensions.sizeBoxHeight30,),
+            //Important notifications
+            AccountWidget(bigText: BigText(text: "pal",),
+                appIcon: AppIcon(
+                  icon: Icons.person,
+                  backgroundColor: AppColors.mainColor,
+                  iconColor: Colors.white,
+                  iconSize: Dimensions.sizeBoxHeight30,
+                  size: Dimensions.sizeBoxHeight50,
+                )),
           ],
         ),
       ),
