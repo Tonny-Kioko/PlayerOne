@@ -18,10 +18,10 @@ class SignUpPage extends StatelessWidget {
     var nameController = TextEditingController();
     var phoneController = TextEditingController();
     var signUpImages = [
-      "assets/image/facebook.png",
-      "assets/image/github.png",
-      "assets/image/gmail.png",
-      "assets/image/twitter.png",
+      "facebook.png",
+      "github.png",
+      "gmail.png",
+      "twitter.png",
     ];
 
     return Scaffold(
@@ -107,21 +107,27 @@ class SignUpPage extends StatelessWidget {
                     fontSize: Dimensions.font20,
                   ))),
           SizedBox(
-            height: Dimensions.screenHeight*0.05,
+            height: Dimensions.screenHeight * 0.05,
           ),
           //Sign Up Options
           RichText(
               text: TextSpan(
-
-                  text: "Sign Up Using...",
+                  text: "Or sign Up using...",
                   style: TextStyle(
                     color: AppColors.mainBlackColor,
                     fontSize: Dimensions.font20,
                   ))),
           Wrap(
-            children: List.generate(3, (index) =>CircleAvatar(
-
-            )),
+            children: List.generate(
+                4,
+                (index) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CircleAvatar(
+                        radius: Dimensions.radius30,
+                        backgroundImage:
+                            AssetImage("assets/image/" + signUpImages[index]),
+                      ),
+                    )),
           )
         ],
       ),
