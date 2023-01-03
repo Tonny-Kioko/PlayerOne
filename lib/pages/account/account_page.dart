@@ -4,6 +4,8 @@ import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_icon.dart';
 import 'package:playerone/widgets/big_text.dart';
 
+import '../../widgets/account_widget.dart';
+
 class AccountPage extends StatelessWidget {
   const AccountPage({Key? key}) : super(key: key);
 
@@ -19,6 +21,7 @@ class AccountPage extends StatelessWidget {
         ),
       ),
       body: Container(
+
         width: double.maxFinite,
         margin: EdgeInsets.only(top: Dimensions.sizeBoxHeight10),
         child: Column(
@@ -28,7 +31,36 @@ class AccountPage extends StatelessWidget {
               backgroundColor: AppColors.mainColor,
               iconColor: Colors.white,
               iconSize: Dimensions.sizeBoxHeight50 + Dimensions.sizeBoxHeight20,
-            )
+              size: Dimensions.sizeBoxHeight50*3,
+            ),
+            SizedBox(height: Dimensions.sizeBoxHeight30,),
+            AccountWidget(bigText: BigText(text: "pal",),
+                appIcon: AppIcon(
+              icon: Icons.person,
+              backgroundColor: AppColors.mainColor,
+              iconColor: Colors.white,
+              iconSize: Dimensions.sizeBoxHeight30,
+                  size: Dimensions.sizeBoxHeight50,
+            )),
+            SizedBox(height: Dimensions.sizeBoxHeight30,),
+            AccountWidget(bigText: BigText(text: "pal",),
+                appIcon: AppIcon(
+                  icon: Icons.person,
+                  backgroundColor: AppColors.mainColor,
+                  iconColor: Colors.white,
+                  iconSize: Dimensions.sizeBoxHeight30,
+                  size: Dimensions.sizeBoxHeight50,
+                )),
+            SizedBox(height: Dimensions.sizeBoxHeight30,),
+            AccountWidget(bigText: BigText(text: "pal",),
+                appIcon: AppIcon(
+                  icon: Icons.person,
+                  backgroundColor: AppColors.mainColor,
+                  iconColor: Colors.white,
+                  iconSize: Dimensions.sizeBoxHeight30,
+                  size: Dimensions.sizeBoxHeight50,
+                )),
+            SizedBox(height: Dimensions.sizeBoxHeight30,),
           ],
         ),
       ),
