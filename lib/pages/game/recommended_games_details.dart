@@ -58,7 +58,7 @@ class RecommendedGameDetails extends StatelessWidget {
 
                                   child: AppIcon(
                                     icon: Icons.circle,
-                                    size: 20,
+                                    iconSize: 20,
                                     iconColor: Colors.transparent,
                                     backgroundColor: AppColors.mainColor,
                                   ),

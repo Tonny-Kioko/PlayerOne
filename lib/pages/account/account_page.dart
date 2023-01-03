@@ -23,10 +23,12 @@ class AccountPage extends StatelessWidget {
         margin: EdgeInsets.only(top: Dimensions.sizeBoxHeight10),
         child: Column(
           children: [
-            AppIcon(icon: Icons.person,
-            backgroundColor: AppColors.mainColor,
-            iconColor: Colors.white,
-            size: Dimensions.sizeBoxHeight30*5,)
+            AppIcon(
+              icon: Icons.person,
+              backgroundColor: AppColors.mainColor,
+              iconColor: Colors.white,
+              iconSize: Dimensions.sizeBoxHeight50 + Dimensions.sizeBoxHeight20,
+            )
           ],
         ),
       ),

@@ -36,7 +36,7 @@ class CartPage extends StatelessWidget {
                       icon: CupertinoIcons.back,
                       iconColor: Colors.white,
                       backgroundColor: AppColors.mainColor,
-                      size: Dimensions.iconSize24 * 2),
+                      iconSize: Dimensions.iconSize24 * 2),
                   SizedBox(
                     width: Dimensions.sizeBoxWidth20 * 5,
                   ),
@@ -48,13 +48,13 @@ class CartPage extends StatelessWidget {
                         icon: CupertinoIcons.home,
                         iconColor: Colors.white,
                         backgroundColor: AppColors.mainColor,
-                        size: Dimensions.iconSize24 * 2),
+                        iconSize: Dimensions.iconSize24 * 2),
                   ),
                   AppIcon(
                       icon: Icons.shopping_basket,
                       iconColor: Colors.white,
                       backgroundColor: AppColors.mainColor,
-                      size: Dimensions.iconSize24 * 2)
+                      iconSize: Dimensions.iconSize24 * 2)
                 ],
               )),
           //Body Section

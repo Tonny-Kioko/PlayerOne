@@ -81,7 +81,7 @@ class PopularGameDetail extends StatelessWidget {
 
                                     child: AppIcon(
                                       icon: Icons.circle,
-                                      size: 2,
+                                      iconSize: 2,
                                       iconColor: Colors.transparent,
                                       backgroundColor: AppColors.mainColor,
                                     ),
