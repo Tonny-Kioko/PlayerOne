@@ -41,15 +41,25 @@ class SignInPage extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.only(left: Dimensions.sizeBoxWidth20,),
+              width: double.maxFinite,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Gear up",
                   style: TextStyle(
                     fontSize: Dimensions.font30+Dimensions.font30,
                     fontWeight: FontWeight.bold,
-                                      ),)
+                                      ),),
+                  Text("A gaming Extravaganza. ",
+                    style: TextStyle(
+                      fontSize: Dimensions.font20,
+                      color: Colors.grey[500],
+                    ),)
                 ],
               ),
+            ),
+            SizedBox(
+              height: Dimensions.sizeBoxHeight20,
             ),
             //Gamer Email
             AppTextField(
@@ -71,6 +81,7 @@ class SignInPage extends StatelessWidget {
             ),
             Row(
               children: [
+                Expanded(child: Container()),
                 RichText(
                     text: TextSpan(
                         text: "Sign into Gamer Account",
@@ -78,6 +89,9 @@ class SignInPage extends StatelessWidget {
                           color: AppColors.mainBlackColor,
                           fontSize: Dimensions.font20,
                         ))),
+                SizedBox(
+                  width: Dimensions.sizeBoxWidth20,
+                ),
               ],
             ),
             //Sign Up Button
@@ -105,6 +119,7 @@ class SignInPage extends StatelessWidget {
             ),
             //Sign Up Options
             RichText(
+
                 text: TextSpan(
                     text: "I don't Have an Account",
                     style: TextStyle(
@@ -113,8 +128,8 @@ class SignInPage extends StatelessWidget {
                     ),
                   children: [
                     TextSpan(
-                    recognizer: TapGestureRecognizer()..onTap=()=>Get.to(SignUpPage()),
-                  // ..onTap = () {Get.toNamed(RouteHelper.signUp());},
+                    recognizer: TapGestureRecognizer()..onTap=()=>Get.to(SignUpPage(), transition: Transition.fade),
+                  // ..onTap = () {Get.toNamed(RouteHelper.signUpPage());},
                 text: "Create",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
