@@ -14,9 +14,11 @@ import '../data/repository/cart_repository.dart';
 
 //Dependencies for the API clients
 Future<void> init() async {
+  // final SharedPreferences prefs = await SharedPreferences.getInstance();
 
   //For storing and retrieving data locally
   final sharedPreferences = await SharedPreferences.getInstance();
+  // Get.find<SharedPreferences>();
 
   Get.lazyPut(() => SharedPreferences);
 
