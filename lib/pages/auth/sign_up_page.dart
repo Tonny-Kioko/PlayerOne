@@ -7,8 +7,8 @@ import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_text_fields.dart';
 import 'package:playerone/widgets/big_text.dart';
 
-class SignUpPae extends StatelessWidget {
-  const SignUpPae({Key? key}) : super(key: key);
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +17,12 @@ class SignUpPae extends StatelessWidget {
     var passwordController = TextEditingController();
     var nameController = TextEditingController();
     var phoneController = TextEditingController();
+    var signUpImages = [
+      "assets/image/facebook.png",
+      "assets/image/github.png",
+      "assets/image/gmail.png",
+      "assets/image/twitter.png",
+    ];
 
     return Scaffold(
       backgroundColor: Colors.greenAccent,
@@ -91,6 +97,7 @@ class SignUpPae extends StatelessWidget {
           SizedBox(
             height: Dimensions.sizeBoxHeight10,
           ),
+          //Sign Up Button
           RichText(
               text: TextSpan(
                   recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
@@ -98,7 +105,24 @@ class SignUpPae extends StatelessWidget {
                   style: TextStyle(
                     color: AppColors.mainBlackColor,
                     fontSize: Dimensions.font20,
-                  )))
+                  ))),
+          SizedBox(
+            height: Dimensions.screenHeight*0.05,
+          ),
+          //Sign Up Options
+          RichText(
+              text: TextSpan(
+
+                  text: "Sign Up Using...",
+                  style: TextStyle(
+                    color: AppColors.mainBlackColor,
+                    fontSize: Dimensions.font20,
+                  ))),
+          Wrap(
+            children: List.generate(3, (index) =>CircleAvatar(
+
+            )),
+          )
         ],
       ),
     );
