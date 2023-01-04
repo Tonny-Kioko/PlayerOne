@@ -23,6 +23,13 @@ class SignUpPage extends StatelessWidget {
       "gmail.png",
       "twitter.png",
     ];
+    void _registration() {
+      String name = nameController.text.trim();
+      String email = emailController.text.trim();
+      String password = passwordController.text.trim();
+      String confirmPassword = confirmPasswordController.text.trim();
+      String phone = phoneController.text.trim();
+    }
 
     return Scaffold(
       backgroundColor: Colors.greenAccent,
@@ -81,18 +88,23 @@ class SignUpPage extends StatelessWidget {
             SizedBox(
               height: Dimensions.sizeBoxHeight20 * 2,
             ),
-            Container(
-              width: Dimensions.screenWidth / 2,
-              height: Dimensions.screenHeight / 13,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radius30),
-                color: AppColors.mainColor,
-              ),
-              child: Center(
-                child: BigText(
-                  text: 'Sign Up',
-                  size: Dimensions.font30,
-                  color: Colors.white,
+            GestureDetector(
+              onTap: () {
+                _registration();
+              },
+              child: Container(
+                width: Dimensions.screenWidth / 2,
+                height: Dimensions.screenHeight / 13,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius30),
+                  color: AppColors.mainColor,
+                ),
+                child: Center(
+                  child: BigText(
+                    text: 'Sign Up',
+                    size: Dimensions.font30,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
