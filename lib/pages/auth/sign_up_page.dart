@@ -29,6 +29,24 @@ class SignUpPage extends StatelessWidget {
       String password = passwordController.text.trim();
       String confirmPassword = confirmPasswordController.text.trim();
       String phone = phoneController.text.trim();
+
+      if(name.isEmpty){
+
+      }else if(phone.isEmpty){
+
+      }else if(email.isEmpty){
+
+      }else if(!GetUtils.isEmail(email)){
+
+      }else if(password.isEmpty){
+
+      }else if(password.length<8){
+
+      }else if(password != confirmPassword){
+
+      }else{
+
+      }
     }
 
     return Scaffold(
