@@ -3,4 +3,5 @@ class LoginBody {
   String password;
 
   LoginBody({required this.email, required this.password});
+
 }
