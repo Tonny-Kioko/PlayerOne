@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:playerone/base/custom_Messages_SnackBar.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_text_fields.dart';
@@ -30,23 +31,29 @@ class SignUpPage extends StatelessWidget {
       String confirmPassword = confirmPasswordController.text.trim();
       String phone = phoneController.text.trim();
 
-      if(name.isEmpty){
-
-
-      }else if(phone.isEmpty){
-
-      }else if(email.isEmpty){
-
-      }else if(!GetUtils.isEmail(email)){
-
-      }else if(password.isEmpty){
-
-      }else if(password.length<8){
-
-      }else if(password != confirmPassword){
-
-      }else{
-
+      if (name.isEmpty) {
+        customMessagesSnackBar("Please enter a gamer name",
+            title: "Gamer name");
+      } else if (phone.isEmpty) {
+        customMessagesSnackBar("Please enter your mobile number ",
+            title: "Mobile number");
+      } else if (email.isEmpty) {
+        customMessagesSnackBar("Please enter your email address",
+            title: "Email address");
+      } else if (!GetUtils.isEmail(email)) {
+        customMessagesSnackBar("Please enter a valid email address",
+            title: "Email address");
+      } else if (password.isEmpty) {
+        customMessagesSnackBar("Please enter your password", title: "Password");
+      } else if (password.length < 8) {
+        customMessagesSnackBar("Password cannot be less than 8 characters",
+            title: "Password");
+      } else if (password != confirmPassword) {
+        customMessagesSnackBar("Ensure a match with Password",
+            title: "Confirm password");
+      } else {
+        customMessagesSnackBar("Perfect, Account creation in Progress",
+            title: "Creating account...");
       }
     }
 
