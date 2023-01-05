@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:playerone/data/controllers/cart_controller.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/data/controllers/recommended_games_controller.dart';
+import 'package:playerone/pages/auth/sign_in_page.dart';
 import 'package:playerone/pages/auth/sign_up_page.dart';
 import 'package:playerone/pages/cart/cart_page.dart';
 import 'package:playerone/pages/game/popular_game_details.dart';
@@ -34,14 +35,14 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
-            home: SignUpPage(),
+            home: SignInPage(),
 
 
             // home: SplashScreen(),
 
 
 
-            // initialRoute: RouteHelper.getSplashPage(),
+            initialRoute: RouteHelper.getSplashPage(),
             // getPages: RouteHelper.routes,
           );
         });

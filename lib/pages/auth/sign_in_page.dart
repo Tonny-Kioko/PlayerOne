@@ -50,10 +50,12 @@ class SignInPage extends StatelessWidget {
                   Text(
                     "Gear up",
                     style: TextStyle(
-                      fontSize: Dimensions.font30 + Dimensions.font30,
+                      fontSize: Dimensions.font30,
                       fontWeight: FontWeight.bold,
+
                     ),
                   ),
+                  SizedBox(height: Dimensions.sizeBoxHeight10,),
                   Text(
                     "A gaming Extravaganza. ",
                     style: TextStyle(
