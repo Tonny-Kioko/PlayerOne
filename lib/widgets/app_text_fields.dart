@@ -6,6 +6,7 @@ import '../utils/dimensions.dart';
 class AppTextField extends StatelessWidget {
   final TextEditingController textController;
   final String hintText;
+
   final IconData icon;
   const AppTextField(
       {Key? key,
@@ -33,7 +34,8 @@ class AppTextField extends StatelessWidget {
               //Hint Text
               hintText: hintText,
               // Prefix Icon
-              prefixIcon: Icon( icon,
+              prefixIcon: Icon(
+                icon,
                 color: Colors.blue,
               ),
               // Focused Border

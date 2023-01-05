@@ -12,6 +12,8 @@ import 'package:playerone/widgets/big_text.dart';
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key}) : super(key: key);
 
+
+
   @override
   Widget build(BuildContext context) {
     var emailController = TextEditingController();
@@ -68,35 +70,47 @@ class SignUpPage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: AppColors.backGround,
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(
-              height: Dimensions.screenHeight * 0.09,
+              height: Dimensions.screenHeight * 0.07,
             ),
             Container(
-              height: Dimensions.screenHeight * 0.25,
+              height: Dimensions.screenHeight * 0.1,
               child: Center(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage("assets/image/signup.jpg"),
-                ),
+                child: Text(
+                  "New Here? Welcome 🎮",
+                  style: TextStyle(
+                      fontSize: Dimensions.font30,
+                      fontWeight: FontWeight.bold,
+
+                      fontFamily: 'DancingScript'
+                  ),
+                )
               ),
+            ),
+            //Gamer Name
+            AppTextField(
+              textController: nameController,
+              icon: Icons.person,
+              hintText: "Gamer Name",),
+            SizedBox(
+              height: Dimensions.sizeBoxHeight20,
             ),
             //Gamer Email
             AppTextField(
                 textController: emailController,
                 icon: Icons.email,
-                hintText: "Email"),
+                hintText: "Email", ),
             SizedBox(
               height: Dimensions.sizeBoxHeight20,
             ),
             //Gamer Name
-            AppTextField(
-                textController: nameController,
-                icon: Icons.person,
-                hintText: "Gamer Name"),
+
+
             SizedBox(
               height: Dimensions.sizeBoxHeight20,
             ),
@@ -104,7 +118,7 @@ class SignUpPage extends StatelessWidget {
             AppTextField(
                 textController: phoneController,
                 icon: Icons.phone,
-                hintText: "Phone Number"),
+                hintText: "Phone Number", ),
             SizedBox(
               height: Dimensions.sizeBoxHeight20,
             ),
@@ -112,7 +126,9 @@ class SignUpPage extends StatelessWidget {
             AppTextField(
                 textController: passwordController,
                 icon: Icons.password,
-                hintText: "Password"),
+                hintText: "Password",
+            ),
+
             SizedBox(
               height: Dimensions.sizeBoxHeight20,
             ),
@@ -120,7 +136,7 @@ class SignUpPage extends StatelessWidget {
             AppTextField(
                 textController: confirmPasswordController,
                 icon: Icons.password,
-                hintText: "Confirm Password"),
+                hintText: "Confirm Password",),
             SizedBox(
               height: Dimensions.sizeBoxHeight20 * 2,
             ),
@@ -155,26 +171,31 @@ class SignUpPage extends StatelessWidget {
                     text: "Alreay have an Account?",
                     style: TextStyle(
                       color: AppColors.mainBlackColor,
-                      fontSize: Dimensions.font20,
+                      fontSize: Dimensions.font26,
+                        fontFamily: 'DancingScript',
                     ))),
             SizedBox(
-              height: Dimensions.screenHeight * 0.05,
+              height: Dimensions.sizeBoxHeight30/2,
             ),
             //Sign Up Options
             RichText(
                 text: TextSpan(
-                    text: "Or sign Up using...",
+                    text: "--Or sign Up using--",
                     style: TextStyle(
                       color: AppColors.mainBlackColor,
-                      fontSize: Dimensions.font20,
+                      fontSize: Dimensions.font26,
+                        fontFamily: 'DancingScript',
                     ))),
+            SizedBox(
+              height: Dimensions.sizeBoxHeight30/2,
+            ),
             Wrap(
               children: List.generate(
                   4,
                   (index) => Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CircleAvatar(
-                          radius: Dimensions.radius30,
+                          radius: Dimensions.radius20,
                           backgroundImage:
                               AssetImage("assets/image/" + signUpImages[index]),
                         ),

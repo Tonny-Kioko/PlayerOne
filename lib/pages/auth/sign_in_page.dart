@@ -22,7 +22,8 @@ class SignInPage extends StatelessWidget {
     var phoneController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: AppColors.backGround,
+      // backgroundColor: AppColors.backGround,
+      backgroundColor: Colors.deepPurpleAccent.withOpacity(0.6),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
@@ -36,8 +37,7 @@ class SignInPage extends StatelessWidget {
               child: Center(
                 child: CircleAvatar(
                   backgroundImage: AssetImage("assets/image/signup.jpg"),
-                  radius: Dimensions.radius30*3 + Dimensions.radius15,
-
+                  radius: Dimensions.radius30 * 3 + Dimensions.radius15,
                 ),
               ),
             ),
@@ -52,21 +52,21 @@ class SignInPage extends StatelessWidget {
                   Text(
                     "Gear up",
                     style: TextStyle(
-                      fontSize: Dimensions.font30+Dimensions.font30,
+                      fontSize: Dimensions.font30 + Dimensions.font30,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'DancingScript',
-
                     ),
                   ),
-                  SizedBox(height: Dimensions.sizeBoxHeight10,),
+                  SizedBox(
+                    height: Dimensions.sizeBoxHeight10,
+                  ),
                   Text(
                     "A gaming Extravaganza. ",
                     style: TextStyle(
-                      fontSize: Dimensions.font30,
-                      fontWeight: FontWeight.w200,
-                      color: Colors.grey[500],
-                        fontFamily: 'DancingScript'
-                    ),
+                        fontSize: Dimensions.font30,
+                        fontWeight: FontWeight.w200,
+                        color: Colors.grey[500],
+                        fontFamily: 'DancingScript'),
                   )
                 ],
               ),
@@ -98,12 +98,11 @@ class SignInPage extends StatelessWidget {
                 Expanded(child: Container()),
                 RichText(
                     text: TextSpan(
-                        text: "Sign into Gamer Account",
+                        text: "Forgot Password?",
                         style: TextStyle(
-                          color: AppColors.mainBlackColor,
-                          fontSize: Dimensions.font26,
-                            fontFamily: 'DancingScript'
-                        ))),
+                            color: Colors.grey[500],
+                            fontSize: Dimensions.font26,
+                            fontFamily: 'DancingScript'))),
                 SizedBox(
                   width: Dimensions.sizeBoxWidth20,
                 ),
@@ -126,7 +125,6 @@ class SignInPage extends StatelessWidget {
                   text: 'Sign In',
                   size: Dimensions.font30,
                   color: Colors.white,
-
                 ),
               ),
             ),
@@ -135,14 +133,14 @@ class SignInPage extends StatelessWidget {
             ),
             //Sign Up Options
             RichText(
-                text: TextSpan(
-                    text: "I don't Have an Account",
-                    style: TextStyle(
-                      color: AppColors.mainBlackColor,
-                      fontSize: Dimensions.font20,
-                        fontFamily: 'DancingScript',
-                    ),
 
+                text: TextSpan(
+                                      text: "I don't Have an Account",
+                    style: TextStyle(
+                      color: Colors.grey[500],
+                      fontSize: Dimensions.font26,
+                      fontFamily: 'DancingScript',
+                    ),
                     children: [
 
                   TextSpan(
@@ -154,7 +152,7 @@ class SignInPage extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: AppColors.mainBlackColor,
-                        fontSize: Dimensions.font26,
+                        fontSize: Dimensions.font30,
                       )),
                 ])),
           ],
