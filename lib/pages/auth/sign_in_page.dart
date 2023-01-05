@@ -28,7 +28,7 @@ class SignInPage extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              height: Dimensions.screenHeight * 0.09,
+              height: Dimensions.screenHeight * 0.07,
             ),
             //App Logo
             Container(
@@ -36,6 +36,8 @@ class SignInPage extends StatelessWidget {
               child: Center(
                 child: CircleAvatar(
                   backgroundImage: AssetImage("assets/image/signup.jpg"),
+                  radius: Dimensions.radius30*3 + Dimensions.radius15,
+
                 ),
               ),
             ),
@@ -50,8 +52,9 @@ class SignInPage extends StatelessWidget {
                   Text(
                     "Gear up",
                     style: TextStyle(
-                      fontSize: Dimensions.font30,
+                      fontSize: Dimensions.font30+Dimensions.font30,
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'DancingScript',
 
                     ),
                   ),
@@ -59,8 +62,10 @@ class SignInPage extends StatelessWidget {
                   Text(
                     "A gaming Extravaganza. ",
                     style: TextStyle(
-                      fontSize: Dimensions.font20,
+                      fontSize: Dimensions.font30,
+                      fontWeight: FontWeight.w200,
                       color: Colors.grey[500],
+                        fontFamily: 'DancingScript'
                     ),
                   )
                 ],
@@ -74,6 +79,7 @@ class SignInPage extends StatelessWidget {
                 textController: emailController,
                 icon: Icons.email,
                 hintText: "Email"),
+
             SizedBox(
               height: Dimensions.sizeBoxHeight20,
             ),
@@ -95,7 +101,8 @@ class SignInPage extends StatelessWidget {
                         text: "Sign into Gamer Account",
                         style: TextStyle(
                           color: AppColors.mainBlackColor,
-                          fontSize: Dimensions.font20,
+                          fontSize: Dimensions.font26,
+                            fontFamily: 'DancingScript'
                         ))),
                 SizedBox(
                   width: Dimensions.sizeBoxWidth20,
@@ -116,9 +123,10 @@ class SignInPage extends StatelessWidget {
               ),
               child: Center(
                 child: BigText(
-                  text: 'Sign Up',
+                  text: 'Sign In',
                   size: Dimensions.font30,
                   color: Colors.white,
+
                 ),
               ),
             ),

@@ -20,7 +20,7 @@ class SmallText extends StatelessWidget {
       maxLines: 1,
       style: TextStyle(
         color: color,
-        fontFamily: 'Roboto',
+        fontFamily: 'DancingScript',
         fontSize: size,
         fontWeight: FontWeight.w400,
         height: height,
