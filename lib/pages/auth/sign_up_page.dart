@@ -54,7 +54,9 @@ class SignUpPage extends StatelessWidget {
       } else if (password.length < 8) {
         customMessagesSnackBar("Password cannot be less than 8 characters",
             title: "Password");
-      } else if (password != confirmPassword) {
+      } else if(GetUtils.isAlphabetOnly(password)){
+        customMessagesSnackBar("Include Numbers and Symbols", title: "Password");
+      }else if (password != confirmPassword) {
         customMessagesSnackBar("Ensure a match with Password",
             title: "Confirm password");
       } else {
@@ -168,7 +170,7 @@ class SignUpPage extends StatelessWidget {
                 text: TextSpan(
                     recognizer: TapGestureRecognizer()
                       ..onTap = () => Get.back(),
-                    text: "Alreay have an Account?",
+                    text: "Already have an Account?",
                     style: TextStyle(
                       color: AppColors.mainBlackColor,
                       fontSize: Dimensions.font26,

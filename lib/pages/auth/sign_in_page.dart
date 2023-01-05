@@ -2,7 +2,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:playerone/base/custom_Messages_SnackBar.dart';
 import 'package:playerone/colors.dart';
+import 'package:playerone/models/login_page_body.dart';
 import 'package:playerone/pages/auth/sign_up_page.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_text_fields.dart';
@@ -20,6 +22,29 @@ class SignInPage extends StatelessWidget {
     var passwordController = TextEditingController();
     var nameController = TextEditingController();
     var phoneController = TextEditingController();
+
+    void _loginConfirmation() {
+      String email = emailController.text.trim();
+      String password = passwordController.text.trim();
+
+      if (email.isEmpty) {
+        customMessagesSnackBar("Please enter your email Address",
+            title: "Email Address");
+      } else if (!GetUtils.isEmail(email)) {
+        customMessagesSnackBar("Enter a Valid email Address",
+            title: "email Address");
+      } else if (password.isEmpty) {
+        customMessagesSnackBar("Please enter your Password", title: "passWord");
+      }else if(GetUtils.isAlphabetOnly(password)){
+        customMessagesSnackBar("Include numbers and Symbols", title: "passWord");
+
+      } else if(password.length < 8){
+        customMessagesSnackBar("Your password is TOO Short", title: "Password");
+      }else {
+        customMessagesSnackBar("Great, Login successful", title: "Gamer logIn");
+        LoginBody(email: email, password: password);
+      }
+    }
 
     return Scaffold(
       // backgroundColor: AppColors.backGround,
@@ -113,36 +138,41 @@ class SignInPage extends StatelessWidget {
             SizedBox(
               height: Dimensions.screenHeight * 0.05,
             ),
-            Container(
-              width: Dimensions.screenWidth / 2,
-              height: Dimensions.screenHeight / 13,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radius30),
-                color: AppColors.mainColor,
-              ),
-              child: Center(
-                child: BigText(
-                  text: 'Sign In',
-                  size: Dimensions.font30,
-                  color: Colors.white,
+            GestureDetector(
+              onTap: () {
+                _loginConfirmation();
+              },
+              child: Container(
+                width: Dimensions.screenWidth / 2,
+                height: Dimensions.screenHeight / 13,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius30),
+                  color: AppColors.mainColor,
                 ),
-              ),
+                child: Center(
+
+                    child: BigText(
+                      text: 'Sign In',
+                      size: Dimensions.font30,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
             ),
+
             SizedBox(
               height: Dimensions.screenHeight * 0.05,
             ),
             //Sign Up Options
             RichText(
-
                 text: TextSpan(
-                                      text: "I don't Have an Account",
+                    text: "I don't Have an Account",
                     style: TextStyle(
                       color: Colors.grey[500],
                       fontSize: Dimensions.font26,
                       fontFamily: 'DancingScript',
                     ),
                     children: [
-
                   TextSpan(
                       recognizer: TapGestureRecognizer()
                         ..onTap = () =>
