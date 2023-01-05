@@ -22,7 +22,7 @@ class SignInPage extends StatelessWidget {
     var phoneController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: AppColors.backGround,
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
