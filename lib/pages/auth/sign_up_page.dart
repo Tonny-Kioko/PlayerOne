@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:playerone/base/custom_Messages_SnackBar.dart';
 import 'package:playerone/colors.dart';
+import 'package:playerone/models/sign_up_model_body.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_text_fields.dart';
 import 'package:playerone/widgets/big_text.dart';
@@ -57,6 +58,12 @@ class SignUpPage extends StatelessWidget {
       } else {
         customMessagesSnackBar("Perfect, Account creation in Progress",
             title: "Creating account...");
+        SignUpBody signUpBody = SignUpBody(
+            name: name,
+            phone: phone,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword);
       }
     }
 
