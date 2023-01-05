@@ -140,8 +140,11 @@ class SignInPage extends StatelessWidget {
                     style: TextStyle(
                       color: AppColors.mainBlackColor,
                       fontSize: Dimensions.font20,
+                        fontFamily: 'DancingScript',
                     ),
+
                     children: [
+
                   TextSpan(
                       recognizer: TapGestureRecognizer()
                         ..onTap = () =>
@@ -151,7 +154,7 @@ class SignInPage extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: AppColors.mainBlackColor,
-                        fontSize: Dimensions.font20,
+                        fontSize: Dimensions.font26,
                       )),
                 ])),
           ],
