@@ -32,6 +32,7 @@ class SignUpPage extends StatelessWidget {
 
       if(name.isEmpty){
 
+
       }else if(phone.isEmpty){
 
       }else if(email.isEmpty){
