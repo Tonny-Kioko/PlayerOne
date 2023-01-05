@@ -35,7 +35,10 @@ class SignUpPage extends StatelessWidget {
         customMessagesSnackBar("Please enter a gamer name",
             title: "Gamer name");
       } else if (phone.isEmpty) {
-        customMessagesSnackBar("Please enter your mobile number ",
+        customMessagesSnackBar("Please enter your Phone number ",
+            title: "Mobile number");
+      } else if (!GetUtils.isPhoneNumber(phone)) {
+        customMessagesSnackBar("Enter a Valid phone Number",
             title: "Mobile number");
       } else if (email.isEmpty) {
         customMessagesSnackBar("Please enter your email address",
