@@ -10,15 +10,17 @@ class CustomLoader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //print("I'm loading just fine"+Get.find<AuthController>().isLoading.toString());
-    return Container(
-      height: Dimensions.sizeBoxHeight50*2,
-      width: Dimensions.sizeBoxHeight50*2,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(Dimensions.sizeBoxHeight50),
+    return Center(
+      child: Container(
+        height: Dimensions.sizeBoxHeight50*2,
+        width: Dimensions.sizeBoxHeight50*2,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(Dimensions.sizeBoxHeight50),
 
+        ),
+        alignment: Alignment.center,
+        child: CircularProgressIndicator(),
       ),
-      alignment: Alignment.center,
-      child: CircularProgressIndicator(),
     );
   }
 }
