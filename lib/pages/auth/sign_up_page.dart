@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:playerone/base/custom_Messages_SnackBar.dart';
 import 'package:playerone/colors.dart';
+import 'package:playerone/data/controllers/auth_controller.dart';
 import 'package:playerone/models/sign_up_model_body.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_text_fields.dart';
@@ -28,6 +29,7 @@ class SignUpPage extends StatelessWidget {
       "twitter.png",
     ];
     void _registration() {
+      var authController = Get.find<AuthController>();
       String name = nameController.text.trim();
       String email = emailController.text.trim();
       String password = passwordController.text.trim();
@@ -60,7 +62,7 @@ class SignUpPage extends StatelessWidget {
         customMessagesSnackBar("Ensure a match with Password",
             title: "Confirm password");
       } else {
-        customMessagesSnackBar("Perfect, Account creation in Progress",
+        customMessagesSnackBar("Account creation in Progress",
             title: "Creating account...");
         SignUpBody signUpBody = SignUpBody(
             name: name,
@@ -68,6 +70,14 @@ class SignUpPage extends StatelessWidget {
             email: email,
             password: password,
             confirmPassword: confirmPassword);
+
+        authController.registration(signUpBody).then((status){
+          if(status.isSuccess){
+            customMessagesSnackBar("Your account was created");
+          }else{
+            customMessagesSnackBar(status.message,);
+          }
+        });
       }
     }
 
