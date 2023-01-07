@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:playerone/data/controllers/auth_controller.dart';
 import 'package:playerone/utils/dimensions.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
+
 
 class CustomLoader extends StatelessWidget {
   const CustomLoader({Key? key}) : super(key: key);
@@ -22,6 +22,7 @@ class CustomLoader extends StatelessWidget {
 
         ),
         alignment: Alignment.center,
+        child: CircularProgressIndicator(),
         // child: SfRadialGauge(
         //     axes: <RadialAxis>[
         //       // Create primary radial axis
