@@ -186,7 +186,7 @@ class SignUpPage extends StatelessWidget {
                               ..onTap = () => Get.back(),
                             text: "Already have an Account?",
                             style: TextStyle(
-                              color: AppColors.mainBlackColor,
+                              color: Colors.grey[500],
                               fontSize: Dimensions.font26,
                               fontFamily: 'DancingScript',
                             ))),
@@ -198,7 +198,7 @@ class SignUpPage extends StatelessWidget {
                         text: TextSpan(
                             text: "--Or sign Up using--",
                             style: TextStyle(
-                              color: AppColors.mainBlackColor,
+                              color: Colors.grey[500],
                               fontSize: Dimensions.font26,
                               fontFamily: 'DancingScript',
                             ))),

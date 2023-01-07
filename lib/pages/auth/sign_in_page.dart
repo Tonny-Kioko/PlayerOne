@@ -48,7 +48,7 @@ class SignInPage extends StatelessWidget {
 
     return Scaffold(
       // backgroundColor: AppColors.backGround,
-      backgroundColor: Colors.deepPurpleAccent.withOpacity(0.6),
+      backgroundColor: Colors.deepPurpleAccent.withOpacity(0.5),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
@@ -166,7 +166,7 @@ class SignInPage extends StatelessWidget {
             //Sign Up Options
             RichText(
                 text: TextSpan(
-                    text: "I don't Have an Account",
+                    text: "Don't have an Account?...",
                     style: TextStyle(
                       color: Colors.grey[500],
                       fontSize: Dimensions.font26,
@@ -181,7 +181,7 @@ class SignInPage extends StatelessWidget {
                       text: "Create",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: AppColors.mainBlackColor,
+                        color: AppColors.mainColor,
                         fontSize: Dimensions.font30,
                       )),
                 ])),

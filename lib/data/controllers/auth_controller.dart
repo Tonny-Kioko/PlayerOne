@@ -8,7 +8,7 @@ class AuthController extends GetxController implements GetxService{
 
  AuthController({required this.authRepo});
 
- bool _isLoading = false;
+ bool _isLoading = true;
  bool get isLoading => _isLoading;
 
 Future<ResponseModel> registration(SignUpBody signUpBody) async {
