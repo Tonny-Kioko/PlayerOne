@@ -10,6 +10,9 @@ class AppConstants{
 
 
   static const String TOKEN = "playerone";
+  static const String EMAIL = "";
+  static const String PASSWORD = "";
+
   static const String CART_LIST = "cart-list";
   static const String CART_HISTORY_LIST = "cart-history-list";
 

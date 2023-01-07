@@ -51,6 +51,7 @@ class SignInPage extends StatelessWidget {
 
       authController.login(loginBody).then((status) {
         if (status.isSuccess) {
+          Get.toNamed(RouteHelper.initial);
           customMessagesSnackBar("Welcome to your Gamer Account");
         } else {
           customMessagesSnackBar(

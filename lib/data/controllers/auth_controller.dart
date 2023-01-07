@@ -44,4 +44,8 @@ class AuthController extends GetxController implements GetxService {
     update();
     return responseModel;
   }
+
+  Future<void> saveLoginDetails(String email, String password) async {
+    authRepo.saveLoginDetails(email, password);
+  }
 }

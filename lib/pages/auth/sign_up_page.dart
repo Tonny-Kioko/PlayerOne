@@ -125,7 +125,7 @@ class SignUpPage extends StatelessWidget {
                     //Gamer Name
 
                     SizedBox(
-                      height: Dimensions.sizeBoxHeight20,
+                      height: Dimensions.sizeBoxHeight10,
                     ),
                     //Mobile Number
                     AppTextField(
