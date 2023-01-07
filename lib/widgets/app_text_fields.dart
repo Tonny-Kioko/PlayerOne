@@ -6,11 +6,12 @@ import '../utils/dimensions.dart';
 class AppTextField extends StatelessWidget {
   final TextEditingController textController;
   final String hintText;
-
+  bool isObscure;
   final IconData icon;
-  const AppTextField(
+  AppTextField(
       {Key? key,
       required this.textController,
+      this.isObscure = false,
       required this.icon,
       required this.hintText})
       : super(key: key);
@@ -23,12 +24,13 @@ class AppTextField extends StatelessWidget {
             right: Dimensions.sizeBoxHeight20),
         decoration: BoxDecoration(color: Colors.white, boxShadow: [
           BoxShadow(
-              blurRadius: 10,
-              spreadRadius: 7,
-              offset: Offset(1, 10),
+              blurRadius: 3,
+              spreadRadius: 1,
+              offset: Offset(1, 1),
               color: Colors.grey.withOpacity(0.3))
         ]),
         child: TextField(
+          obscureText: isObscure?true :false,
             controller: textController,
             decoration: InputDecoration(
               //Hint Text
@@ -40,15 +42,15 @@ class AppTextField extends StatelessWidget {
               ),
               // Focused Border
               focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(Dimensions.radius15 * 2),
+                  borderRadius: BorderRadius.circular(Dimensions.radius15),
                   borderSide: BorderSide(width: 1.0, color: Colors.white)),
               // Enabled Border
               enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(Dimensions.radius15 * 2),
+                  borderRadius: BorderRadius.circular(Dimensions.radius15),
                   borderSide:
                       BorderSide(width: 1.0, color: Colors.white)), // Border
               border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(Dimensions.radius15 * 2),
+                  borderRadius: BorderRadius.circular(Dimensions.radius15),
                   borderSide: BorderSide(width: 1.0, color: Colors.white)),
             )));
   }
