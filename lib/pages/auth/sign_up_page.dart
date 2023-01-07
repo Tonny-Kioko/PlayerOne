@@ -138,6 +138,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     //Account Password
                     AppTextField(
+                      isObscure: true,
                       textController: passwordController,
                       icon: Icons.password,
                       hintText: "Password",
@@ -148,6 +149,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     //Confirm Password
                     AppTextField(
+                      isObscure: true,
                       textController: confirmPasswordController,
                       icon: Icons.password,
                       hintText: "Confirm Password",
