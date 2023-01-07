@@ -111,6 +111,7 @@ class SignInPage extends StatelessWidget {
 
             //Account Password
             AppTextField(
+                isObscure: true,
                 textController: passwordController,
                 icon: Icons.password,
                 hintText: "Password"),
