@@ -73,15 +73,18 @@ class SignInPage extends StatelessWidget {
         customMessagesSnackBar("Account creation in Progress",
             title: "Creating account...");
 
+        LoginBody loginBody = LoginBody(email: email, password: password);
 
-        authController.login(email, password).then((status) {
+
+        authController.login(loginBody).then((status) {
           if (status.isSuccess) {
-            customMessagesSnackBar("Your account has been created");
+            customMessagesSnackBar("Welcome to your Gamer Account");
           } else {
             customMessagesSnackBar(
               status.message,
             );
           }
+
         });
       }
     }
