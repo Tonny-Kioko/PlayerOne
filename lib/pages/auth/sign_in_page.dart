@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:playerone/base/custom_Messages_SnackBar.dart';
+import 'package:playerone/base/custom_loader.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/models/login_page_body.dart';
 import 'package:playerone/pages/auth/sign_up_page.dart';
@@ -24,7 +25,7 @@ class SignInPage extends StatelessWidget {
     var nameController = TextEditingController();
     var phoneController = TextEditingController();
 
-    void _loginConfirmation() {
+    void _login(AuthController authController) {
       String email = emailController.text.trim();
       String password = passwordController.text.trim();
 
@@ -36,201 +37,177 @@ class SignInPage extends StatelessWidget {
             title: "email Address");
       } else if (password.isEmpty) {
         customMessagesSnackBar("Please enter your Password", title: "passWord");
-      }else if(GetUtils.isAlphabetOnly(password)){
-        customMessagesSnackBar("Include numbers and Symbols", title: "passWord");
-
-      } else if(password.length < 8){
+      } else if (GetUtils.isAlphabetOnly(password)) {
+        customMessagesSnackBar("Include numbers and Symbols",
+            title: "passWord");
+      } else if (password.length < 8) {
         customMessagesSnackBar("Your password is TOO Short", title: "Password");
-      }else {
+      } else {
         customMessagesSnackBar("Great, Login successful", title: "Gamer logIn");
         LoginBody(email: email, password: password);
       }
+
+      LoginBody loginBody = LoginBody(email: email, password: password);
+
+      authController.login(loginBody).then((status) {
+        if (status.isSuccess) {
+          customMessagesSnackBar("Welcome to your Gamer Account");
+        } else {
+          customMessagesSnackBar(
+            status.message,
+          );
+        }
+      });
     }
 
-    void _login(AuthController authController) {
-      //String name = nameController.text.trim();
-      String email = emailController.text.trim();
-      String password = passwordController.text.trim();
-      //String confirmPassword = confirmPasswordController.text.trim();
-      //String phone = phoneController.text.trim();
-
-
-      if (email.isEmpty) {
-        customMessagesSnackBar("Please enter your email address",
-            title: "Email address");
-      } else if (!GetUtils.isEmail(email)) {
-        customMessagesSnackBar("Please enter a valid email address",
-            title: "Email address");
-      } else if (password.isEmpty) {
-        customMessagesSnackBar("Please enter your password", title: "Password");
-      } else if (password.length < 8) {
-        customMessagesSnackBar("Password cannot be less than 8 characters",
-            title: "Password");
-      } else if (GetUtils.isAlphabetOnly(password)) {
-        customMessagesSnackBar("Include Numbers and Symbols",
-            title: "Password");
-      } else{
-        customMessagesSnackBar("Account creation in Progress",
-            title: "Creating account...");
-
-        LoginBody loginBody = LoginBody(email: email, password: password);
-
-
-        authController.login(loginBody).then((status) {
-          if (status.isSuccess) {
-            customMessagesSnackBar("Welcome to your Gamer Account");
-          } else {
-            customMessagesSnackBar(
-              status.message,
-            );
-          }
-
-        });
-      }
-    }
     return Scaffold(
       // backgroundColor: AppColors.backGround,
       backgroundColor: Colors.deepPurpleAccent.withOpacity(0.5),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            SizedBox(
-              height: Dimensions.screenHeight * 0.07,
-            ),
-            //App Logo
-            Container(
-              height: Dimensions.screenHeight * 0.25,
-              child: Center(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage("assets/image/signup.jpg"),
-                  radius: Dimensions.radius30 * 3 + Dimensions.radius15,
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                left: Dimensions.sizeBoxWidth20,
-              ),
-              width: double.maxFinite,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Gear up",
-                    style: TextStyle(
-                      fontSize: Dimensions.font30 + Dimensions.font30,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'DancingScript',
+      body: GetBuilder<AuthController>(builder: (_authController) {
+        return _authController.isLoading
+            ? SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: Dimensions.screenHeight * 0.07,
                     ),
-                  ),
-                  SizedBox(
-                    height: Dimensions.sizeBoxHeight10,
-                  ),
-                  Text(
-                    "A gaming Extravaganza. ",
-                    style: TextStyle(
-                        fontSize: Dimensions.font30,
-                        fontWeight: FontWeight.w200,
-                        color: Colors.grey[500],
-                        fontFamily: 'DancingScript'),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: Dimensions.sizeBoxHeight20,
-            ),
-            //Gamer Email
-            AppTextField(
-                textController: emailController,
-                icon: Icons.email,
-                hintText: "Email"),
-
-            SizedBox(
-              height: Dimensions.sizeBoxHeight20,
-            ),
-
-            //Account Password
-            AppTextField(
-                isObscure: true,
-                textController: passwordController,
-                icon: Icons.password,
-                hintText: "Password"),
-
-            SizedBox(
-              height: Dimensions.sizeBoxHeight10,
-            ),
-            Row(
-              children: [
-                Expanded(child: Container()),
-                RichText(
-                    text: TextSpan(
-                        text: "Forgot Password?",
-                        style: TextStyle(
-                            color: Colors.grey[500],
-                            fontSize: Dimensions.font26,
-                            fontFamily: 'DancingScript'))),
-                SizedBox(
-                  width: Dimensions.sizeBoxWidth20,
-                ),
-              ],
-            ),
-            //Sign Up Button
-
-            SizedBox(
-              height: Dimensions.screenHeight * 0.05,
-            ),
-            GestureDetector(
-              onTap: () {
-                _loginConfirmation();
-              },
-              child: Container(
-                width: Dimensions.screenWidth / 2,
-                height: Dimensions.screenHeight / 13,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radius30),
-                  color: AppColors.mainColor,
-                ),
-                child: Center(
-
-                    child: BigText(
-                      text: 'Sign In',
-                      size: Dimensions.font30,
-                      color: Colors.white,
+                    //App Logo
+                    Container(
+                      height: Dimensions.screenHeight * 0.25,
+                      child: Center(
+                        child: CircleAvatar(
+                          backgroundImage:
+                              AssetImage("assets/image/signup.jpg"),
+                          radius: Dimensions.radius30 * 3 + Dimensions.radius15,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-            ),
-
-            SizedBox(
-              height: Dimensions.screenHeight * 0.05,
-            ),
-            //Sign Up Options
-            RichText(
-                text: TextSpan(
-                    text: "Don't have an Account?...",
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                      fontSize: Dimensions.font26,
-                      fontFamily: 'DancingScript',
+                    Container(
+                      margin: EdgeInsets.only(
+                        left: Dimensions.sizeBoxWidth20,
+                      ),
+                      width: double.maxFinite,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Gear up",
+                            style: TextStyle(
+                              fontSize: Dimensions.font30 + Dimensions.font30,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'DancingScript',
+                            ),
+                          ),
+                          SizedBox(
+                            height: Dimensions.sizeBoxHeight10,
+                          ),
+                          Text(
+                            "A gaming Extravaganza. ",
+                            style: TextStyle(
+                                fontSize: Dimensions.font30,
+                                fontWeight: FontWeight.w200,
+                                color: Colors.grey[500],
+                                fontFamily: 'DancingScript'),
+                          )
+                        ],
+                      ),
                     ),
-                    children: [
-                  TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () =>
-                            Get.to(SignUpPage(), transition: Transition.fade),
-                      // ..onTap = () {Get.toNamed(RouteHelper.signUpPage());},
-                      text: "Create",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.mainColor,
-                        fontSize: Dimensions.font30,
-                      )),
-                ])),
-          ],
-        ),
-      ),
+                    SizedBox(
+                      height: Dimensions.sizeBoxHeight20,
+                    ),
+                    //Gamer Email
+                    AppTextField(
+                        textController: emailController,
+                        icon: Icons.email,
+                        hintText: "Email"),
+
+                    SizedBox(
+                      height: Dimensions.sizeBoxHeight20,
+                    ),
+
+                    //Account Password
+                    AppTextField(
+                        isObscure: true,
+                        textController: passwordController,
+                        icon: Icons.password,
+                        hintText: "Password"),
+
+                    SizedBox(
+                      height: Dimensions.sizeBoxHeight10,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(child: Container()),
+                        RichText(
+                            text: TextSpan(
+                                text: "Forgot Password?",
+                                style: TextStyle(
+                                    color: Colors.grey[500],
+                                    fontSize: Dimensions.font26,
+                                    fontFamily: 'DancingScript'))),
+                        SizedBox(
+                          width: Dimensions.sizeBoxWidth20,
+                        ),
+                      ],
+                    ),
+                    //Sign Up Button
+
+                    SizedBox(
+                      height: Dimensions.screenHeight * 0.05,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        _login(_authController);
+                      },
+                      child: Container(
+                        width: Dimensions.screenWidth / 2,
+                        height: Dimensions.screenHeight / 13,
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.radius30),
+                          color: AppColors.mainColor,
+                        ),
+                        child: Center(
+                          child: BigText(
+                            text: 'Sign In',
+                            size: Dimensions.font30,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(
+                      height: Dimensions.screenHeight * 0.05,
+                    ),
+                    //Sign Up Options
+                    RichText(
+                        text: TextSpan(
+                            text: "Don't have an Account?...",
+                            style: TextStyle(
+                              color: Colors.grey[500],
+                              fontSize: Dimensions.font26,
+                              fontFamily: 'DancingScript',
+                            ),
+                            children: [
+                          TextSpan(
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => Get.to(SignUpPage(),
+                                    transition: Transition.fade),
+                              // ..onTap = () {Get.toNamed(RouteHelper.signUpPage());},
+                              text: "Create",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.mainColor,
+                                fontSize: Dimensions.font30,
+                              )),
+                        ])),
+                  ],
+                ),
+              )
+            : const CustomLoader();
+      }),
     );
   }
 }
