@@ -10,6 +10,7 @@ import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_text_fields.dart';
 import 'package:playerone/widgets/big_text.dart';
 
+import '../../data/controllers/auth_controller.dart';
 import '../../routes/route_helper.dart';
 
 class SignInPage extends StatelessWidget {
@@ -46,6 +47,44 @@ class SignInPage extends StatelessWidget {
       }
     }
 
+    void _login(AuthController authController) {
+      //String name = nameController.text.trim();
+      String email = emailController.text.trim();
+      String password = passwordController.text.trim();
+      //String confirmPassword = confirmPasswordController.text.trim();
+      //String phone = phoneController.text.trim();
+
+
+      if (email.isEmpty) {
+        customMessagesSnackBar("Please enter your email address",
+            title: "Email address");
+      } else if (!GetUtils.isEmail(email)) {
+        customMessagesSnackBar("Please enter a valid email address",
+            title: "Email address");
+      } else if (password.isEmpty) {
+        customMessagesSnackBar("Please enter your password", title: "Password");
+      } else if (password.length < 8) {
+        customMessagesSnackBar("Password cannot be less than 8 characters",
+            title: "Password");
+      } else if (GetUtils.isAlphabetOnly(password)) {
+        customMessagesSnackBar("Include Numbers and Symbols",
+            title: "Password");
+      } else{
+        customMessagesSnackBar("Account creation in Progress",
+            title: "Creating account...");
+
+
+        authController.login(email, password).then((status) {
+          if (status.isSuccess) {
+            customMessagesSnackBar("Your account has been created");
+          } else {
+            customMessagesSnackBar(
+              status.message,
+            );
+          }
+        });
+      }
+    }
     return Scaffold(
       // backgroundColor: AppColors.backGround,
       backgroundColor: Colors.deepPurpleAccent.withOpacity(0.5),
