@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           return GetMaterialApp(
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
-            home: SignInPage(),
+            //home: SignInPage(),
 
 
             // home: SplashScreen(),
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
 
 
             initialRoute: RouteHelper.getSplashPage(),
-            // getPages: RouteHelper.routes,
+            getPages: RouteHelper.routes,
           );
         });
       },

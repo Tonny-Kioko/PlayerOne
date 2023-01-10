@@ -65,8 +65,8 @@ class CartHistory extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: Dimensions.sizeBoxHeight20 * 5,
-            color: AppColors.mainColor,
+            height: Dimensions.sizeBoxHeight20*6,
+            color: AppColors.backGround,
             width: double.maxFinite,
             padding: EdgeInsets.only(top: Dimensions.sizeBoxHeight20),
             child: Row(
@@ -74,7 +74,7 @@ class CartHistory extends StatelessWidget {
               children: [
                 BigText(
                   text: "Your Basket History",
-                  color: Colors.black54,
+                  color: Colors.grey[500],
                 ),
                 Icon(Icons.shopping_basket,
                     size: Dimensions.iconSize24 * 2, color: Colors.white)

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/pages/account/account_page.dart';
+import 'package:playerone/pages/auth/sign_up_page.dart';
 import 'package:playerone/pages/home/main_game_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:playerone/utils/dimensions.dart';
@@ -21,11 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   List pages = [
     MainGamePage(),
-    Container(
-      child: Center(
-        child: Text("Next page"),
-      ),
-    ),
+    SignUpPage(),
     CartHistory(),
     AccountPage(),
 
@@ -45,11 +42,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _buildScreens() {
     return [
       MainGamePage(),
-      Container(
-        child: Center(
-          child: Text("Next page"),
-        ),
-      ),
+      SignUpPage(),
       CartHistory(),
       AccountPage(),
     ];
@@ -123,13 +116,13 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      // backgroundColor: Color(0xff3f4156),
+      backgroundColor: AppColors.backGround,
       context,
       controller: _controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: Colors.grey, // Default is Colors.white.
+      //backgroundColor: Colors.grey, // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset:
           true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
@@ -137,7 +130,7 @@ class _HomePageState extends State<HomePage> {
       hideNavigationBarWhenKeyboardShows:
           true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
-        borderRadius: BorderRadius.circular(Dimensions.radius30),
+        borderRadius: BorderRadius.circular(Dimensions.radius15/15),
         colorBehindNavBar: Colors.white,
       ),
       popAllScreensOnTapOfSelectedTab: true,
@@ -153,8 +146,8 @@ class _HomePageState extends State<HomePage> {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle: NavBarStyle
-          .style1, // *neumorphic or style12 or 13 for consideration* Choose the nav bar style with this property.
+      navBarStyle: NavBarStyle.neumorphic,
+          //style1, neumorphic or style12 or 13 for consideration* Choose the nav bar style with this property.
     );
   }
 }
