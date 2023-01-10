@@ -73,6 +73,7 @@ class CartHistory extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 BigText(
+                  size: Dimensions.font26,
                   text: "Your Basket History",
                   color: Colors.grey[500],
                 ),
@@ -235,9 +236,11 @@ class CartHistory extends StatelessWidget {
                           ),
                         )))
                 : Container(
-                    height: MediaQuery.of(context).size.height / 1.3,
+                    color: AppColors.backGround,
+                    height: MediaQuery.of(context).size.height / 1.28,
                     child: Center(
                       child: CleanDataPage(
+
                         text: "Your history i'snt Available",
                         imagePath: 'assets/image/empty_box.jpg',
                       ),
