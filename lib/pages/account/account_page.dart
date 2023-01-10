@@ -24,7 +24,7 @@ class AccountPage extends StatelessWidget {
       body: Container(
         color: AppColors.backGround,
         width: double.maxFinite,
-        // margin: EdgeInsets.only(top: Dimensions.sizeBoxHeight10),
+        // margin: EdgeInsets.only(top: Dimensions.sizeBoxHeight10, ),
         child: Column(
           children: [
             //Gamers' Account Icon
