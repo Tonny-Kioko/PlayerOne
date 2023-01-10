@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:playerone/colors.dart';
 import 'package:playerone/utils/dimensions.dart';
 
 class CleanDataPage extends StatelessWidget {
@@ -19,7 +20,7 @@ class CleanDataPage extends StatelessWidget {
         Image.asset(imagePath,
 
         fit: BoxFit.cover,
-        height: MediaQuery.of(context).size.height*0.73
+        height: MediaQuery.of(context).size.height*0.73,
         //width: MediaQuery.of(context).size.width*0.22,
         ),
         SizedBox(height: MediaQuery.of(context).size.height*0.03,),
@@ -27,7 +28,8 @@ class CleanDataPage extends StatelessWidget {
         style: TextStyle(
           fontFamily: 'DancingScript',
           fontSize: MediaQuery.of(context).size.height*0.0175,
-          color: Colors.grey[500],
+          color: AppColors.mainColor,
+          // color: Colors.grey[500],
         ),
         textAlign: TextAlign.center,),
 

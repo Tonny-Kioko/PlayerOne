@@ -240,7 +240,6 @@ class CartHistory extends StatelessWidget {
                     height: MediaQuery.of(context).size.height / 1.28,
                     child: Center(
                       child: CleanDataPage(
-
                         text: "Your history i'snt Available",
                         imagePath: 'assets/image/empty_box.jpg',
                       ),

@@ -16,7 +16,7 @@ class AccountPage extends StatelessWidget {
         backgroundColor: AppColors.backGround,
         title: BigText(
           text: "Gamer Profile",
-          size: 24,
+          size: Dimensions.font26,
           color: Colors.grey[500],
         ),
       ),
@@ -37,7 +37,7 @@ class AccountPage extends StatelessWidget {
 
             ),
             SizedBox(
-              height: Dimensions.sizeBoxHeight30,
+              height: Dimensions.sizeBoxHeight20,
             ),
             Expanded(
                 child: SingleChildScrollView(
