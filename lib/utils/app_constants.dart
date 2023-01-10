@@ -9,7 +9,8 @@ class AppConstants{
   static const String UPLOAD_URL = "/uploads/";
 
 
-  static const String TOKEN = "playerone";
+
+  static const String TOKEN = "";
   static const String EMAIL = "";
   static const String PASSWORD = "";
 

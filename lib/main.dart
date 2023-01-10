@@ -15,7 +15,6 @@ import 'package:playerone/helper/dependencies.dart' as dep;
 import 'package:playerone/pages/splashScreen/spash_page.dart';
 import 'package:playerone/routes/route_helper.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dep.init();
@@ -38,10 +37,7 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             //home: SignInPage(),
 
-
             // home: SplashScreen(),
-
-
 
             initialRoute: RouteHelper.getSplashPage(),
             getPages: RouteHelper.routes,

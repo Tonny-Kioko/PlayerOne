@@ -13,6 +13,7 @@ import 'package:playerone/widgets/app_icon.dart';
 import 'package:playerone/widgets/big_text.dart';
 import 'package:playerone/widgets/small_text.dart';
 
+import '../../data/controllers/auth_controller.dart';
 import '../../data/controllers/recommended_games_controller.dart';
 import '../../routes/route_helper.dart';
 
@@ -313,8 +314,18 @@ class CartPage extends StatelessWidget {
                             bottom: Dimensions.sizeBoxHeight20,
                             left: Dimensions.sizeBoxWidth20,
                             right: Dimensions.sizeBoxWidth20),
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(Dimensions.radius20),
+                            color: AppColors.mainColor),
                         child: GestureDetector(
                           onTap: () {
+                            if (Get.find<AuthController>().userLoggedIn()) {
+                              cartController.addToHistory();
+                            } else {
+                              Get.toNamed(RouteHelper.getSignInPage());
+                            }
+
                             //popularGames.addItem(game);
                           },
                           child: BigText(
@@ -322,10 +333,6 @@ class CartPage extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(Dimensions.radius20),
-                            color: AppColors.mainColor),
                       )
                     ],
                   )
