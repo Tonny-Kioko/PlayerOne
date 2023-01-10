@@ -27,6 +27,10 @@ class AuthRepo {
     return await sharedPreferences.setString(AppConstants.TOKEN, token);
   }
 
+  String getUserToken(){
+    return sharedPreferences.getString(AppConstants.TOKEN)??"Doesn't Exist";
+  }
+
   Future<void> saveLoginDetails(String email, String password) async {
     try {
       await sharedPreferences.setString(AppConstants.EMAIL, email);
