@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:playerone/base/custom_loader.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/data/controllers/recommended_games_controller.dart';
@@ -15,6 +16,7 @@ import 'package:playerone/widgets/big_text.dart';
 import 'package:playerone/widgets/icon_and_text.dart';
 import 'package:playerone/widgets/small_text.dart';
 
+import '../../base/loading_indicator.dart';
 import '../../widgets/app_column.dart';
 
 class GamePageBody extends StatefulWidget {
@@ -71,10 +73,10 @@ class _GamePageBodyState extends State<GamePageBody> {
                               popularGames.popularGamesList[position]);
                         }),
                   ),
-                )
-              : CircularProgressIndicator(
-                  color: AppColors.mainColor,
-                );
+                ): CustomLoader();
+              // : CircularProgressIndicator(
+              //     color: AppColors.mainColor,
+              //   );
         }),
         GetBuilder<PopularGamesController>(builder: (popularGames) {
           return DotsIndicator(
@@ -100,7 +102,8 @@ class _GamePageBodyState extends State<GamePageBody> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              BigText(text: "Recommended"),
+              BigText(text: "Recommended", size: Dimensions.font26,
+                color: Colors.grey[500],),
               SizedBox(
                 width: Dimensions.sizeBoxWidth5,
               ),
@@ -187,9 +190,7 @@ class _GamePageBodyState extends State<GamePageBody> {
                       ),
                     );
                   })
-              : CircularProgressIndicator(
-                  color: AppColors.mainColor,
-                );
+              : CustomLoader();
         }),
       ],
     );

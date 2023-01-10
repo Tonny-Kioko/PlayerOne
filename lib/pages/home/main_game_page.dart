@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:playerone/colors.dart';
+import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/big_text.dart';
 import 'package:playerone/widgets/small_text.dart';
 
@@ -40,12 +41,14 @@ class _MainGamePage extends State<MainGamePage> {
                         BigText(
                           text: "Ready, Player One",
                           color: AppColors.mainColor,
+                          size: Dimensions.font30,
                         ),
                         Row(
                           children: [
                             SmallText(
                               text: "Featured Games",
-                              color: Colors.black54,
+                              color: Colors.grey[500],
+                              size: Dimensions.font26,
                             ),
                             Icon(Icons.gamepad_outlined),
                           ],

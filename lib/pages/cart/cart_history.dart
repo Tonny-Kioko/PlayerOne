@@ -65,7 +65,7 @@ class CartHistory extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: Dimensions.sizeBoxHeight20*6,
+            height: Dimensions.sizeBoxHeight20 * 6,
             color: AppColors.backGround,
             width: double.maxFinite,
             padding: EdgeInsets.only(top: Dimensions.sizeBoxHeight20),

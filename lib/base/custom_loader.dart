@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
+import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/auth_controller.dart';
 import 'package:playerone/utils/dimensions.dart';
 
@@ -11,6 +13,7 @@ class CustomLoader extends StatelessWidget {
   const CustomLoader({Key? key}) : super(key: key);
 
   @override
+
   Widget build(BuildContext context) {
     //print("I'm loading just fine"+Get.find<AuthController>().isLoading.toString());
     return Center(
@@ -22,7 +25,15 @@ class CustomLoader extends StatelessWidget {
 
         ),
         alignment: Alignment.center,
-        child: CircularProgressIndicator(),
+        child: Container(
+            alignment: Alignment.topCenter,
+            margin: EdgeInsets.only(top: 20),
+            child: CircularProgressIndicator(
+              backgroundColor: Colors.grey,
+              color: AppColors.mainColor,
+              strokeWidth: 7,
+            )
+        )
         // child: SfRadialGauge(
         //     axes: <RadialAxis>[
         //       // Create primary radial axis

@@ -37,6 +37,7 @@ dependencies:
   persistent_bottom_nav_bar: any
   shared_preferences: ^2.0.11
   intl: ^0.17.0
+  liquid_progress_indicator: ^0.3.2
 
 
   # The following adds the Cupertino Icons fonts to your application.
