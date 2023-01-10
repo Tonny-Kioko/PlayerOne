@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   List pages = [
     MainGamePage(),
-    SignUpPage(),
+    Container(),
     CartHistory(),
     AccountPage(),
 

@@ -4,6 +4,8 @@ import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_icon.dart';
 import 'package:playerone/widgets/big_text.dart';
 
+import '../colors.dart';
+
 class AccountWidget extends StatelessWidget {
   AppIcon appIcon;
   BigText bigText;
@@ -13,7 +15,7 @@ class AccountWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: AppColors.backGround,
       padding: EdgeInsets.only(
           left: Dimensions.sizeBoxWidth10,
           top: Dimensions.sizeBoxWidth10,
@@ -22,18 +24,18 @@ class AccountWidget extends StatelessWidget {
         children: [
           appIcon,
           SizedBox(
-            width: Dimensions.sizeBoxWidth10 * 2,
+            width: Dimensions.sizeBoxWidth10 * 3,
           ),
           bigText,
         ],
       ),
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-          blurRadius: 2,
-          offset: Offset(0, 2),
-          color: Colors.grey.withOpacity(0.3),
-        )
-      ]),
+      // decoration: BoxDecoration( boxShadow: [
+      //   BoxShadow(
+      //     blurRadius: 2,
+      //     offset: Offset(0, 2),
+      //     color: Colors.grey.withOpacity(0.3),
+      //   )
+      // ]),
     );
   }
 }

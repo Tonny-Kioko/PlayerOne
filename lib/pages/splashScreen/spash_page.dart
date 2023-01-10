@@ -34,7 +34,8 @@ class _SplashScreenState extends State<SplashScreen>
           ..forward();
 
     animation =
-        CurvedAnimation(parent: controller, curve: Curves.linearToEaseOut);
+        CurvedAnimation(parent: controller, curve: Curves.ease,
+         );
     Timer(Duration(seconds: 3), () => Get.offNamed(RouteHelper.getinitial()));
   }
 
