@@ -139,6 +139,22 @@ class AccountPage extends StatelessWidget {
                         iconSize: Dimensions.sizeBoxHeight45,
                         size: Dimensions.sizeBoxHeight50,
                       )),
+                  SizedBox(
+                    height: Dimensions.sizeBoxHeight20,
+                  ),
+                  AccountWidget(
+                      bigText: BigText(
+                        text: "Logout",
+                        size: Dimensions.font26,
+                        color: Colors.grey[500],
+                      ),
+                      appIcon: AppIcon(
+                        icon: Icons.logout,
+                        backgroundColor: Colors.green,
+                        iconColor: Colors.white,
+                        iconSize: Dimensions.sizeBoxHeight45,
+                        size: Dimensions.sizeBoxHeight50,
+                      )),
                 ],
               ),
             ))
