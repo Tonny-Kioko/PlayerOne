@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/auth_controller.dart';
+import 'package:playerone/data/controllers/cart_controller.dart';
 import 'package:playerone/routes/route_helper.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_icon.dart';
@@ -151,7 +152,9 @@ class AccountPage extends StatelessWidget {
                     onTap: () {
                       if (Get.find<AuthController>().userLoggedIn()) {
                         Get.find<AuthController>().clearSharedData();
-                        Get.offNamed(RouteHelper.getinitial());
+                        Get.find<CartController>().clear();
+                        Get.find<CartController>().clearCartHistory();
+                        Get.offNamed(RouteHelper.getSignInPage());
                       }
                     },
                     child: AccountWidget(

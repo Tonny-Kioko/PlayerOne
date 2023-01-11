@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen>
     animation =
         CurvedAnimation(parent: controller, curve: Curves.ease,
          );
-    Timer(Duration(seconds: 3), () => Get.offNamed(RouteHelper.getinitial()));
+    Timer(Duration(seconds: 3), () => Get.offNamed(RouteHelper.getSignInPage()));
   }
 
   @override
