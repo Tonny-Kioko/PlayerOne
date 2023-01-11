@@ -45,25 +45,26 @@ class SignInPage extends StatelessWidget {
       } else {
         customMessagesSnackBar("Great, Login successful", title: "Gamer logIn");
         LoginBody(email: email, password: password);
+
+
+        LoginBody loginBody = LoginBody(email: email, password: password);
+
+        authController.login(loginBody).then((status) {
+          if (status.isSuccess) {
+            Get.toNamed(RouteHelper.getinitial());
+            customMessagesSnackBar("Welcome to your Gamer Account");
+          } else {
+            customMessagesSnackBar(
+              status.message,
+            );
+          }
+        });
       }
-
-      LoginBody loginBody = LoginBody(email: email, password: password);
-
-      authController.login(loginBody).then((status) {
-        if (status.isSuccess) {
-          Get.toNamed(RouteHelper.getinitial());
-          customMessagesSnackBar("Welcome to your Gamer Account");
-        } else {
-          customMessagesSnackBar(
-            status.message,
-          );
-        }
-      });
     }
 
     return Scaffold(
       // backgroundColor: AppColors.backGround,
-      backgroundColor: Colors.deepPurpleAccent.withOpacity(0.5),
+      backgroundColor: AppColors.backGround.withOpacity(0.5),
       body: GetBuilder<AuthController>(builder: (_authController) {
         return _authController.isLoading
             ? SingleChildScrollView(
@@ -93,18 +94,19 @@ class SignInPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Gear up",
+                            "Hey,Samurai...",
                             style: TextStyle(
                               fontSize: Dimensions.font30 + Dimensions.font30,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'DancingScript',
+                              color: Colors.grey[500],
                             ),
                           ),
                           SizedBox(
                             height: Dimensions.sizeBoxHeight10,
                           ),
                           Text(
-                            "A gaming Extravaganza. ",
+                            "It's in the Game",
                             style: TextStyle(
                                 fontSize: Dimensions.font30,
                                 fontWeight: FontWeight.w200,

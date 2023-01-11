@@ -83,7 +83,7 @@ class SignUpPage extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: AppColors.backGround,
+      backgroundColor: AppColors.backGround.withOpacity(0.5),
       body: GetBuilder<AuthController>(builder: (_authController) {
         return _authController.isLoading
             ? SingleChildScrollView(
@@ -99,9 +99,11 @@ class SignUpPage extends StatelessWidget {
                           child: Text(
                         "New Here? Welcome 🎮",
                         style: TextStyle(
-                            fontSize: Dimensions.font30,
+                            color: Colors.grey[500],
+                            fontSize: Dimensions.font30+4,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'DancingScript'),
+
                       )),
                     ),
                     //Gamer Name
