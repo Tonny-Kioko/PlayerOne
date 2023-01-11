@@ -36,7 +36,6 @@ class AuthController extends GetxController implements GetxService {
     Response response = await authRepo.login(loginBody);
     late ResponseModel responseModel;
     if (response.statusCode == 200) {
-
       authRepo.saveUserToken(response.body["token"]);
       responseModel = ResponseModel(true, response.body["token"]);
     } else {
@@ -50,6 +49,12 @@ class AuthController extends GetxController implements GetxService {
   Future<void> saveLoginDetails(String email, String password) async {
     authRepo.saveLoginDetails(email, password);
   }
-  bool userLoggedIn(){
+
+  bool userLoggedIn() {
     return authRepo.userLoggedIn();
-  }}
+  }
+
+  bool clearSharedData(){
+    return authRepo.clearSharedData();
+  }
+}

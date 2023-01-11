@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:playerone/colors.dart';
+import 'package:playerone/data/controllers/auth_controller.dart';
+import 'package:playerone/routes/route_helper.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_icon.dart';
 import 'package:playerone/widgets/big_text.dart';
@@ -20,7 +24,6 @@ class AccountPage extends StatelessWidget {
           color: Colors.grey[500],
         ),
       ),
-
       body: Container(
         color: AppColors.backGround,
         width: double.maxFinite,
@@ -34,7 +37,6 @@ class AccountPage extends StatelessWidget {
               iconColor: Colors.white,
               iconSize: Dimensions.sizeBoxHeight50 + Dimensions.sizeBoxHeight20,
               size: Dimensions.sizeBoxHeight50 * 3,
-
             ),
             SizedBox(
               height: Dimensions.sizeBoxHeight20,
@@ -62,8 +64,11 @@ class AccountPage extends StatelessWidget {
                   ),
                   //Mobile Number
                   AccountWidget(
-                      bigText:
-                          BigText(text: "+254715150317", size: Dimensions.font26, color: Colors.grey[500],),
+                      bigText: BigText(
+                        text: "+254715150317",
+                        size: Dimensions.font26,
+                        color: Colors.grey[500],
+                      ),
                       appIcon: AppIcon(
                         icon: Icons.phone,
                         backgroundColor: Colors.blueAccent,
@@ -142,19 +147,27 @@ class AccountPage extends StatelessWidget {
                   SizedBox(
                     height: Dimensions.sizeBoxHeight20,
                   ),
-                  AccountWidget(
-                      bigText: BigText(
-                        text: "Logout",
-                        size: Dimensions.font26,
-                        color: Colors.grey[500],
-                      ),
-                      appIcon: AppIcon(
-                        icon: Icons.logout,
-                        backgroundColor: Colors.green,
-                        iconColor: Colors.white,
-                        iconSize: Dimensions.sizeBoxHeight45,
-                        size: Dimensions.sizeBoxHeight50,
-                      )),
+                  GestureDetector(
+                    onTap: () {
+                      if (Get.find<AuthController>().userLoggedIn()) {
+                        Get.find<AuthController>().clearSharedData();
+                        Get.offNamed(RouteHelper.getinitial());
+                      }
+                    },
+                    child: AccountWidget(
+                        bigText: BigText(
+                          text: "Logout",
+                          size: Dimensions.font26,
+                          color: Colors.grey[500],
+                        ),
+                        appIcon: AppIcon(
+                          icon: Icons.logout,
+                          backgroundColor: Colors.redAccent,
+                          iconColor: Colors.white,
+                          iconSize: Dimensions.sizeBoxHeight45,
+                          size: Dimensions.sizeBoxHeight50,
+                        )),
+                  ),
                 ],
               ),
             ))
