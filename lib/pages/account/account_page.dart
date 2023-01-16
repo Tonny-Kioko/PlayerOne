@@ -193,16 +193,18 @@ class AccountPage extends StatelessWidget {
                   )
                 : CustomLoader())
             : Container(
+          color: AppColors.backGround,
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+
                       Container(
                         width: double.maxFinite,
-                        height: Dimensions.sizeBoxHeight20 * 8,
-                        margin: EdgeInsets.only(
-                            left: Dimensions.sizeBoxWidth20,
-                            right: Dimensions.sizeBoxWidth20),
+                        height: Dimensions.sizeBoxHeight50*11,
+                        // margin: EdgeInsets.only(
+                        //     left: Dimensions.sizeBoxWidth20,
+                        //     right: Dimensions.sizeBoxWidth20),
                         decoration: BoxDecoration(
                             borderRadius:
                                 BorderRadius.circular(Dimensions.radius15),
@@ -210,18 +212,20 @@ class AccountPage extends StatelessWidget {
                                 fit: BoxFit.cover,
                                 image: AssetImage("assets/image/codmw.jpg"))),
                       ),
+
                       GestureDetector(
                         onTap: () {
                           Get.toNamed(RouteHelper.getSignInPage());
                         },
+
                         child: Container(
                           width: double.maxFinite,
-                          height: Dimensions.sizeBoxHeight20 * 5,
+                          height: Dimensions.sizeBoxHeight20*4,
                           margin: EdgeInsets.only(
-                              left: Dimensions.sizeBoxWidth20,
-                              right: Dimensions.sizeBoxWidth20),
+                              left: Dimensions.sizeBoxWidth5,
+                              right: Dimensions.sizeBoxWidth5),
                           decoration: BoxDecoration(
-                            color: AppColors.mainColor,
+                            color: AppColors.backGround,
                             borderRadius:
                                 BorderRadius.circular(Dimensions.radius15),
                           ),
