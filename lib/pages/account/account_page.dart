@@ -194,7 +194,48 @@ class AccountPage extends StatelessWidget {
                 : CustomLoader())
             : Container(
                 child: Center(
-                    child: BigText(text: "Please Log into your Account")),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: double.maxFinite,
+                        height: Dimensions.sizeBoxHeight20 * 8,
+                        margin: EdgeInsets.only(
+                            left: Dimensions.sizeBoxWidth20,
+                            right: Dimensions.sizeBoxWidth20),
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(Dimensions.radius15),
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage("assets/image/codmw.jpg"))),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(RouteHelper.getSignInPage());
+                        },
+                        child: Container(
+                          width: double.maxFinite,
+                          height: Dimensions.sizeBoxHeight20 * 5,
+                          margin: EdgeInsets.only(
+                              left: Dimensions.sizeBoxWidth20,
+                              right: Dimensions.sizeBoxWidth20),
+                          decoration: BoxDecoration(
+                            color: AppColors.mainColor,
+                            borderRadius:
+                                BorderRadius.circular(Dimensions.radius15),
+                          ),
+                          child: Center(
+                              child: BigText(
+                            text: "SignIn",
+                            color: Colors.white,
+                            size: Dimensions.font30,
+                          )),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               );
       }),
     );
