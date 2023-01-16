@@ -7,6 +7,7 @@ import 'package:playerone/base/custom_loader.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/auth_controller.dart';
 import 'package:playerone/models/sign_up_model_body.dart';
+import 'package:playerone/routes/route_helper.dart';
 import 'package:playerone/utils/dimensions.dart';
 import 'package:playerone/widgets/app_text_fields.dart';
 import 'package:playerone/widgets/big_text.dart';
@@ -73,6 +74,7 @@ class SignUpPage extends StatelessWidget {
         authController.registration(signUpBody).then((status) {
           if (status.isSuccess) {
             customMessagesSnackBar("Your account has been created");
+            Get.offNamed(RouteHelper.getinitial());
           } else {
             customMessagesSnackBar(
               status.message,
