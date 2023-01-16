@@ -21,6 +21,7 @@ class AccountPage extends StatelessWidget {
     bool _userLoggedIn = Get.find<AuthController>().userLoggedIn();
     if (_userLoggedIn) {
       Get.find<UserController>().getUserInfo();
+      //print("User log in is working well");
     }
     return Scaffold(
       appBar: AppBar(
@@ -59,7 +60,7 @@ class AccountPage extends StatelessWidget {
                               //Gaming name
                               AccountWidget(
                                   bigText: BigText(
-                                    text: "Mickey",
+                                    text: userController.userModel.name,
                                     size: Dimensions.font26,
                                     color: Colors.grey[500],
                                   ),
@@ -76,7 +77,7 @@ class AccountPage extends StatelessWidget {
                               //Mobile Number
                               AccountWidget(
                                   bigText: BigText(
-                                    text: "+254715150317",
+                                    text: userController.userModel.phone,
                                     size: Dimensions.font26,
                                     color: Colors.grey[500],
                                   ),
@@ -93,7 +94,7 @@ class AccountPage extends StatelessWidget {
                               //Email
                               AccountWidget(
                                   bigText: BigText(
-                                    text: "tonny@email.com",
+                                    text: userController.userModel.email,
                                     size: Dimensions.font26,
                                     color: Colors.grey[500],
                                   ),
