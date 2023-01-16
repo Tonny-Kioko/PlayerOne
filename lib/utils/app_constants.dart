@@ -20,5 +20,7 @@ class AppConstants{
   static const String REGISTRATION_URI = "/api/vi/auth/register";
   static const String LOGIN_URI = "/api/vi/auth/login";
 
+  static const String USER_INFO = "/api/vi/customer/info";
+
 
 }
