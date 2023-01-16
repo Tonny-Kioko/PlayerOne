@@ -5,10 +5,12 @@ import 'package:playerone/data/controllers/auth_controller.dart';
 import 'package:playerone/data/controllers/cart_controller.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/data/controllers/recommended_games_controller.dart';
+import 'package:playerone/data/controllers/user_controller.dart';
 import 'package:playerone/data/repository/auth_repository.dart';
 
 import 'package:playerone/data/repository/popular_games_repository.dart';
 import 'package:playerone/data/repository/recommended_games_repository.dart';
+import 'package:playerone/data/repository/user_repository.dart';
 import 'package:playerone/utils/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,6 +29,7 @@ Future<void> init() async {
   Get.lazyPut(() => ApiClient(appBaseUrl: AppConstants.BASE_URL));
 
   Get.lazyPut(() => AuthRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
+  Get.lazyPut(() => UserRepo(apiClient: Get.find()));
 
 //Dependency for the repositories
   Get.lazyPut(() => PopularGamesRepo(apiClient: Get.find()));
@@ -40,4 +43,5 @@ Future<void> init() async {
       recommendedGamesRepo: Get.find(), apiClient: null));
   Get.lazyPut(() => CartController(cartRepo: Get.find()));
   Get.lazyPut(() => AuthController(authRepo: Get.find()));
+  Get.lazyPut(() => UserController(userRepo: Get.find()));
 }
