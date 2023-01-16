@@ -105,14 +105,14 @@ class SignInPage extends StatelessWidget {
                           SizedBox(
                             height: Dimensions.sizeBoxHeight10,
                           ),
-                          Text(
-                            "It's in the Game",
-                            style: TextStyle(
-                                fontSize: Dimensions.font30,
-                                fontWeight: FontWeight.w200,
-                                color: Colors.grey[500],
-                                fontFamily: 'DancingScript'),
-                          )
+                          // Text(
+                          //   "It's in the Game",
+                          //   style: TextStyle(
+                          //       fontSize: Dimensions.font30,
+                          //       fontWeight: FontWeight.w200,
+                          //       color: Colors.grey[500],
+                          //       fontFamily: 'DancingScript'),
+                          // )
                         ],
                       ),
                     ),
