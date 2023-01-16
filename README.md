@@ -40,10 +40,11 @@ games that the user visits over time.(It will depend on the popular games as inc
 13. Adding an orders history page  for users to see the items they previously ordered, dates, payment amount and option used.
 14. An update on the order status . If the user includes more items✔️ or cancels❌ an order, it will appear in the order history under the cancelled category and reflect on the backend.
  
-## More updates on this file will come. They include images of sections of the platform, more features that i think of and anything that would be recommended by any observers.
+More updates on this file will come. They include images of sections of the platform, more features that i think of and anything that would be recommended by any observers.
+
 
 ## Login Page
-![alt text]()
+![alt text](readme_images/dart_login.png)
 
 ## Registration Page
-![alt text]()
+![alt text](readme_images/dart_register.png)
