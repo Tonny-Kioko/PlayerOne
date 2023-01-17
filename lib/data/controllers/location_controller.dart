@@ -24,18 +24,36 @@ class LocationController extends GetxController implements GetxService {
 
   late Map<String, dynamic> _getAddress;
   Map get getAddress => _getAddress;
+  Position get position => _position;
+  Position get pickPosition => _pickPosition;
+  bool get loading => _loading;
 
   late GoogleMapController _mapController;
   bool _updateAddressData = true;
-  void setMapController(GoogleMapController mapController){
+
+  void setMapController(GoogleMapController mapController) {
     _mapController = mapController;
   }
 
-
-  void updatePosition(CameraPosition cameraPosition, bool bool) {
-    if(_updateAddressData){
+  void updatePosition(CameraPosition position, bool fromAddress) {
+    if (_updateAddressData) {
       _loading = true;
       update();
+      try {
+        if (fromAddress) {
+          _position = Position(
+              longitude: position.target.longitude,
+              latitude: position.target.latitude,
+              timestamp: DateTime.now(),
+              accuracy: 1,
+              altitude: 1,
+              heading: 1,
+              speed: 1,
+              speedAccuracy: 1);
+        }
+      } catch (e) {
+        print(e);
+      }
     }
   }
 }
