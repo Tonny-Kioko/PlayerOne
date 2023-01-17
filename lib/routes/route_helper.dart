@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:playerone/pages/addresses/add_address_page.dart';
 import 'package:playerone/pages/game/popular_game_details.dart';
 import 'package:playerone/pages/home/homepage.dart';
 import 'package:playerone/pages/home/main_game_page.dart';
@@ -18,6 +19,8 @@ static const String cartPage = "/cart-page";
 static const String splashPage = "/splash-page";
 static const String signIn = "/sign-in";
 
+static const String addAddress = "/add-address";
+
 
 
 static String getinitial() => '$initial';
@@ -26,6 +29,7 @@ static String getrecommendedGame(int pageId, String page) => '$recommendedGame? 
 static String getCartPage() => '$cartPage';
 static String getSplashPage() => '$splashPage';
 static String getSignInPage() => '$signIn';
+static String getAddressPage() => '$addAddress';
 
 
 
@@ -55,5 +59,9 @@ return RecommendedGameDetails(pageId: int.parse(pageId!), page: page!)
     transition: Transition.fadeIn
 
 
-)];
+),
+GetPage(name: addAddress, page: (){
+  return AddAddressPage();
+})
+];
 }

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:playerone/base/clean_data_page.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/cart_controller.dart';
+import 'package:playerone/data/controllers/location_controller.dart';
 import 'package:playerone/data/controllers/popular_games-controller.dart';
 import 'package:playerone/pages/game/popular_game_details.dart';
 import 'package:playerone/pages/home/main_game_page.dart';
@@ -321,7 +322,11 @@ class CartPage extends StatelessWidget {
                         child: GestureDetector(
                           onTap: () {
                             if (Get.find<AuthController>().userLoggedIn()) {
+
                               cartController.addToHistory();
+                              if(Get.find<LocationController>().addressList.isEmpty){
+                                //Get.toNamed(RouteHelper.getAddressPage()):
+                              }
                             } else {
                               Get.toNamed(RouteHelper.getSignInPage());
                             }
