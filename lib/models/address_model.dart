@@ -14,5 +14,20 @@ class AddressModel {
       contactPersonMobile,
       required address,
       required latitude,
-      required longitude});
+      required longitude})
+  {
+    _id = id;
+    _addressType = addressType;
+    _contactPerson = contactPerson;
+    _contactPersonMobile = contactPersonMobile;
+    _address = address;
+    _latitude = latitude;
+    _longitude = longitude;
+  }
+  String get address => _address;
+  String get addressType => _addressType;
+  String? get contactPerson => _contactPerson;
+  String? get contactPersonMobile => _contactPersonMobile;
+
+
 }
