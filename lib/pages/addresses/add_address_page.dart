@@ -52,40 +52,39 @@ class _AddAddressPageState extends State<AddAddressPage> {
         title: Text("Gamer's Address"),
         backgroundColor: AppColors.backGround,
       ),
-      body: GetBuilder<LocationController>(
-        builder: (locationController) {
-          return Column(
-            children: [
-              Container(
-                height: 150,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(
-                        width: 2, color: Theme.of(context).primaryColor)),
-                child: Stack(
-                  children: [
-                    GoogleMap(
-                        initialCameraPosition:
-                            CameraPosition(target: _initialPosition, zoom: 15),
+      body: GetBuilder<LocationController>(builder: (locationController) {
+        return Column(
+          children: [
+            Container(
+              height: 150,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  border: Border.all(
+                      width: 2, color: Theme.of(context).primaryColor)),
+              child: Stack(
+                children: [
+                  GoogleMap(
+                    initialCameraPosition:
+                        CameraPosition(target: _initialPosition, zoom: 15),
                     zoomControlsEnabled: false,
                     compassEnabled: false,
                     indoorViewEnabled: true,
                     mapToolbarEnabled: false,
-                    onCameraIdle: (){
-  locationController.updatePosition(_cameraPosition, true);
+                    onCameraIdle: () {
+                      locationController.updatePosition(_cameraPosition, true);
                     },
                     onCameraMove: ((position) => _cameraPosition = position),
-                    onMapCreated: (GoogleMapController controller){
-                       locationController.setMapController(controller);
-                    } ,),
-                  ],
-                ),
-              )
-            ],
-          );
-        }
-      ),
+                    onMapCreated: (GoogleMapController controller) {
+                      locationController.setMapController(controller);
+                    },
+                  ),
+                ],
+              ),
+            )
+          ],
+        );
+      }),
     );
   }
 }

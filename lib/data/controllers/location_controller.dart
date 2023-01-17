@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -27,6 +29,7 @@ class LocationController extends GetxController implements GetxService {
   Position get position => _position;
   Position get pickPosition => _pickPosition;
   bool get loading => _loading;
+  bool _changeAddress = true;
 
   late GoogleMapController _mapController;
   bool _updateAddressData = true;
@@ -35,7 +38,7 @@ class LocationController extends GetxController implements GetxService {
     _mapController = mapController;
   }
 
-  void updatePosition(CameraPosition position, bool fromAddress) {
+  void updatePosition(CameraPosition position, bool fromAddress) async {
     if (_updateAddressData) {
       _loading = true;
       update();
@@ -50,10 +53,31 @@ class LocationController extends GetxController implements GetxService {
               heading: 1,
               speed: 1,
               speedAccuracy: 1);
+        } else {
+          _pickPosition = Position(
+              longitude: position.target.longitude,
+              latitude: position.target.latitude,
+              timestamp: DateTime.now(),
+              accuracy: 1,
+              altitude: 1,
+              heading: 1,
+              speed: 1,
+              speedAccuracy: 1);
+        }
+
+        if (_changeAddress) {
+          String _address = await getAddressfromGeoCode(
+              LatLng(position.target.latitude, position.target.longitude));
         }
       } catch (e) {
         print(e);
       }
     }
+  }
+
+  Future<String> getAddressfromGeoCode(LatLng latlng) async {
+    String _address = "This location is Unknown";
+    Response response = await locationRepo.getAddressfromGeoCode(latlng);
+    return _address;
   }
 }
