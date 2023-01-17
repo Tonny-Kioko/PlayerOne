@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 
             // home: SplashScreen(),
 
-            initialRoute: RouteHelper.getSplashPage(),
+            initialRoute: RouteHelper.getAddressPage(),
             getPages: RouteHelper.routes,
           );
         });
