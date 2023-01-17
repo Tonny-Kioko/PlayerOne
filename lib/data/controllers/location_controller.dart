@@ -1,6 +1,7 @@
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/state_manager.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../models/address_model.dart';
 import '../repository/location_repository.dart';
@@ -23,4 +24,18 @@ class LocationController extends GetxController implements GetxService {
 
   late Map<String, dynamic> _getAddress;
   Map get getAddress => _getAddress;
+
+  late GoogleMapController _mapController;
+  bool _updateAddressData = true;
+  void setMapController(GoogleMapController mapController){
+    _mapController = mapController;
+  }
+
+
+  void updatePosition(CameraPosition cameraPosition, bool bool) {
+    if(_updateAddressData){
+      _loading = true;
+      update();
+    }
+  }
 }
