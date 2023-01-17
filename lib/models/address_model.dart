@@ -14,8 +14,7 @@ class AddressModel {
       contactPersonMobile,
       required address,
       required latitude,
-      required longitude})
-  {
+      required longitude}) {
     _id = id;
     _addressType = addressType;
     _contactPerson = contactPerson;
@@ -29,5 +28,13 @@ class AddressModel {
   String? get contactPerson => _contactPerson;
   String? get contactPersonMobile => _contactPersonMobile;
 
-
+  AddressModel.fromJson(Map<String, dynamic> json) {
+    _id = json['id'];
+    _addressType = json['address_type'] ?? "";
+    _contactPerson = json['contact_person'] ?? "";
+    _contactPersonMobile = json['contact_person_mobile'] ?? "";
+    _address = json['address'];
+    _latitude = json['latitude'];
+    _longitude = json['longitude'];
+  }
 }
