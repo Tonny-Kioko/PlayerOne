@@ -13,4 +13,6 @@ class LocationController extends GetxController implements GetxService {
   late Position _pickPosition;
   Placemark _placemark = Placemark();
   Placemark _pickPlacemark = Placemark();
+
+  List<AddressModel> _addressList=[];
 }
