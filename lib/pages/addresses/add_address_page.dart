@@ -55,7 +55,12 @@ class _AddAddressPageState extends State<AddAddressPage> {
         title: Text("My Address"),
         backgroundColor: AppColors.backGround,
       ),
-      body: GetBuilder<UserController>(builder: (userController){
+      body: GetBuilder<UserController>(builder: (userController) {
+        if (userController.userModel != null && _contactPerson.text.isEmpty) {
+          _contactPerson.text = '${userController.userModel.name}';
+          _contactPersonMobile.text = '${userController.userModel.phone}';
+          if (Get.find<LocationController>().addressList.isNotEmpty) {}
+        }
         return GetBuilder<LocationController>(builder: (locationController) {
           _addressController.text = '${locationController.placemark.name ?? ''}'
               '${locationController.placemark.locality ?? ''}'
@@ -77,13 +82,14 @@ class _AddAddressPageState extends State<AddAddressPage> {
                   children: [
                     GoogleMap(
                       initialCameraPosition:
-                      CameraPosition(target: _initialPosition, zoom: 15),
+                          CameraPosition(target: _initialPosition, zoom: 15),
                       zoomControlsEnabled: false,
                       compassEnabled: false,
                       indoorViewEnabled: true,
                       mapToolbarEnabled: false,
                       onCameraIdle: () {
-                        locationController.updatePosition(_cameraPosition, true);
+                        locationController.updatePosition(
+                            _cameraPosition, true);
                       },
                       onCameraMove: ((position) => _cameraPosition = position),
                       onMapCreated: (GoogleMapController controller) {
@@ -94,8 +100,12 @@ class _AddAddressPageState extends State<AddAddressPage> {
                 ),
               ),
               SizedBox(height: Dimensions.sizeBoxHeight10),
-              Padding(padding: EdgeInsets.only(left: Dimensions.sizeBoxWidth5*2),
-                  child: BigText(text: "Delivery Address", size: Dimensions.font26,)),
+              Padding(
+                  padding: EdgeInsets.only(left: Dimensions.sizeBoxWidth5 * 2),
+                  child: BigText(
+                    text: "Delivery Address",
+                    size: Dimensions.font26,
+                  )),
               SizedBox(height: Dimensions.sizeBoxHeight10),
               AppTextField(
                   textController: _addressController,
@@ -104,7 +114,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
             ],
           );
         });
-    }),
+      }),
     );
   }
 }

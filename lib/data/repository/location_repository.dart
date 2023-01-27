@@ -5,15 +5,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../api/api_client.dart';
 
-class LocationRepo{
+class LocationRepo {
   final ApiClient apiClient;
   final SharedPreferences sharedPreferences;
 
   LocationRepo({required this.apiClient, required this.sharedPreferences});
 
- Future<Response>  getAddressfromGeoCode(LatLng latlng) async {
+  Future<Response> getAddressfromGeoCode(LatLng latlng) async {
     return await apiClient.getData('${AppConstants.GEOCODE_URI}'
-      '?lat = ${latlng.latitude} &lng= ${latlng.longitude}'
-    );
+        '?lat = ${latlng.latitude} &lng= ${latlng.longitude}');
+  }
+
+  getUserAddress() {
+    return sharedPreferences.getString(AppConstants.USER_ADDRESS)?? "";
   }
 }
