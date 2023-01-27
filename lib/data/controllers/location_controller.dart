@@ -78,6 +78,11 @@ class LocationController extends GetxController implements GetxService {
   Future<String> getAddressfromGeoCode(LatLng latlng) async {
     String _address = "This location is Unknown";
     Response response = await locationRepo.getAddressfromGeoCode(latlng);
+    if(response.body['status']=='OK'){
+      _address = response.body['results'][0]['formatted_address'].toString();
+    }else{
+      print("Please check your Google API");
+    }
     return _address;
   }
 }
