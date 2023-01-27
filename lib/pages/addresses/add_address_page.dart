@@ -52,7 +52,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Address"),
+        title: Text("Gemer's Address"),
         backgroundColor: AppColors.backGround,
       ),
       body: GetBuilder<UserController>(builder: (userController) {

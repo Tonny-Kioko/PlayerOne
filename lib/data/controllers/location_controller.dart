@@ -110,4 +110,9 @@ class LocationController extends GetxController implements GetxService {
     }
     return _addressModel;
   }
+
+  void setAddressTypeIndex(int index){
+     _addressTypeIndex = index;
+     update();
+  }
 }
