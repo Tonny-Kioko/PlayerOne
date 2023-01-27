@@ -31,9 +31,9 @@ class LocationController extends GetxController implements GetxService {
   bool get loading => _loading;
   bool _changeAddress = true;
 
+
   late GoogleMapController _mapController;
   bool _updateAddressData = true;
-
   void setMapController(GoogleMapController mapController) {
     _mapController = mapController;
   }
