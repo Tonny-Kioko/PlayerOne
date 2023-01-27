@@ -21,6 +21,7 @@ class AppConstants{
   static const String LOGIN_URI = "/api/vi/auth/login";
 
   static const String USER_INFO = "/api/vi/customer/info";
+  static const String GEOCODE_URI = "";
 
 
 }

@@ -11,9 +11,9 @@ class LocationRepo{
 
   LocationRepo({required this.apiClient, required this.sharedPreferences});
 
- Future<Response>  getAddressfromGeoCode(LatLng latLng) async {
-    return await apiClient.getData("${AppConstants.GEOCODE_URI}"
-    '?lat = ${latlng.latitude}'&lng= ${latlng.longitude}
+ Future<Response>  getAddressfromGeoCode(LatLng latlng) async {
+    return await apiClient.getData('${AppConstants.GEOCODE_URI}'
+      '?lat = ${latlng.latitude} &lng= ${latlng.longitude}'
     );
   }
 }
