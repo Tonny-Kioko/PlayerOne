@@ -50,14 +50,20 @@ class _AddAddressPageState extends State<AddAddressPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Gamer's Address"),
+        title: Text("My Address"),
         backgroundColor: AppColors.backGround,
       ),
       body: GetBuilder<LocationController>(builder: (locationController) {
+        _addressController.text = '${locationController.placemark.name ?? ''}'
+            '${locationController.placemark.locality ?? ''}'
+            '${locationController.placemark.postalCode ?? ''}'
+            '${locationController.placemark.country ?? ''}';
+        //Test
+        print("My address is " + _addressController.text);
         return Column(
           children: [
             Container(
-              height: Dimensions.sizeBoxHeight50*5,
+              height: Dimensions.sizeBoxHeight50 * 5,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),

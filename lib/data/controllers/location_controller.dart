@@ -16,7 +16,9 @@ class LocationController extends GetxController implements GetxService {
   late Position _position;
   late Position _pickPosition;
   Placemark _placemark = Placemark();
+  Placemark get placemark => _placemark;
   Placemark _pickPlacemark = Placemark();
+  Placemark get pickPlacemark => _pickPlacemark;
 
   List<AddressModel> _addressList = [];
   List<AddressModel> get addressList => _addressList;
@@ -71,6 +73,7 @@ class LocationController extends GetxController implements GetxService {
 
           fromAddress? _placemark = Placemark(name: _address):
           _pickPlacemark = Placemark(name: _address);
+          print(_placemark);
         }
 
       } catch (e) {
