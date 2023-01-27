@@ -55,52 +55,56 @@ class _AddAddressPageState extends State<AddAddressPage> {
         title: Text("My Address"),
         backgroundColor: AppColors.backGround,
       ),
-      body: GetBuilder<LocationController>(builder: (locationController) {
-        _addressController.text = '${locationController.placemark.name ?? ''}'
-            '${locationController.placemark.locality ?? ''}'
-            '${locationController.placemark.postalCode ?? ''}'
-            '${locationController.placemark.country ?? ''}';
-        //Test
-        print("My address is " + _addressController.text);
-        return Column(
-          children: [
-            Container(
-              height: Dimensions.sizeBoxHeight50 * 5,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  border: Border.all(
-                      width: 2, color: Theme.of(context).primaryColor)),
-              child: Stack(
-                children: [
-                  GoogleMap(
-                    initialCameraPosition:
-                        CameraPosition(target: _initialPosition, zoom: 15),
-                    zoomControlsEnabled: false,
-                    compassEnabled: false,
-                    indoorViewEnabled: true,
-                    mapToolbarEnabled: false,
-                    onCameraIdle: () {
-                      locationController.updatePosition(_cameraPosition, true);
-                    },
-                    onCameraMove: ((position) => _cameraPosition = position),
-                    onMapCreated: (GoogleMapController controller) {
-                      locationController.setMapController(controller);
-                    },
-                  ),
-                ],
+      body: GetBuilder<UserController>(builder: (userController){
+        return GetBuilder<LocationController>(builder: (locationController) {
+          _addressController.text = '${locationController.placemark.name ?? ''}'
+              '${locationController.placemark.locality ?? ''}'
+              '${locationController.placemark.postalCode ?? ''}'
+              '${locationController.placemark.country ?? ''}';
+          //Test
+          print("My address is " + _addressController.text);
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: Dimensions.sizeBoxHeight50 * 5,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all(
+                        width: 2, color: Theme.of(context).primaryColor)),
+                child: Stack(
+                  children: [
+                    GoogleMap(
+                      initialCameraPosition:
+                      CameraPosition(target: _initialPosition, zoom: 15),
+                      zoomControlsEnabled: false,
+                      compassEnabled: false,
+                      indoorViewEnabled: true,
+                      mapToolbarEnabled: false,
+                      onCameraIdle: () {
+                        locationController.updatePosition(_cameraPosition, true);
+                      },
+                      onCameraMove: ((position) => _cameraPosition = position),
+                      onMapCreated: (GoogleMapController controller) {
+                        locationController.setMapController(controller);
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: Dimensions.sizeBoxHeight10),
-            BigText(text: "Delivery Address", size: Dimensions.font30,),
-            SizedBox(height: Dimensions.sizeBoxHeight10),
-            AppTextField(
-                textController: _addressController,
-                icon: Icons.map,
-                hintText: "Pick an Address")
-          ],
-        );
-      }),
+              SizedBox(height: Dimensions.sizeBoxHeight10),
+              Padding(padding: EdgeInsets.only(left: Dimensions.sizeBoxWidth5*2),
+                  child: BigText(text: "Delivery Address", size: Dimensions.font26,)),
+              SizedBox(height: Dimensions.sizeBoxHeight10),
+              AppTextField(
+                  textController: _addressController,
+                  icon: Icons.map,
+                  hintText: "Pick an Address")
+            ],
+          );
+        });
+    }),
     );
   }
 }
