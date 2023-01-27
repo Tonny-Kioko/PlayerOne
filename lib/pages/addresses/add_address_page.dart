@@ -7,6 +7,8 @@ import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/auth_controller.dart';
 import 'package:playerone/data/controllers/location_controller.dart';
 import 'package:playerone/utils/dimensions.dart';
+import 'package:playerone/widgets/app_text_fields.dart';
+import 'package:playerone/widgets/big_text.dart';
 
 import '../../data/controllers/user_controller.dart';
 
@@ -88,7 +90,14 @@ class _AddAddressPageState extends State<AddAddressPage> {
                   ),
                 ],
               ),
-            )
+            ),
+            SizedBox(height: Dimensions.sizeBoxHeight10),
+            BigText(text: "Delivery Address", size: Dimensions.font30,),
+            SizedBox(height: Dimensions.sizeBoxHeight10),
+            AppTextField(
+                textController: _addressController,
+                icon: Icons.map,
+                hintText: "Pick an Address")
           ],
         );
       }),
