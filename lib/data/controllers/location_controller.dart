@@ -68,7 +68,11 @@ class LocationController extends GetxController implements GetxService {
         if (_changeAddress) {
           String _address = await getAddressfromGeoCode(
               LatLng(position.target.latitude, position.target.longitude));
+
+          fromAddress? _placemark = Placemark(name: _address):
+          _pickPlacemark = Placemark(name: _address);
         }
+
       } catch (e) {
         print(e);
       }
@@ -80,6 +84,8 @@ class LocationController extends GetxController implements GetxService {
     Response response = await locationRepo.getAddressfromGeoCode(latlng);
     if(response.body['status']=='OK'){
       _address = response.body['results'][0]['formatted_address'].toString();
+      //Test
+      print("The address is"+_address);
     }else{
       print("Please check your Google API");
     }
