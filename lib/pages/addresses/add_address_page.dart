@@ -59,7 +59,9 @@ class _AddAddressPageState extends State<AddAddressPage> {
         if (userController.userModel != null && _contactPerson.text.isEmpty) {
           _contactPerson.text = '${userController.userModel.name}';
           _contactPersonMobile.text = '${userController.userModel.phone}';
-          if (Get.find<LocationController>().addressList.isNotEmpty) {}
+          if (Get.find<LocationController>().addressList.isNotEmpty) {
+            Get.find<LocationController>().getUserAddress().address;
+          }
         }
         return GetBuilder<LocationController>(builder: (locationController) {
           _addressController.text = '${locationController.placemark.name ?? ''}'
@@ -110,7 +112,31 @@ class _AddAddressPageState extends State<AddAddressPage> {
               AppTextField(
                   textController: _addressController,
                   icon: Icons.map,
-                  hintText: "Pick an Address")
+                  hintText: "Pick an Address"),
+              SizedBox(height: Dimensions.sizeBoxHeight10),
+              Padding(
+                  padding: EdgeInsets.only(left: Dimensions.sizeBoxWidth5 * 2),
+                  child: BigText(
+                    text: "Delivery Address",
+                    size: Dimensions.font26,
+                  )),
+              SizedBox(height: Dimensions.sizeBoxHeight10),
+              AppTextField(
+                  textController: _contactPerson,
+                  icon: Icons.person,
+                  hintText: "Your Name"),
+              SizedBox(height: Dimensions.sizeBoxHeight10),
+              Padding(
+                  padding: EdgeInsets.only(left: Dimensions.sizeBoxWidth5 * 2),
+                  child: BigText(
+                    text: "Delivery Address",
+                    size: Dimensions.font26,
+                  )),
+              SizedBox(height: Dimensions.sizeBoxHeight10),
+              AppTextField(
+                  textController: _contactPersonMobile,
+                  icon: Icons.phone,
+                  hintText: "Your Mobile Number")
             ],
           );
         });
