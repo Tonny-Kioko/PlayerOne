@@ -6,6 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:playerone/colors.dart';
 import 'package:playerone/data/controllers/auth_controller.dart';
 import 'package:playerone/data/controllers/location_controller.dart';
+import 'package:playerone/utils/dimensions.dart';
 
 import '../../data/controllers/user_controller.dart';
 
@@ -56,7 +57,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
         return Column(
           children: [
             Container(
-              height: 150,
+              height: Dimensions.sizeBoxHeight50*5,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
