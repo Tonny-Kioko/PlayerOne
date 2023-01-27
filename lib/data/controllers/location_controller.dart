@@ -25,7 +25,8 @@ class LocationController extends GetxController implements GetxService {
   List<AddressModel> _addressList = [];
   List<AddressModel> get addressList => _addressList;
   late List<AddressModel> _allAddressList;
-  List<String> _addressTypeList = ['home', 'office', 'other'];
+  List<String> _addressTypeList = ['Home', 'Office', 'Other'];
+  List<String> get addressTypeList => _addressTypeList;
   int _addressTypeIndex = 0;
 
   Position get position => _position;
